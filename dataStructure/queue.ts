@@ -18,7 +18,7 @@ export default class Queue {
    * @returns {Boolean} 
    * @memberof Queue
    */
-  isEmpty (): Boolean {
+  isEmpty (): boolean {
     return !this.linkedList.tail
   }
 
