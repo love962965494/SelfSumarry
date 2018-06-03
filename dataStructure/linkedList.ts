@@ -109,7 +109,7 @@ export default class LinkedList {
    * @returns {(LinkedListNode | null)}
    * @memberof LinkedList
    */
-  find(value?: any, callback?: Function): LinkedListNode | null {
+  find({ value = undefined, callback }): LinkedListNode | null {
     if (!this.head) {
       return null
     }
