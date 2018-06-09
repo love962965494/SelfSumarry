@@ -1,4 +1,4 @@
-import Comparator from '../utils/comparator'
+import Comparator from '../../utils/comparator'
 /**
  * In computer science, a heap is a specialized tree-based data structure that satisfies the heap property: if p is a parent * node of c, then the key (the value) of p is either greater than or equal to (in a max heap) or less than or equal to (in * a min heap) the key of c. The node at the "top" oof the heap (with no parents) is called the root node.
  */
@@ -177,6 +177,7 @@ export default class MinHeap {
   add(item): MinHeap {
     this.heapContainer.push(item)
     this.heapifyUp()
+    console.log('add: ', this.heapContainer)
     return this
   }
 
@@ -196,9 +197,8 @@ export default class MinHeap {
    */
   remove(item: any, customFindingComparator?): MinHeap {
     // find number of items to remove
-    const numberOfItemsToRemove = this.find(item).length
     const customComparator = customFindingComparator || this.compare
-
+    const numberOfItemsToRemove = this.find(item, customComparator).length
     for (let iteration = 0; iteration < numberOfItemsToRemove; iteration++) {
       // we need to find item index to remove each time after remove since
       // indices are being change after each heapify process
@@ -269,7 +269,7 @@ export default class MinHeap {
    * 1. 父节点存在且比父节点值小，则与父节点交互位置
    * 2. 当前位置变为父节点位置
    * 3. 回到步骤1
-   * 
+   *
    * @param {number} [customStartIndex]
    * @memberof MinHeap
    */
@@ -278,7 +278,6 @@ export default class MinHeap {
     // a heap container and lift him up until we find the parent element
     // that is less than the current new one
     let currentIndex = customStartIndex || this.heapContainer.length - 1
-
     while (
       this.hasParent(currentIndex) &&
       this.compare.lessThan(
@@ -309,7 +308,8 @@ export default class MinHeap {
       if (
         this.hasRightChild(currentIndex) &&
         this.compare.lessThan(
-          this.rightChild(currentIndex), this.leftChild(currentIndex)
+          this.rightChild(currentIndex),
+          this.leftChild(currentIndex)
         )
       ) {
         nextIndex = this.getRightChildIndex(currentIndex)
@@ -317,8 +317,13 @@ export default class MinHeap {
         nextIndex = this.getLeftChildIndex(currentIndex)
       }
 
-      if (this.compare.lessThan(this.heapContainer[currentIndex], this.heapContainer[nextIndex])) {
-        break;
+      if (
+        this.compare.lessThan(
+          this.heapContainer[currentIndex],
+          this.heapContainer[nextIndex]
+        )
+      ) {
+        break
       }
 
       this.swap(currentIndex, nextIndex)
@@ -347,16 +352,16 @@ export default class MinHeap {
   }
 }
 
-let minHeap = new MinHeap()
-minHeap.add(1)
-minHeap.add(2)
-minHeap.add(4)
-minHeap.add(6)
-minHeap.add(3)
-minHeap.add(5)
-minHeap.add(6)
-minHeap.add(10)
-minHeap.add(8)
-minHeap.add(7)
-minHeap.add(1)
-console.log(minHeap)
+// let minHeap = new MinHeap()
+// minHeap.add(1)
+// minHeap.add(2)
+// minHeap.add(4)
+// minHeap.add(6)
+// minHeap.add(3)
+// minHeap.add(5)
+// minHeap.add(6)
+// minHeap.add(10)
+// minHeap.add(8)
+// minHeap.add(7)
+// minHeap.add(1)
+// console.log(minHeap)
