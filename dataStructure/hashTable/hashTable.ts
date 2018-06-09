@@ -1,7 +1,7 @@
 import LinkedList from '../linkedList/linkedList'
 import LinkedListNode from '../linkedList/linkedListNode'
 /**
- * In computing, a hash table (hash map) is a data structure which implements an associative array abstract data type, a    * structure that can map keys to values. A hash table uses a hash function to compute an index into an array to buckets or  * slots, from which the desired value can be found.
+ * In computer science, a hash table (hash map) is a data structure which implements an associative array abstract data type,* a structure that can map keys to values. A hash table uses a hash function to compute an index into an array to buckets  * or slots, from which the desired value can be found.
  * Ideally, the hash function will assign each key to a unique bucket, but most hash table designs employ an imperfect hash  * function, which might cause hash collisions where the hash function generates the same index for more than one key. Such  * collisions must be accommodated in some way.
  */
 
@@ -22,7 +22,7 @@ export default class HashTable {
    * @memberof HashTable
    */
   constructor(hashTableSize: number = defaultHashTableSize) {
-    // Create hash table of certain size and fill each bucked with empty linked list
+    // Create hash table of certain size and fill each bucket with empty linked list
     this.buckets = Array(hashTableSize)
       .fill(null)
       .map(() => new LinkedList())
@@ -127,8 +127,8 @@ export default class HashTable {
   }
 }
 
-// let hashTable = new HashTable()
-// hashTable.set('a', 'mick')
-// hashTable.set('b', 'nico')
-// hashTable.set('a', 'john')
-// console.log(hashTable)
+let hashTable = new HashTable()
+hashTable.set('a', 'mick')
+hashTable.set('b', 'nico')
+hashTable.set('a', 'john')
+console.log(JSON.stringify(hashTable, null, 2))

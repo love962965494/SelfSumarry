@@ -30,7 +30,7 @@ export default class TrieNode {
    * @memberof TrieNode
    */
   addChild(character: string, isCompleteWord: boolean = false) {
-    if (!this.children.has(character)) {
+    if (!this.hasChild(character)) {
       this.children.set(character, new TrieNode(character, isCompleteWord))
     }
 
@@ -41,10 +41,10 @@ export default class TrieNode {
    *
    *
    * @param {string} character
-   * @returns
+   * @returns {boolean}
    * @memberof TrieNode
    */
-  hasChild(character: string) {
+  hasChild(character: string): boolean {
     return this.children.has(character)
   }
 

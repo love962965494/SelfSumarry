@@ -15,7 +15,7 @@ import LinkedListNode from './linkedListNode'
 export default class LinkedList {
   head: LinkedListNode
   tail: LinkedListNode
-  compare: any
+  compare: Comparator
   constructor(comparatorFunction?: Function) {
     this.head = null
     this.tail = null
@@ -74,7 +74,7 @@ export default class LinkedList {
     let deleteNode = null
 
     // If the head must be deleted then make 2nd node to be a head
-    while (this.compare.equal(this.head && this.head.value, value)) {
+    while (this.head && this.compare.equal(this.head.value, value)) {
       deleteNode = this.head
       this.head = this.head.next
     }

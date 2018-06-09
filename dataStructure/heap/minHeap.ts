@@ -1,6 +1,6 @@
 import Comparator from '../../utils/comparator'
 /**
- * In computer science, a heap is a specialized tree-based data structure that satisfies the heap property: if p is a parent * node of c, then the key (the value) of p is either greater than or equal to (in a max heap) or less than or equal to (in * a min heap) the key of c. The node at the "top" oof the heap (with no parents) is called the root node.
+ * In computer science, a heap is a specialized tree-based data structure that satisfies the heap property: if p is a parent * node of c, then the key (the value) of p is either greater than or equal to (in a max heap) or less than or equal to (in * a min heap) the key of c. The node at the "top" of the heap (with no parents) is called the root node.
  */
 export default class MinHeap {
   public heapContainer: Array<any>
@@ -177,14 +177,13 @@ export default class MinHeap {
   add(item): MinHeap {
     this.heapContainer.push(item)
     this.heapifyUp()
-    console.log('add: ', this.heapContainer)
     return this
   }
 
   /**
    * 1. 找到所有要删除的节点位置队列
    * 2. 遍历队列：
-   * 3. 计算删除节点的位置（因为没删除一个节点，需要重新调整树的结构）
+   * 3. 计算删除节点的位置（因为每删除一个节点，需要重新调整树的结构）
    * 3. 如果删除的是最后一个节点则直接从树中删除
    * 4. 如果不是，取出树中最后一个节点的值，赋值给当前删除节点:
    * 5. 如果存在左子节点并且父节点为空或者父节点值比当前要删除节点值小，则heapifyDown；否则heapifyUp
@@ -252,11 +251,7 @@ export default class MinHeap {
     const foundItemIndices = []
     const comparator = customComparator || this.compare
 
-    for (
-      let itemIndex = 0;
-      itemIndex < this.heapContainer.length;
-      itemIndex++
-    ) {
+    for (let itemIndex = 0; itemIndex < this.heapContainer.length; itemIndex++) {
       if (comparator.equal(item, this.heapContainer[itemIndex])) {
         foundItemIndices.push(itemIndex)
       }
@@ -317,12 +312,7 @@ export default class MinHeap {
         nextIndex = this.getLeftChildIndex(currentIndex)
       }
 
-      if (
-        this.compare.lessThan(
-          this.heapContainer[currentIndex],
-          this.heapContainer[nextIndex]
-        )
-      ) {
+      if (this.compare.lessThan(this.heapContainer[currentIndex], this.heapContainer[nextIndex])) {
         break
       }
 

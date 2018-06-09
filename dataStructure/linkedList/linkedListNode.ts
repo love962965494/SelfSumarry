@@ -5,7 +5,9 @@
  * @class LinkedListNode
  */
 export default class LinkedListNode {
-  constructor(public value: any, public next: LinkedListNode = null) {
+  public value: any
+  public next: LinkedListNode
+  constructor(value: any, next: LinkedListNode = null) {
     this.value = value
     this.next = next
   }

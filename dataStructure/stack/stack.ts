@@ -1,3 +1,4 @@
+import LinkedListNode from '../linkedList/linkedListNode'
 import LinkedList from '../linkedList/LinkedList'
 
 /**
@@ -6,34 +7,30 @@ import LinkedList from '../linkedList/LinkedList'
  * pop, which removes the most recently added element that was not yet removed.
  * The order in which elements come off a stack gives rise to its alternative name, LIFO(last in, first out). Additionally, * a peek operation may give access to the top without modifying the stack. The name "stack" for this type of structure     * comes from the analogy to a set of physical items stacked on top of each other, which makes it easy to take an item off  * the top of the stack, while getting to an item deeper in the stack may require taking off multiple other items first.
  */
-interface LinkedListNode {
-  value: any,
-  next: null | LinkedListNode  
-}
 
 export default class Stack {
   public linkedList: LinkedList
-  constructor () {
+  constructor() {
     this.linkedList = new LinkedList()
   }
 
   /**
-   * 
-   * 
-   * @returns {Boolean} 
+   *
+   *
+   * @returns {Boolean}
    * @memberof Stack
    */
-  isEmpty (): Boolean {
+  isEmpty(): Boolean {
     return !this.linkedList.tail
   }
 
   /**
    * find stack top value or return null
-   * 
-   * @returns 
+   *
+   * @returns
    * @memberof Stack
    */
-  peek () {
+  peek() {
     if (this.isEmpty()) {
       return null
     }
@@ -42,44 +39,47 @@ export default class Stack {
   }
 
   /**
-   * 
-   * 
-   * @param {any} value 
+   *
+   *
+   * @param {any} value
    * @memberof Stack
    */
-  push (value) {
+  push(value) {
     this.linkedList.append(value)
   }
 
   /**
-   * 
-   * 
-   * @returns 
+   *
+   *
+   * @returns
    * @memberof Stack
    */
-  pop () {
+  pop() {
     const removedTail = this.linkedList.deleteTail()
     return removedTail ? removedTail.value : null
   }
 
   /**
-   * 
-   * 
-   * @returns {Array<LinkedListNode>} 
+   *
+   *
+   * @returns {Array<LinkedListNode>}
    * @memberof Stack
    */
-  toArray (): Array<LinkedListNode> {
-    return this.linkedList.toArray().map(linkedListNode => linkedListNode.value).reverse()
+  toArray(): Array<LinkedListNode> {
+    return this.linkedList
+      .toArray()
+      .map(linkedListNode => linkedListNode.value)
+      .reverse()
   }
 
   /**
-   * 
-   * 
-   * @param {Function} [callback] 
-   * @returns {String} 
+   *
+   *
+   * @param {Function} [callback]
+   * @returns {String}
    * @memberof Stack
    */
-  toString (callback?: Function): String {
+  toString(callback?: Function): String {
     return this.linkedList.toString(callback)
   }
 }
