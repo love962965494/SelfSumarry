@@ -127,8 +127,8 @@ export default class HashTable {
   }
 }
 
-let hashTable = new HashTable()
-hashTable.set('a', 'mick')
-hashTable.set('b', 'nico')
-hashTable.set('a', 'john')
-console.log(JSON.stringify(hashTable, null, 2))
+// let hashTable = new HashTable()
+// hashTable.set('a', 'mick')
+// hashTable.set('b', 'nico')
+// hashTable.set('a', 'john')
+// console.log(JSON.stringify(hashTable, null, 2))

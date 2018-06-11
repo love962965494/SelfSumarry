@@ -67,7 +67,7 @@
 >   this.interceptors.request.forEach(({ fulfilled, rejected }) =>
 >                                      chain.unshift(fulfilled, rejected)) 
 >   // 向chain尾部添加response拦截器
->   this.interceptors.response.forEach(({ fulfilled, rejected}) => 
+>   this.interceptors.response.forEach(({ fulfilled, rejected }) => 
 >                                       chain.push(fulfilled, rejected))
 >
 >   while (chain.length) {

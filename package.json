@@ -1,0 +1,27 @@
+{
+  "name": "dailysumarize",
+  "version": "1.0.0",
+  "description": "日常学习和总结",
+  "main": "index.js",
+  "dependencies": {
+    "ts-node": "^6.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/love962965494/SelfSumarry.git"
+  },
+  "author": "沈超",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/love962965494/SelfSumarry/issues"
+  },
+  "homepage": "https://github.com/love962965494/SelfSumarry#readme"
+}
