@@ -1,3 +1,9 @@
+/**
+ * 一些改变参数传递方式的小技巧
+ *
+ * @export
+ * @class Adapter
+ */
 export default class Adapter {
   
   /**
