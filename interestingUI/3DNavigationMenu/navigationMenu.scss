@@ -1,0 +1,160 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+header {
+  top: 8px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  transition: 1s;
+
+  &.go-out {
+    top: -150px;
+  }
+
+  nav > ul {
+    background-color: rgba(255, 255, 255, .2);
+    border-radius: 5px;
+
+    li {
+      color: #fff;
+
+      a {
+        width: 100px;
+        max-width: 150px;
+        height: 32px;
+        padding-top: 13px;
+      }
+
+      &.active > a,
+      &.active > a:hover {
+        background-color: rgba(255, 255, 255, .2);
+      }
+
+      &:hover > a {
+        background-color: rgba(255, 255, 255, .1);
+      }
+    }
+  }
+}
+
+.page {
+  background-color: rgba(0, 0, 0, 0.2);
+
+  .table {
+    width: 100%;
+    height: 100%;
+
+    .table-cell {
+      font-size: 100px;
+      font-weight: 500;
+      color: #fff;
+    }
+  }
+
+  &.active {
+    z-index: 1;
+  }
+}
+
+#wrap {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  transition: .8s;
+
+  &.active {
+    top: 10%;
+    bottom: 10%;
+    left: 10%;
+    right: 10%;
+  }
+
+  .cube {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    transition: 1s;
+
+    &.reverse-front {
+      transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    &.reverse-back {
+      transform: rotateX(180deg) rotateY(0deg) rotateZ(-180deg);
+    }
+
+    &.reverse-right {
+      transform: rotateX(0deg) rotateY(270deg) rotateZ(0deg);
+    }
+
+    &.reverse-left {
+      transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+    }
+
+    &.reverse-top {
+      transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    &.reverse-bottom {
+      transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+    }
+
+    .face {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      color: #666;
+      font-size: 18px;
+      box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .front {
+      background-color: #28aadc;
+    }
+
+    .back {
+      background-color: #ff3366;
+      transform: translateZ(-800px) rotateY(-180deg);
+    }
+
+    .left {
+      background-color: rgb(168, 35, 139);
+      transform: translateX(-800px) rotateY(-90deg);
+    }
+
+    .right {
+      background-color: #000;
+      transform: translateX(800px) rotateY(90deg);
+    }
+
+    .top {
+      background-color: #ffad33;
+      transform: translateY(-400px) rotateX(90deg);
+    }
+
+    .bottom {
+      background-color: rgb(30, 214, 76);
+      transform: translateY(400px) rotateX(-90deg);
+    }
+  }
+}

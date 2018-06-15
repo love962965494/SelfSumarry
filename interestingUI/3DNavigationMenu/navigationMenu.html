@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>3D 导航栏</title>
+  <link rel="stylesheet" href="../index.css">
+</head>
+
+<body>
+  <header class="position-fixed">
+    <nav class="text-center">
+      <ul class="inline-block overflow-hidden">
+        <li class="pull-left active">
+          <a href="#" data-direction="front" class="block">Home</a>
+        </li>
+        <li class="pull-left">
+          <a href="#" data-direction="back" class="block">Portfolio</a>
+        </li>
+        <li class="pull-left">
+          <a href="#" data-direction="top" class="block">About</a>
+        </li>
+        <li class="pull-left">
+          <a href="#" data-direction="bottom" class="block">Blog</a>
+        </li>
+        <li class="pull-left">
+          <a href="#" data-direction="right" class="block">Contact</a>
+        </li>
+        <li class="pull-left">
+          <a href="#" data-direction="left" class="block">Article</a>
+        </li>
+        <div class="clearfix"></div>
+      </ul>
+    </nav>
+  </header>
+  <div id="wrap" class="position-fixed">
+    <div class="cube position-relative">
+      <section class="page face block position-absolute text-center front active" id="home">
+        <div class="table text-center">
+          <div class="table-cell vertical-align-middle">Home Page</div>
+        </div>
+      </section>
+      <section class="page face block position-absolute text-center back" id="portfolio">
+        <div class="table text-center">
+          <div class="table-cell vertical-align-middle">Portfolio Page</div>
+        </div>
+      </section>
+      <section class="page face block position-absolute text-center top" id="about">
+        <div class="table text-center">
+          <div class="table-cell vertical-align-middle">About Page</div>
+        </div>
+      </section>
+      <section class="page face block position-absolute text-center right" id="contact">
+        <div class="table text-center">
+          <div class="table-cell vertical-align-middle">Contact Page</div>
+        </div>
+      </section>
+      <section class="page face block position-absolute text-center bottom" id="blog">
+        <div class="table text-center">
+          <div class="table-cell vertical-align-middle">Blog Page</div>
+        </div>
+      </section>
+      <section class="page face block position-absolute text-center left" id="article">
+        <div class="table text-center">
+          <div class="table-cell vertical-align-middle">Article Page</div>
+        </div>
+      </section>
+    </div>
+  </div>
+  <script src="./navigationMenu.js"></script>
+</body>
+</html>
