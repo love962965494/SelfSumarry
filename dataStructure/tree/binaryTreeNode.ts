@@ -256,4 +256,4 @@ rootNode
 // console.log(rootNode.leftHeight)
 
 rootNode.removeChild(rootNode.left)
-console.log(rootNode)
+// console.log(rootNode)

@@ -85,7 +85,14 @@ export default class BinarySearchTreeNode extends BinaryTreeNode {
     return !!this.find(value)
   }
 
-  remove(value) {
+  /**
+   *
+   *
+   * @param {*} value
+   * @returns {BinarySearchTreeNode}
+   * @memberof BinarySearchTreeNode
+   */
+  remove(value): BinarySearchTreeNode {
     const nodeToRemove = this.find(value)
 
     if (!nodeToRemove) {
@@ -134,3 +141,12 @@ export default class BinarySearchTreeNode extends BinaryTreeNode {
     return this.left.findMin()
   }
 }
+
+const bstNode = new BinarySearchTreeNode(5)
+bstNode.insert(3)
+bstNode.insert(7)
+bstNode.insert(4)
+bstNode.insert(6)
+bstNode.insert(8)
+bstNode.remove(5)
+// console.log('bstNode: ', bstNode)
