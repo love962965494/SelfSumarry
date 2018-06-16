@@ -1,1 +1,1 @@
-<iframe height=500 width=500 src="../../assets/gif/20180616_121813.gif">
+![Alt Text](https://github.com/love962965494/SelfSumarry/blob/dev/assets/gif/20180616_121813.gif)
