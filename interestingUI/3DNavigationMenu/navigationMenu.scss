@@ -103,19 +103,19 @@ header {
     }
 
     &.reverse-right {
-      transform: rotateX(0deg) rotateY(270deg) rotateZ(0deg);
+      transform: rotateX(360deg) rotateY(270deg) rotateZ(0deg);
     }
 
     &.reverse-left {
-      transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+      transform: rotateX(0deg) rotateY(90deg) rotateZ(360deg);
     }
 
     &.reverse-top {
-      transform: rotateX(-90deg) rotateY(0deg) rotateZ(0deg);
+      transform: rotateX(-90deg) rotateY(0deg) rotateZ(360deg);
     }
 
     &.reverse-bottom {
-      transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+      transform: rotateX(90deg) rotateY(360deg) rotateZ(0deg);
     }
 
     .face {
@@ -126,25 +126,27 @@ header {
       color: #666;
       font-size: 18px;
       box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.5);
+      perspective: 1000px;
     }
 
     .front {
       background-color: #28aadc;
+      transform: translateZ(400px);
     }
 
     .back {
       background-color: #ff3366;
-      transform: translateZ(-800px) rotateY(-180deg);
+      transform: translateZ(-400px) rotateY(-180deg);
     }
 
     .left {
       background-color: rgb(168, 35, 139);
-      transform: translateX(-800px) rotateY(-90deg);
+      transform: translateX(-400px) rotateY(-90deg);
     }
 
     .right {
       background-color: #000;
-      transform: translateX(800px) rotateY(90deg);
+      transform: translateX(400px) rotateY(90deg);
     }
 
     .top {
