@@ -12,6 +12,7 @@
       "noFallthroughCasesInSwitch": true,
       "removeComments": true,
       "suppressImplicitAnyIndexErrors": true,
+      "downlevelIteration": true,
       "lib": [ "es6", "dom" ]
   },
   "exclude": [
