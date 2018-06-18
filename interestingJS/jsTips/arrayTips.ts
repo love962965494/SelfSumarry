@@ -126,6 +126,68 @@ export default class ArrayTips {
   distinctValuesOfArray(arr: Array<any>): Array<any> {
     return [...new Set(arr)]
   }
+
+  /**
+   * @function: dropElements 删除数组中的元素
+   * @description:
+   *   删除数组中的元素，知道传递的函数返回true。返回数组中的其余元素。
+   *   循环访问数组，使用Array.slice()在数组中从第一个元素开始删除，直到函数的返回值为true。返回其余的元素
+   *
+   * @param {Array<any>} arr
+   * @param {Function} func
+   * @returns {Array<any>}
+   * @memberof ArrayTips
+   */
+  dropElements(arr: Array<any>, func: Function): Array<any> {
+    while(arr.length > 0 && !func(arr[0])) {
+      arr = arr.slice(1)
+    }
+    return arr
+  }
+
+  /**
+   * @function: dropRight 从右开始删除数组元素
+   * @description:
+   *   返回从右开始删除n个元素的新数组。
+   *   检查n是否小于给定数组的长度，并且使用Array.slice()来从右开始删除指定数量的元素
+   *
+   * @param {Array<any>} arr
+   * @param {number} [n=1]
+   * @returns {Array<any>}
+   * @memberof ArrayTips
+   */
+  dropRight(arr: Array<any>, n: number = 1): Array<any> {
+    return arr.slice(0, -n)
+  }
+
+  /**
+   * @function: everyNth 获得数组中的每个第n个元素
+   * @description:
+   *   返回数组中的每个第n个元素
+   *   使用Array.filter()创建一个包含指定数组的每个第n个元素的新数组
+   *
+   * @param {Array<any>} arr
+   * @param {number} nth
+   * @returns {Array<any>}
+   * @memberof ArrayTips
+   */
+  everyNth(arr: Array<any>, nth: number): Array<any> {
+    return arr.filter((v, i) => i % nth === nth - 1)
+  }
+
+  /**
+   * @function: 过滤掉数组中的非唯一值
+   * @description:
+   *   过滤掉数组中的非唯一值
+   *   使用Array.filter()滤除掉非唯一值，使数组仅包含唯一值。
+   *
+   * @param {Array<any>} arr
+   * @returns {Array<any>}
+   * @memberof ArrayTips
+   */
+  filterNonUnique(arr: Array<any>): Array<any> {
+    return arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i))
+  }
 }
 
 const arrayTips = new ArrayTips();
@@ -177,3 +239,23 @@ console.log(
  * example of distinctValuesOfArray
  */
 console.log('distinctValuesOfArray: ', arrayTips.distinctValuesOfArray([1, 2, 2, 3, 4, 3, 5]))
+
+/**
+ * example of dropElements
+ */
+console.log('dropElements: ', arrayTips.dropElements([1, 2, 3, 4], n => n >= 3))
+
+/**
+ * example of dropRight
+ */
+console.log('dropRight: ', arrayTips.dropRight([1, 2, 3, 4], 1))
+
+/**
+ * example of everyNth
+ */
+console.log('everyNth: ', arrayTips.everyNth([1, 2, 3, 4, 5, 6], 2))
+
+/**
+ * example of filterNonUnique
+ */
+console.log('filterNonUnique: ', arrayTips.filterNonUnique([1, 2, 3, 2, 4, 1, 4, 5]))

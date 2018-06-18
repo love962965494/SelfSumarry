@@ -6,6 +6,7 @@ export default class BinarySearchTreeNode extends BinaryTreeNode {
   public nodeValueComparator: Comparator
   public left: BinarySearchTreeNode
   public right: BinarySearchTreeNode
+  public parent: BinarySearchTreeNode
   constructor(value: any = null, compareFunction: Function = undefined) {
     super(value)
 
