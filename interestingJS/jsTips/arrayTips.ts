@@ -15,9 +15,7 @@ export default class ArrayTips {
   chunk(arr: Array<any>, size: number): Array<any> {
     // Array.from(obj, mapFn) => Array.from(obj).map(mapFn)
     // Array.from({length: 5}, (v, i) => i) => [0, 1, 2, 3, 4]
-    return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
-      arr.slice(i * size, i * size + size),
-    );
+    return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
   }
 
   /**
@@ -124,7 +122,7 @@ export default class ArrayTips {
    * @memberof ArrayTips
    */
   distinctValuesOfArray(arr: Array<any>): Array<any> {
-    return [...new Set(arr)]
+    return [...new Set(arr)];
   }
 
   /**
@@ -139,10 +137,10 @@ export default class ArrayTips {
    * @memberof ArrayTips
    */
   dropElements(arr: Array<any>, func: Function): Array<any> {
-    while(arr.length > 0 && !func(arr[0])) {
-      arr = arr.slice(1)
+    while (arr.length > 0 && !func(arr[0])) {
+      arr = arr.slice(1);
     }
-    return arr
+    return arr;
   }
 
   /**
@@ -157,7 +155,7 @@ export default class ArrayTips {
    * @memberof ArrayTips
    */
   dropRight(arr: Array<any>, n: number = 1): Array<any> {
-    return arr.slice(0, -n)
+    return arr.slice(0, -n);
   }
 
   /**
@@ -172,7 +170,7 @@ export default class ArrayTips {
    * @memberof ArrayTips
    */
   everyNth(arr: Array<any>, nth: number): Array<any> {
-    return arr.filter((v, i) => i % nth === nth - 1)
+    return arr.filter((v, i) => i % nth === nth - 1);
   }
 
   /**
@@ -186,7 +184,55 @@ export default class ArrayTips {
    * @memberof ArrayTips
    */
   filterNonUnique(arr: Array<any>): Array<any> {
-    return arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i))
+    return arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
+  }
+
+  /**
+   * @function: findLast 返回提供的函数返回真值的最后一个元素
+   * @description:
+   *   返回 提供的函数返回真(truthy)值的最后一个元素
+   *   使用Array.filter()移除fn返回falsy值得元素，Array.slice(-1)得到最好后一个元素
+   *
+   * @param {Array<any>} arr
+   * @param {(value: any, index: number) => any} fn
+   * @returns {Array<any>}
+   * @memberof ArrayTips
+   */
+  findLast(arr: Array<any>, fn: (value: any, index: number) => any): Array<any> {
+    return arr.filter(fn).slice(-1);
+  }
+
+  /**
+   * @function: flatten 平铺数组
+   * @description:
+   *   将数组平铺到指定的深度
+   *   使用递归，为每个深度级别depth递减1.使用Array.reduce()和Array.concat()来合并元素或数组
+   *   基本情况下，depth等于1停止递归。省略第二个参数，depth只能平铺到1(单层平铺)的深度
+   *
+   * @param {Array<any>} arr
+   * @param {number} [depth=1]
+   * @returns {Array<any>}
+   * @memberof ArrayTips
+   */
+  flatten(arr: Array<any>, depth: number = 1): Array<any> {
+    return depth !== 1
+      ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? this.flatten(v, depth - 1) : v), [])
+      : arr.reduce((a, v) => a.concat(v), []);
+  }
+
+  /**
+   * @function: forEachRight 从数组的最后一个元素开始遍历数组
+   * @description:
+   *   从数组的最后一个元素开始，为每个数组元素执行一次提供的函数
+   *   使用Array.slice(0)克隆给定的数组，Array.reverse()反转数组，Array.forEach()遍历这个反向数组
+   *
+   * @param {Array<any>} arr
+   * @param {(value: any, index: number, arr: Array<any>) => any} callback
+   * @returns
+   * @memberof ArrayTips
+   */
+  forEachRight(arr: Array<any>, callback: (value: any, index: number, arr: Array<any>) => any) {
+    return arr.slice(0).reverse().forEach(callback)
   }
 }
 
@@ -226,36 +272,44 @@ console.log('difference: ', arrayTips.difference([1, 2, 3], [2, 4, 5]));
 /**
  * example of differenceWith
  */
-console.log(
-  'differenceWith: ',
-  arrayTips.differenceWith(
-    [1, 1.2, 1.5, 3, 0],
-    [1.9, 3, 0],
-    (a, b) => Math.round(a) === Math.round(b),
-  ),
-);
+console.log('differenceWith: ', arrayTips.differenceWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0], (a, b) => Math.round(a) === Math.round(b)));
 
 /**
  * example of distinctValuesOfArray
  */
-console.log('distinctValuesOfArray: ', arrayTips.distinctValuesOfArray([1, 2, 2, 3, 4, 3, 5]))
+console.log('distinctValuesOfArray: ', arrayTips.distinctValuesOfArray([1, 2, 2, 3, 4, 3, 5]));
 
 /**
  * example of dropElements
  */
-console.log('dropElements: ', arrayTips.dropElements([1, 2, 3, 4], n => n >= 3))
+console.log('dropElements: ', arrayTips.dropElements([1, 2, 3, 4], n => n >= 3));
 
 /**
  * example of dropRight
  */
-console.log('dropRight: ', arrayTips.dropRight([1, 2, 3, 4], 1))
+console.log('dropRight: ', arrayTips.dropRight([1, 2, 3, 4], 1));
 
 /**
  * example of everyNth
  */
-console.log('everyNth: ', arrayTips.everyNth([1, 2, 3, 4, 5, 6], 2))
+console.log('everyNth: ', arrayTips.everyNth([1, 2, 3, 4, 5, 6], 2));
 
 /**
  * example of filterNonUnique
  */
-console.log('filterNonUnique: ', arrayTips.filterNonUnique([1, 2, 3, 2, 4, 1, 4, 5]))
+console.log('filterNonUnique: ', arrayTips.filterNonUnique([1, 2, 3, 2, 4, 1, 4, 5]));
+
+/**
+ * example of findLast
+ */
+console.log('findLast: ', arrayTips.findLast([1, 2, 3, 4], n => n % 2 === 1));
+
+/**
+ * example of flatten
+ */
+console.log('flatten: ', arrayTips.flatten([1, [2, [3, [4, 5]]]]), 2)
+
+/**
+ * example of forEachRight
+ */
+console.log('forEachRight: ', arrayTips.forEachRight([1, 2, 3, 4], val => console.log(val)))

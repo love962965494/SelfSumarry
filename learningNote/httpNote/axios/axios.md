@@ -44,7 +44,7 @@
 > } 
 > 
 > InterceptorManager.prototype.forEach = function (fn) {
->   this.handlers.forEach(handler => h && fn(h)) 
+>   this.handlers.forEach(h => h && fn(h)) 
 > }
 > ```
 2. request和response拦截器
@@ -97,7 +97,7 @@
 >     adapter = require('./adapters/http')
 >   } else if (typeof XMLHttpRequest !== 'undefined') {
 >     // for browser use xml  
->     adapter = require('./adapters/sml') 
+>     adapter = require('./adapters/xml') 
 >   }
 >   return adapter
 > }
@@ -155,7 +155,7 @@
 > {
 >   // xsrfCookieName is the name of the cookie to use as a value of xsrf 
 >   // token  
->   xsrfCoolieName: 'XSRF-TOKEN',
+>   xsrfCookieName: 'XSRF-TOKEN',
 >   // xsrfHeaderName is the name of the http header that carries the xsrf
 >   // token value
 >   xsrfHeaderName: 'X-XSRF-TOKEN' 

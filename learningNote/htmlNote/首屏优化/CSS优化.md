@@ -21,7 +21,7 @@
 >     <script>
 >       var loadDeferredStyles = function() {
 >         var addStylesNode = document.getElementById('deferred-styles')
->         var replacement = document.createElement('div)
+>         var replacement = document.createElement('div')
 >         replacement.innerHtml = addStylesNode.textContent
 >         document.body.appendChild(replacement)
 >         addStylesNode.parentElement.removeChild(addStylesNode)
@@ -41,3 +41,6 @@
 > 在CSS文件中内嵌数据URI时，请务必慎重。在CSS中使用较小数据URI，内嵌较大数据URI可能会导致首屏CSS变大，进而延缓网页呈现时间。
 3. 请勿内嵌CSS属性
 > 应尽量避免在HTML元素中内嵌CSS属性，因为这经常会导致不必要的代码重复。
+4. 媒体查询
+> 未申明谋体查询的样式表，始终会阻赛渲染过程。申明了媒体查询的样式表，只在符合媒体查询条件时，才会阻赛渲染。  
+> 阻赛渲染是指浏览器是否需要暂停网页的首次渲染，直至该资源准备就绪。无论哪一种情况，浏览器仍会下载CSS资源，只不过不阻赛渲染的资源优先级较低罢了。
