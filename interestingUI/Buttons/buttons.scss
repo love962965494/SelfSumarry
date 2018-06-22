@@ -1,0 +1,123 @@
+body {
+  background: #efefef;
+  color: hsl(240, 30, 10);
+  font: 700 14px/1 Montserrat, sans-serif;
+  letter-spacing: 0.125em;
+  text-transform: uppercase;
+}
+
+.part {
+  width: 500px;
+  margin: auto;
+  text-align: center;
+}
+
+.part-1 {
+  .btn-list {
+    list-style: none;
+    li {
+      width: 50%;
+      float: left;
+      margin: 10px 0;
+      .btn {
+        background: none;
+        border: 2px solid;
+        border-bottom-width: 4px;
+        padding: 1em 2em;
+        transition: color 1s;
+      }
+      .btn-1 {
+        $color: #9c89f7;
+        color: $color;
+        &:hover {
+          animation: halftone 1s forwards;
+          background: radial-gradient(circle, $color .2em, transparent .25em) 0 0 / 1.25em 1.25em, radial-gradient(circle, $color .2em, transparent .25em) 6.25em 6.25em / 1.25em 1.25em;
+          color: adjust-hue($color: $color, $degrees: 180);
+        }
+        @keyframes halftone {
+          100% {
+            background-size: 2.375em 2.375em, 0.1em 0.1em;
+          }
+        }
+      }
+      .btn-2 {
+        $color: #82f6d8;
+        color: $color;
+        &:hover {
+          animation: stripes-move .75s linear infinite;
+          background: repeating-linear-gradient(45deg, $color 0, $color .25em, transparent .25em, transparent .5em);
+          color: adjust-hue($color: $color, $degrees: 180);
+        }
+        @keyframes stripes-move {
+          100% {
+            background-position: 5em 0px;
+          }
+        }
+      }
+      .btn-3 {
+        $color: #d3f169;
+        color: $color;
+        &:hover {
+          animation: sawtooth .35s infinite linear;
+          background: linear-gradient(45deg, $color .5em, transparent .5em) 0 0 / 1em 1em, linear-gradient(-45deg, $color .5em, transparent .5em) 0 0 / 1em 1em;
+          color: adjust-hue($color: $color, $degrees: 180);
+        }
+        @keyframes sawtooth {
+          100% {
+            background-position: 1em 0;
+          }
+        }
+      }
+      .btn-4 {
+        $color: #eea163;
+        color: $color;
+        &:hover {
+          animation: zigzag 1s linear infinite;
+          background: linear-gradient(135deg, rgba($color, .25) .25em, transparent .25em) -.5em 0, linear-gradient(225deg, rgba($color, .25) .25em, transparent .25em) -.5em 0, linear-gradient(315deg, rgba($color, .25) .25em, transparent .25em) 0 0, linear-gradient(45deg, rgba($color, .25) .25em, transparent .25em) 0 0;
+          background-size: .75em .75em;
+          color: adjust-hue($color: $color, $degrees: 180);
+        }
+        @keyframes zigzag {
+          100% {
+            background-position: 1em 0, 1em 0, -.75em 0, -.75em 0;
+          }
+        }
+      }
+      .btn-5 {
+        $color: #7cf07f;
+        $color2: #88d6f3;
+        color: $color;
+        &:hover {
+          animation: blinds .75s linear forwards;
+          background: linear-gradient(0deg, $color 25%, transparent 25%) 0 0 / .5em .5em, linear-gradient(0deg, $color2 50%, transparent 50%) 0 0 / 1em 1em;
+          color: adjust-hue($color: $color, $degrees: 180);
+        }
+        @keyframes blinds {
+          100% {
+            background-position: 0 0, 0 -3em;
+            background-size: 0 0, 1em 6em;
+          }
+        }
+      }
+      .btn-6 {
+        $color: #f9879b;
+        color: $color;
+        &:hover {
+          animation: pulse 1s ease-in infinite;
+          background: radial-gradient(circle, rgba($color, .25) 43%, transparent 50%) 0 0 / 1em 1em, radial-gradient(circle, rgba($color, .25) 43%, transparent 50%) .5em .5em / 2em 2em;
+          color: darken(adjust-hue($color, 180), 30%);
+        }
+        @keyframes pulse {
+          50% {
+            background-position: .66em .66em, -.33em -.33em;
+          }
+
+          100% {
+            background-size: 2em 2em, 1em 1em;
+            background-position: -1.5em -1.5em, -1em -1em;
+          }
+        }
+      }
+    }
+  }
+}

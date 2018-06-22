@@ -1,9 +1,23 @@
 /**
  * -------------------- 3DNavigationMenu -----------------------
+ * 一个酷炫的3D导航条
  * @import './3DNavigationMenu/navigationMenu.scss';
  */
 
-@import './FullImageReveal/fullImageReveal.scss';
+/**
+* -------------------- FullImageReveal -----------------------
+* 一个小清新的网页
+* @import './FullImageReveal/fullImageReveal.scss';
+*/
+
+/**
+* -------------------- Buttons -----------------------
+* 各种帅气的按钮特效
+* @import './Buttons/buttons.scss';
+*/
+
+@import './AmazingAnimation/animation1/index.scss';
+
 
 $marginValue: 15px;
 $borderRadius: 5px;
