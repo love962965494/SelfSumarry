@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css?family=Anton|Buenard:400,700");
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  --color-text: #000;
+  --color-bg: #ececec;
+  --color-link: #000;
+  --color-link-hover: #000;
+  --color-info: #000;
+  font-family: 'Buenard', serif;
+  min-height: 100vh;
+  color: #57585c;
+  color: var(--color-text);
+  background-color: #fff;
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.preview-open {
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-link);
+  outline: none;
+}
+
+a:hover, a:focus {
+  color: var(--color-link-hover);
+  outline: none;
+}
+
+.hidden {
+  position: absolute;
+  overflow: hidden;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Icons */
+.icon {
+  display: block;
+  width: 1.5em;
+  height: 1.5em;
+  margin: 0 auto;
+  fill: currentColor;
+}
+
+main .content {
+  /* Header */
+}
+
+main .content header.codrops-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 10px;
+}
+
+main .content header.codrops-header .codrops-links {
+  display: flex;
+  white-space: nowrap;
+  margin-right: 15px;
+}
+
+main .content header.codrops-header .codrops-links .codrops-icon {
+  margin: 0 .25em;
+  padding: 0 .15em;
+}
+
+main .content header.codrops-header .github {
+  margin: 0 0 0 auto;
+}
+/*# sourceMappingURL=gridLayoutMotion.css.map */

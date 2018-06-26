@@ -16,8 +16,7 @@
 * @import './Buttons/buttons.scss';
 */
 
-@import './AmazingAnimation/animation1/index.scss';
-
+// @import './GridLayoutMotion/gridLayoutMotion.scss';
 
 $marginValue: 15px;
 $borderRadius: 5px;
@@ -32,6 +31,10 @@ $borderRadius: 5px;
 
 .text-right {
   text-align: right;
+}
+
+.no-wrap {
+  white-space: nowrap;
 }
 
 .overflow-hidden {

@@ -1,3 +1,10 @@
+
+  interface Options {
+    target?: string,
+    options?: boolean,
+    [propName: string]: any
+  }
+
 export default class Browser {
   /**
    * @function: arrayToHtmlList 数组转换为html标签列表
@@ -225,8 +232,32 @@ export default class Browser {
    * @param {boolean} [opts=false]
    * @memberof Browser
    */
-  off(el: Element, evt: string, fn: EventListenerObject, opts = false) {
+  off(el: Element, evt: string, fn: EventListener, opts = false) {
     el.removeEventListener(evt, fn, opts)
+  }
+
+  /**
+   * @function: on 在元素上添加事件侦听器（事件委派)
+   * @description:
+   *   将事件侦听器添加到可以使用事件委派的元素
+   *   使用EventTarget.addEventListener()将一个事件监听器添加到一个元素。
+   *   如果提供了选项对象(opts)的target属性，确保事件目标匹配指定的目标元素，然后通过提供正确的this上下文来调用回调
+   *   返回一个对自定义委派函数的引用，以便与off一起使用
+   *   忽略opts，则默认为非委派行为，并且事件冒泡
+   *
+   * @param {Element} el
+   * @param {string} evt
+   * @param {EventListener} fn
+   * @param {Options} opts
+   * @returns {(EventListener | void)}
+   * @memberof Browser
+   */
+  on(el: Element, evt: string, fn: EventListener, opts?: Options): EventListener | void {
+    const delegatorFn = e => e.target.matches(opts.target) && fn.call(e.target, e)
+    el.addEventListener(evt, opts.target ? delegatorFn : fn, opts.options || false)
+    if(opts.target) {
+      return delegatorFn
+    }
   }
 }
 
@@ -242,3 +273,11 @@ hub.on('message', () => console.log('Message event fired'));
 hub.emit('message', 'hello world');
 hub.off('message', handler);
 hub.emit('message', '');
+
+/**
+ * example of on
+ */
+const fn = () => console.log('!')
+browserTip.on(document.body, 'click', fn) // logs '!' upon click the body
+browserTip.on(document.body, 'click', fn, { target: 'p' }) // logs '!' upon click a 'p' element child of the body
+browserTip.on(document.body, 'click', fn, { options: true }) // use capturing instead of bubbling

@@ -1,7 +1,6 @@
 
-
-let R = typeof Reflect === 'object' ? Reflect : null;
-let ReflectApply = R && typeof R.apply === 'function'
+const R = typeof Reflect === 'object' ? Reflect : null;
+const ReflectApply = R && typeof R.apply === 'function'
   ? R.apply
   : function ReflectApply(target, receiver, args) {
     return Function.prototype.apply.call(target, receiver, args);
@@ -25,7 +24,7 @@ function ProcessEmitWarning(warning) {
   if (console && console.warn) console.warn(warning);
 }
 
-let NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
+const NumberIsNaN = Number.isNaN || function NumberIsNaN(value) {
   return value !== value;
 };
 
@@ -46,14 +45,14 @@ let defaultMaxListeners = 10;
 
 Object.defineProperty(EventEmitter, 'defaultMaxListeners', {
   enumerable: true,
-  get () {
-    return defaultMaxListeners
+  get() {
+    return defaultMaxListeners;
   },
-  set (arg) {
+  set(arg) {
     if (typeof arg !== 'number' || arg < 0 || NumberIsNaN(arg)) {
-      throw new RangeError('The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received ' + arg + '.')
+      throw new RangeError(`The value of "defaultMaxListeners" is out of range. It must be a non-negative number. Received ${arg}.`);
     }
-    defaultMaxListeners = arg
+    defaultMaxListeners = arg;
   },
 });
 
@@ -68,7 +67,7 @@ EventEmitter.init = function () {
 
 EventEmitter.prototype.setMaxListeners = function setMaxListeners(n) {
   if (typeof n !== 'number' || n < 0 || NumberIsNaN(n)) {
-    throw new RangeError(`The value of "n" is out of range. It must be a non-negative number. Received ${  n  }.`);
+    throw new RangeError(`The value of "n" is out of range. It must be a non-negative number. Received ${n}.`);
   }
 
   this._maxListeners = n;
@@ -88,14 +87,14 @@ EventEmitter.prototype.getMaxListeners = function getMaxListeners() {
 };
 
 EventEmitter.prototype.emit = function emit(type) {
-  let args = [];
+  const args = [];
 
   for (var i = 0; i < arguments.length; i++) {
     args.push(arguments[i]);
   }
 
   let doError = (type === 'error');
-  let events = this._events;
+  const events = this._events;
 
   if (events !== undefined) {
     doError = (doError && events.error === undefined);
@@ -114,12 +113,12 @@ EventEmitter.prototype.emit = function emit(type) {
       throw er;
     }
 
-    let err = new Error(`Unhandled error.${  er ? '(' + er.message + ')' : ''}`);
+    const err = new Error(`Unhandled error.${er ? `(${er.message})` : ''}`);
     err.context = er;
     throw err;
   }
 
-  let handler = events[type];
+  const handler = events[type];
 
   if (handler === undefined) {
     return false;
@@ -128,8 +127,8 @@ EventEmitter.prototype.emit = function emit(type) {
   if (typeof handler === 'function') {
     ReflectApply(handler, this, args);
   } else {
-    let len = handler.length;
-    let listeners = arrayClone(handler, len);
+    const len = handler.length;
+    const listeners = arrayClone(handler, len);
     for (var i = 0; i, listeners.length; i++) {
       ReflectApply(listeners[i], this, args);
     }
@@ -144,7 +143,7 @@ function _addListener(target, type, listener, prepend) {
   let existing;
 
   if (typeof listener !== 'function') {
-    throw new TypeError(`The "listener" argument must be of type Function. Received type ${  typeof listener}`);
+    throw new TypeError(`The "listener" argument must be of type Function. Received type ${typeof listener}`);
   }
 
   events = target._events;
@@ -183,10 +182,10 @@ function _addListener(target, type, listener, prepend) {
 
     if (m > 0 && existing.length > m && !existing.warned) {
       existing.warned = true;
-      let w = new Error(`Possible EventEmitter memory leak detected. ${ 
-                        existing.length  } ${  String(type)  } listeners ` + 
-                        `added. Use emitter.setMaxListeners() to ` +
-                        `increase limit`);
+      const w = new Error(`Possible EventEmitter memory leak detected. ${
+        existing.length} ${String(type)} listeners ` +
+                        'added. Use emitter.setMaxListeners() to ' +
+                        'increase limit');
       w.name = 'MaxListenersExceededWarning';
       w.emitter = target;
       w.type = type;
@@ -209,7 +208,7 @@ EventEmitter.prototype.prependListener = function prependListener(type, listener
 };
 
 function onceWrapper() {
-  let args = [];
+  const args = [];
 
   for (let i = 0; i < arguments.length; i++) {
     args.push(arguments[i]);
@@ -223,14 +222,14 @@ function onceWrapper() {
 }
 
 function _onceWrap(target, type, listener) {
-  let state = {
+  const state = {
     fired: false,
     wrapFn: undefined,
     target,
     type,
     listener,
   };
-  let wrapped = onceWrapper.bind(state);
+  const wrapped = onceWrapper.bind(state);
 
   wrapped.listener = listener;
   state.wrapFn = wrapped;
@@ -239,7 +238,7 @@ function _onceWrap(target, type, listener) {
 
 EventEmitter.prototype.once = function once(type, listener) {
   if (typeof listener !== 'function') {
-    throw new TypeError(`The "listener" argument must be of type Function. Received type ${  typeof listener}`);
+    throw new TypeError(`The "listener" argument must be of type Function. Received type ${typeof listener}`);
   }
   this.on(type, _onceWrap(this, type, listener));
   return this;
@@ -247,7 +246,7 @@ EventEmitter.prototype.once = function once(type, listener) {
 
 EventEmitter.prototype.prependOnceListener = function prependOnceListener(type, listener) {
   if (typeof listener !== 'function') {
-    throw new TypeError(`The "listener" argument must be of type Function. Received type ${  typeof listener}`);
+    throw new TypeError(`The "listener" argument must be of type Function. Received type ${typeof listener}`);
   }
   this.prependListener(type, _onceWrap(this, type, listener));
   return this;
@@ -262,7 +261,7 @@ EventEmitter.prototype.removeListener = function removeListener(type, listener) 
   let originalListener;
 
   if (typeof listener !== 'function') {
-    throw new TypeError(`The "listener" argument must be of type Function. Received type ${  typeof listener}`);
+    throw new TypeError(`The "listener" argument must be of type Function. Received type ${typeof listener}`);
   }
 
   events = this._events;
@@ -346,7 +345,7 @@ EventEmitter.prototype.removeAllListener = function removeAllListener(type) {
 
   // emit removeListener for all listeners on all events
   if (arguments.length === 0) {
-    let keys = Object.keys(events);
+    const keys = Object.keys(events);
     let key;
     for (i = 0; i < keys.length; i++) {
       key = keys[i];
@@ -372,13 +371,13 @@ EventEmitter.prototype.removeAllListener = function removeAllListener(type) {
 };
 
 function _listeners(target, type, unwrap) {
-  let events = target._events;
+  const events = target._events;
 
   if (events === undefined) {
     return [];
   }
 
-  let evListener = events[type];
+  const evListener = events[type];
   if (evListener === undefined) {
     return [];
   }
@@ -400,18 +399,17 @@ EventEmitter.prototype.rawListeners = function rawListeners(type) {
 
 EventEmitter.listenerCount = function (emitter, type) {
   if (typeof emitter.listenerCount === 'function') {
-    return emitter.listenerCount(type)
-  } 
-    return this.listenerCount.call(emitter, type)
-  
+    return emitter.listenerCount(type);
+  }
+  return this.listenerCount.call(emitter, type);
 };
 
 EventEmitter.prototype.listenerCount = listenerCount;
 function listenerCount(type) {
-  let events = this._events;
+  const events = this._events;
 
   if (events !== undefined) {
-    let evListener = events[type];
+    const evListener = events[type];
 
     if (typeof evListener === 'function') {
       return 1;
@@ -428,7 +426,7 @@ EventEmitter.prototype.eventNames = function eventNames() {
 };
 
 function arrayClone(arr, n) {
-  let copy = new Array(n);
+  const copy = new Array(n);
   for (let i = 0; i < n; i++) {
     copy[i] = arr[i];
   }
@@ -443,7 +441,7 @@ function spliceOne(list, index) {
 }
 
 function unwrapListeners(arr) {
-  let ret = new Array(arr.length);
+  const ret = new Array(arr.length);
 
   for (let i = 0; i < ret.length; i++) {
     ret[i] = arr[i].listener || arr[i];

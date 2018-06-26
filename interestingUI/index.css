@@ -14,63 +14,83 @@
 * 各种帅气的按钮特效
 * @import './Buttons/buttons.scss';
 */
-/* Shape of start of animation */
-/* Shape at end of animation */
-/* Shortcut functions to call options from maps above */
 .text-center {
-  text-align: center; }
+  text-align: center;
+}
 
 .text-left {
-  text-align: left; }
+  text-align: left;
+}
 
 .text-right {
-  text-align: right; }
+  text-align: right;
+}
+
+.no-wrap {
+  white-space: nowrap;
+}
 
 .overflow-hidden {
-  overflow: hidden; }
+  overflow: hidden;
+}
 
 .hidden {
-  display: none; }
+  display: none;
+}
 
 .position-relative {
-  position: relative; }
+  position: relative;
+}
 
 .position-absolute {
-  position: absolute; }
+  position: absolute;
+}
 
 .position-fixed {
-  position: fixed; }
+  position: fixed;
+}
 
 .inline-block {
-  display: inline-block; }
+  display: inline-block;
+}
 
 .block {
-  display: block; }
+  display: block;
+}
 
 .table {
-  display: table; }
+  display: table;
+}
 
 .table-cell {
-  display: table-cell; }
+  display: table-cell;
+}
 
 .vertical-align-middle {
-  vertical-align: middle; }
+  vertical-align: middle;
+}
 
 .pull-left {
-  float: left; }
+  float: left;
+}
 
 .pull-right {
-  float: right; }
+  float: right;
+}
 
 .clearfix::after {
   content: '';
   display: table;
-  clear: both; }
+  clear: both;
+}
 
 .form-group {
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+}
 
 .flex {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: center;
+}
+/*# sourceMappingURL=index.css.map */
