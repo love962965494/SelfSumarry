@@ -1,0 +1,9 @@
+{
+  "extends": ["tslint:latest", "tslint-config-prettier"],
+  "rules": {
+    "no-console": false
+  },
+  "linterOptions": {
+    "exclude": ["src/**/*.test.tsx", "config/**/*.js", "node_modules/**/*.ts", "interestingJS/polyfill/**/*.ts"]
+  }
+}

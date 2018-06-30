@@ -12,10 +12,12 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  chunk(arr: Array<any>, size: number): Array<any> {
+  public chunk(arr: any[], size: number): any[] {
     // Array.from(obj, mapFn) => Array.from(obj).map(mapFn)
     // Array.from({length: 5}, (v, i) => i) => [0, 1, 2, 3, 4]
-    return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
+    return Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+      arr.slice(i * size, i * size + size)
+    )
   }
 
   /**
@@ -28,8 +30,8 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  compact(arr: Array<any>): Array<any> {
-    return arr.filter(Boolean);
+  public compact(arr: any[]): any[] {
+    return arr.filter(Boolean)
   }
 
   /**
@@ -43,11 +45,13 @@ export default class ArrayTips {
    * @returns {object}
    * @memberof ArrayTips
    */
-  countBy(arr: Array<any>, fn): object {
-    return arr.map(typeof fn === 'function' ? fn : val => val[fn]).reduce((acc, val: any, i) => {
-      acc[val] = (acc[val] || 0) + 1;
-      return acc;
-    }, {});
+  public countBy(arr: any[], fn: ((x: number) => number) | string): object {
+    return arr
+      .map(typeof fn === 'function' ? fn : val => val[fn])
+      .reduce((acc, val: any, i) => {
+        acc[val] = (acc[val] || 0) + 1
+        return acc
+      }, {})
   }
 
   /**
@@ -61,8 +65,8 @@ export default class ArrayTips {
    * @returns {number}
    * @memberof ArrayTips
    */
-  countOccurrences(arr: Array<any>, val): number {
-    return arr.reduce((a, v) => (v === val ? a + 1 : a + 0), 0);
+  public countOccurrences(arr: any[], val: any): number {
+    return arr.reduce((a, v) => (v === val ? a + 1 : a + 0), 0)
   }
 
   /**
@@ -75,8 +79,10 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  deepFlatten(arr: Array<any>): Array<any> {
-    return [].concat(...arr.map(v => (Array.isArray(v) ? this.deepFlatten(v) : v)));
+  public deepFlatten(arr: any[]): any[] {
+    return [].concat(
+      ...arr.map(v => (Array.isArray(v) ? this.deepFlatten(v) : v))
+    )
   }
 
   /**
@@ -90,9 +96,9 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  difference(arr1: Array<any>, arr2: Array<any>): Array<any> {
-    const s = new Set(arr2);
-    return arr1.filter(x => !s.has(x));
+  public difference(arr1: any[], arr2: any[]): any[] {
+    const s = new Set(arr2)
+    return arr1.filter(x => !s.has(x))
   }
 
   /**
@@ -107,8 +113,12 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  differenceWith(arr: Array<any>, val: Array<any>, comp: Function): Array<any> {
-    return arr.filter(a => val.findIndex(b => comp(a, b)) === -1);
+  public differenceWith(
+    arr: any[],
+    val: any[],
+    comp: (a: any, b: any) => boolean
+  ): any[] {
+    return arr.filter(a => val.findIndex(b => comp(a, b)) === -1)
   }
 
   /**
@@ -121,8 +131,8 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  distinctValuesOfArray(arr: Array<any>): Array<any> {
-    return [...new Set(arr)];
+  public distinctValuesOfArray(arr: any[]): any[] {
+    return [...new Set(arr)]
   }
 
   /**
@@ -136,11 +146,11 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  dropElements(arr: Array<any>, func: Function): Array<any> {
+  public dropElements(arr: any[], func: (item: any) => boolean): any[] {
     while (arr.length > 0 && !func(arr[0])) {
-      arr = arr.slice(1);
+      arr = arr.slice(1)
     }
-    return arr;
+    return arr
   }
 
   /**
@@ -154,8 +164,8 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  dropRight(arr: Array<any>, n: number = 1): Array<any> {
-    return arr.slice(0, -n);
+  public dropRight(arr: any[], n: number = 1): any[] {
+    return arr.slice(0, -n)
   }
 
   /**
@@ -169,8 +179,8 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  everyNth(arr: Array<any>, nth: number): Array<any> {
-    return arr.filter((v, i) => i % nth === nth - 1);
+  public everyNth(arr: any[], nth: number): any[] {
+    return arr.filter((v, i) => i % nth === nth - 1)
   }
 
   /**
@@ -183,8 +193,8 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  filterNonUnique(arr: Array<any>): Array<any> {
-    return arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i));
+  public filterNonUnique(arr: any[]): any[] {
+    return arr.filter(i => arr.indexOf(i) === arr.lastIndexOf(i))
   }
 
   /**
@@ -198,8 +208,8 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  findLast(arr: Array<any>, fn: (value: any, index: number) => any): Array<any> {
-    return arr.filter(fn).slice(-1);
+  public findLast(arr: any[], fn: (value: any, index: number) => any): any[] {
+    return arr.filter(fn).slice(-1)
   }
 
   /**
@@ -214,10 +224,13 @@ export default class ArrayTips {
    * @returns {Array<any>}
    * @memberof ArrayTips
    */
-  flatten(arr: Array<any>, depth: number = 1): Array<any> {
+  public flatten(arr: any[], depth: number = 1): any[] {
     return depth !== 1
-      ? arr.reduce((a, v) => a.concat(Array.isArray(v) ? this.flatten(v, depth - 1) : v), [])
-      : arr.reduce((a, v) => a.concat(v), []);
+      ? arr.reduce(
+          (a, v) => a.concat(Array.isArray(v) ? this.flatten(v, depth - 1) : v),
+          []
+        )
+      : arr.reduce((a, v) => a.concat(v), [])
   }
 
   /**
@@ -231,78 +244,106 @@ export default class ArrayTips {
    * @returns
    * @memberof ArrayTips
    */
-  forEachRight(arr: Array<any>, callback: (value: any, index: number, arr: Array<any>) => any) {
-    return arr.slice(0).reverse().forEach(callback)
+  public forEachRight(
+    arr: any[],
+    callback: (value: any, index: number, arr: any[]) => any
+  ) {
+    return arr
+      .slice(0)
+      .reverse()
+      .forEach(callback)
   }
 }
 
-const arrayTips = new ArrayTips();
+const arrayTips = new ArrayTips()
 
 /**
  * example of chunk
  */
-console.log('chunkL: ', arrayTips.chunk([1, 2, 3, 4, 5], 2));
+console.log('chunkL: ', arrayTips.chunk([1, 2, 3, 4, 5], 2))
 
 /**
  * example of compact
  */
-console.log('compact: ', arrayTips.compact([0, 1, false, 2, '', 3, 'a', NaN, 's', 34]));
+console.log(
+  'compact: ',
+  arrayTips.compact([0, 1, false, 2, '', 3, 'a', NaN, 's', 34])
+)
 
 /**
  * example of countBy
  */
-console.log('countBy: ', arrayTips.countBy([6.1, 4.2, 6.3], Math.floor));
-console.log('countBy: ', arrayTips.countBy(['one', 'two', 'three'], 'length'));
+console.log('countBy: ', arrayTips.countBy([6.1, 4.2, 6.3], Math.floor))
+console.log('countBy: ', arrayTips.countBy(['one', 'two', 'three'], 'length'))
 
 /**
  * example of countOccurrences
  */
-console.log('countOccurrences: ', arrayTips.countOccurrences([1, 2, 1, 1, 2, 3, 1], 1));
+console.log(
+  'countOccurrences: ',
+  arrayTips.countOccurrences([1, 2, 1, 1, 2, 3, 1], 1)
+)
 
 /**
  * example of deepFlatten
  */
-console.log('deepFlatten: ', arrayTips.deepFlatten([1, [2], [[3], 4, 5]]));
+console.log('deepFlatten: ', arrayTips.deepFlatten([1, [2], [[3], 4, 5]]))
 
 /**
  * example of difference
  */
-console.log('difference: ', arrayTips.difference([1, 2, 3], [2, 4, 5]));
+console.log('difference: ', arrayTips.difference([1, 2, 3], [2, 4, 5]))
 
 /**
  * example of differenceWith
  */
-console.log('differenceWith: ', arrayTips.differenceWith([1, 1.2, 1.5, 3, 0], [1.9, 3, 0], (a, b) => Math.round(a) === Math.round(b)));
+console.log(
+  'differenceWith: ',
+  arrayTips.differenceWith(
+    [1, 1.2, 1.5, 3, 0],
+    [1.9, 3, 0],
+    (a: number, b: number) => Math.round(a) === Math.round(b)
+  )
+)
 
 /**
  * example of distinctValuesOfArray
  */
-console.log('distinctValuesOfArray: ', arrayTips.distinctValuesOfArray([1, 2, 2, 3, 4, 3, 5]));
+console.log(
+  'distinctValuesOfArray: ',
+  arrayTips.distinctValuesOfArray([1, 2, 2, 3, 4, 3, 5])
+)
 
 /**
  * example of dropElements
  */
-console.log('dropElements: ', arrayTips.dropElements([1, 2, 3, 4], n => n >= 3));
+console.log(
+  'dropElements: ',
+  arrayTips.dropElements([1, 2, 3, 4], (n: number) => n >= 3)
+)
 
 /**
  * example of dropRight
  */
-console.log('dropRight: ', arrayTips.dropRight([1, 2, 3, 4], 1));
+console.log('dropRight: ', arrayTips.dropRight([1, 2, 3, 4], 1))
 
 /**
  * example of everyNth
  */
-console.log('everyNth: ', arrayTips.everyNth([1, 2, 3, 4, 5, 6], 2));
+console.log('everyNth: ', arrayTips.everyNth([1, 2, 3, 4, 5, 6], 2))
 
 /**
  * example of filterNonUnique
  */
-console.log('filterNonUnique: ', arrayTips.filterNonUnique([1, 2, 3, 2, 4, 1, 4, 5]));
+console.log(
+  'filterNonUnique: ',
+  arrayTips.filterNonUnique([1, 2, 3, 2, 4, 1, 4, 5])
+)
 
 /**
  * example of findLast
  */
-console.log('findLast: ', arrayTips.findLast([1, 2, 3, 4], n => n % 2 === 1));
+console.log('findLast: ', arrayTips.findLast([1, 2, 3, 4], n => n % 2 === 1))
 
 /**
  * example of flatten
@@ -312,4 +353,7 @@ console.log('flatten: ', arrayTips.flatten([1, [2, [3, [4, 5]]]]), 2)
 /**
  * example of forEachRight
  */
-console.log('forEachRight: ', arrayTips.forEachRight([1, 2, 3, 4], val => console.log(val)))
+console.log(
+  'forEachRight: ',
+  arrayTips.forEachRight([1, 2, 3, 4], val => console.log(val))
+)

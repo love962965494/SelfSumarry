@@ -13,7 +13,11 @@
       "removeComments": true,
       "suppressImplicitAnyIndexErrors": true,
       "downlevelIteration": true,
-      "lib": [ "es6", "dom" ]
+      "noImplicitReturns": true,
+      "noImplicitThis": true,
+      "noImplicitAny": true,
+      "strictNullChecks": true,
+      "lib": [ "es7", "dom" ]
   },
   "exclude": [
       "node_modules"

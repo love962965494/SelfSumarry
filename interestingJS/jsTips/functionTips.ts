@@ -8,7 +8,7 @@ export default class FunctionTips {
    * @param {Array<Function>} fns
    * @memberof FunctionTips
    */
-  chainAsync(fns: Array<Function>) {
+  public chainAsync(fns: Array<(next: () => void) => void>) {
     let curr = 0
     const next = () => fns[curr++](next)
     next()
@@ -21,11 +21,11 @@ const functionTips = new FunctionTips()
  * example of chainAsync
  */
 functionTips.chainAsync([
-  next => {
+  (next: () => void) => {
     console.log('chainAsync: 我是第一次')
     setTimeout(next, 1000)
   },
-  next => {
+  (next: () => void) => {
     console.log('chainAsync: 我是第二次')
   }
 ])

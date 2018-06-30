@@ -1,9 +1,8 @@
-
-  interface Options {
-    target?: string,
-    options?: boolean,
-    [propName: string]: any
-  }
+interface InterfaceOptions {
+  target?: string
+  options?: boolean
+  [propName: string]: any
+}
 
 export default class Browser {
   /**
@@ -16,8 +15,11 @@ export default class Browser {
    * @param {string} listID
    * @memberof Browser
    */
-  arrayToHtmlList(arr: Array<any>, listID: string) {
-    arr.map(item => (document.querySelector('#' + listID).innerHTML += `<li>${item}</li>`));
+  public arrayToHtmlList(arr: any[], listID: string) {
+    arr.map(
+      item =>
+        (document.querySelector('#' + listID)!.innerHTML += `<li>${item}</li>`)
+    )
   }
 
   /**
@@ -29,8 +31,12 @@ export default class Browser {
    * @returns {boolean}
    * @memberof Browser
    */
-  bottomVisible(): boolean {
-    return document.documentElement.clientHeight + window.scrollY >= (document.documentElement.scrollHeight || document.documentElement.clientHeight);
+  public bottomVisible(): boolean {
+    return (
+      document.documentElement.clientHeight + window.scrollY >=
+      (document.documentElement.scrollHeight ||
+        document.documentElement.clientHeight)
+    )
   }
 
   /**
@@ -46,21 +52,24 @@ export default class Browser {
    * @param {string} str
    * @memberof Browser
    */
-  clipToClipboard(str: string) {
-    const el = document.createElement('textarea');
-    el.value = str;
-    el.setAttribute('readonly', '');
-    el.style.position = 'absolute';
-    el.style.left = '-9999px';
-    document.body.appendChild(el);
+  public clipToClipboard(str: string) {
+    const el = document.createElement('textarea')
+    el.value = str
+    el.setAttribute('readonly', '')
+    el.style.position = 'absolute'
+    el.style.left = '-9999px'
+    document.body.appendChild(el)
 
-    const selected = document.getSelection().rangeCount > 0 ? document.getSelection().getRangeAt(0) : false;
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
+    const selected =
+      document.getSelection().rangeCount > 0
+        ? document.getSelection().getRangeAt(0)
+        : false
+    el.select()
+    document.execCommand('copy')
+    document.body.removeChild(el)
     if (selected) {
-      document.getSelection().removeAllRanges();
-      document.getSelection().addRange(selected);
+      document.getSelection().removeAllRanges()
+      document.getSelection().addRange(selected)
     }
   }
 
@@ -75,10 +84,10 @@ export default class Browser {
    * @returns {Element}
    * @memberof Browser
    */
-  createElement(str: string): Element {
-    const el = document.createElement('div');
-    el.innerHTML = str;
-    return el.firstElementChild;
+  public createElement(str: string): Element {
+    const el = document.createElement('div')
+    el.innerHTML = str
+    return el.firstElementChild!
   }
 
   /**
@@ -93,25 +102,29 @@ export default class Browser {
    * @returns
    * @memberof Browser
    */
-  createEventHub() {
+  public createEventHub() {
     return {
       hub: Object.create(null),
-      emit(event, data) {
-        (this.hub[event] || []).forEach(handler => handler(data));
+      emit(event: string, data: any) {
+        ;(this.hub[event] || []).forEach((handler: (data: any) => any) =>
+          handler(data)
+        )
       },
-      on(event, handler) {
+      on(event: string, handler: (data: any) => any) {
         if (!this.hub[event]) {
-          this.hub[event] = [];
+          this.hub[event] = []
         }
-        this.hub[event].push(handler);
+        this.hub[event].push(handler)
       },
-      off(event, handler) {
-        const i = (this.hub[event] || []).findIndex(h => h === handler);
+      off(event: string, handler: (data: any) => any) {
+        const i = (this.hub[event] || []).findIndex(
+          (h: (data: any) => any) => h === handler
+        )
         if (i > -1) {
-          this.hub[event].splice(i, 1);
+          this.hub[event].splice(i, 1)
         }
-      },
-    };
+      }
+    }
   }
 
   /**
@@ -123,8 +136,8 @@ export default class Browser {
    * @returns
    * @memberof Browser
    */
-  currentURL() {
-    return window.location.href;
+  public currentURL() {
+    return window.location.href
   }
 
   /**
@@ -136,8 +149,12 @@ export default class Browser {
    * @returns
    * @memberof Browser
    */
-  detectDeviceType() {
-    return /Android|webOS|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop';
+  public detectDeviceType() {
+    return /Android|webOS|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    )
+      ? 'Mobile'
+      : 'Desktop'
   }
 
   /**
@@ -152,15 +169,16 @@ export default class Browser {
    * @returns
    * @memberof Browser
    */
-  elementIsVisibleInViewport(el: Element, partiallyVisible = false) {
-    const { top, left, bottom, right } = el.getBoundingClientRect();
-    const { innerHeight, innerWidth } = window;
+  public elementIsVisibleInViewport(el: Element, partiallyVisible = false) {
+    const { top, left, bottom, right } = el.getBoundingClientRect()
+    const { innerHeight, innerWidth } = window
     return partiallyVisible
-      ? ((top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)) &&
+      ? ((top > 0 && top < innerHeight) ||
+          (bottom > 0 && bottom < innerHeight)) &&
           ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
-      : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+      : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth
   }
-  
+
   /**
    * @function: getStyle 获取元素样式
    * @description:
@@ -172,7 +190,7 @@ export default class Browser {
    * @returns {string}
    * @memberof Browser
    */
-  getStyle(el: Element, ruleName: string):string {
+  public getStyle(el: Element, ruleName: string): string {
     return getComputedStyle(el)[ruleName]
   }
 
@@ -187,7 +205,7 @@ export default class Browser {
    * @returns {boolean}
    * @memberof Browser
    */
-  hasClass(el: Element, className: string): boolean {
+  public hasClass(el: Element, className: string): boolean {
     return el.classList.contains(className)
   }
 
@@ -201,7 +219,7 @@ export default class Browser {
    * @returns
    * @memberof Browser
    */
-  hide(...el) {
+  public hide(...el: HTMLElement[]) {
     return [...el].forEach(e => (e.style.display = 'none'))
   }
 
@@ -214,7 +232,7 @@ export default class Browser {
    *
    * @memberof Browser
    */
-  httpsRedirect() {
+  public httpsRedirect() {
     if (location.protocol !== 'https:') {
       location.replace('https://' + location.href.split('//')[1])
     }
@@ -228,12 +246,12 @@ export default class Browser {
    *
    * @param {Element} el
    * @param {string} evt
-   * @param {EventListenerObject} fn
+   * @param {EventListenerObject} eventFn
    * @param {boolean} [opts=false]
    * @memberof Browser
    */
-  off(el: Element, evt: string, fn: EventListener, opts = false) {
-    el.removeEventListener(evt, fn, opts)
+  public off(el: Element, evt: string, eventFn: EventListener, opts = false) {
+    el.removeEventListener(evt, eventFn, opts)
   }
 
   /**
@@ -248,31 +266,165 @@ export default class Browser {
    * @param {Element} el
    * @param {string} evt
    * @param {EventListener} fn
-   * @param {Options} opts
+   * @param {InterfaceOptions} opts
    * @returns {(EventListener | void)}
    * @memberof Browser
    */
-  on(el: Element, evt: string, fn: EventListener, opts?: Options): EventListener | void {
-    const delegatorFn = e => e.target.matches(opts.target) && fn.call(e.target, e)
-    el.addEventListener(evt, opts.target ? delegatorFn : fn, opts.options || false)
-    if(opts.target) {
+  public on(
+    el: Element,
+    evt: string,
+    eventFn: EventListener,
+    opts?: InterfaceOptions
+  ): EventListener | void {
+    const delegatorFn = (e: Event) =>
+      Element.prototype.matches.call(e.target, opts && opts.target) &&
+      eventFn.call(e.target, e)
+    el.addEventListener(
+      evt,
+      opts && opts.target ? delegatorFn : eventFn,
+      (opts && opts.options) || false
+    )
+    if (opts && opts.target) {
       return delegatorFn
     }
   }
+
+  /**
+   * @function: redirect 重定向到url
+   * @description:
+   *   重定向到一个url
+   *   使用window.location.href或window.location.replace()重定向到url。
+   *   传递第二个参数来模拟链接点击(true)或HTTP重定向(false)
+   *
+   * @param {string} url
+   * @param {boolean} [asLink=true]
+   * @memberof Browser
+   */
+  public redirect(url: string, asLink: boolean = true): void {
+    asLink ? (window.location.href = url) : window.location.replace(url)
+  }
+
+  /**
+   * @function: runAsync 运行异步函数
+   * @description:
+   *   通过使用Web Worker在单独的线程中运行一个函数，允许长时间运行的函数不会阻赛Ui
+   *   使用Blob对象URL创建一个新的Worker，其内容应该是所提供函数的字符串化版本，立即发送回调用函数的返回值
+   *   返回一个promise，监听onmessage和onerror事件并解析worker返回的数据，或者抛出一个错误
+   *
+   * @param {Function} fn
+   * @returns {Promise<any>}
+   * @memberof Browser
+   */
+  public runAsync(asyncFn: () => any): Promise<any> {
+    const blob = `var fn = ${asyncFn.toString()}; postMessage(asyncFn());`
+    const worker = new Worker(URL.createObjectURL(new Blob([blob])))
+
+    return new Promise((res, rej) => {
+      worker.onmessage = ({ data }) => {
+        res(data)
+        worker.terminate()
+      }
+      worker.onerror = err => {
+        rej(err)
+        worker.terminate()
+      }
+    })
+  }
+
+  /**
+   * @function: scrollToTop 回到顶部
+   * @description:
+   *   平滑滚动到页面顶部
+   *   使用document.documentElement.scrollTop或document.body.scrollTop获取到顶部距离
+   *   从顶部滚动一小部分距离。使用window.requestAnimationFrame()来实现滚动动画
+   *
+   *
+   * @memberof Browser
+   */
+  public scrollToTop(): void {
+    const c = document.documentElement.scrollTop || document.body.scrollTop
+
+    if (c > 0) {
+      window.requestAnimationFrame(this.scrollToTop)
+      window.scrollTo(0, c - c / 8)
+    }
+  }
+
+  /**
+   * @function: setStyle 设置CSS样式
+   * @description:
+   *   设置指定元素CSS规则的值
+   *   使用element.style将指定元素的CSS规则的值设置为val
+   *
+   * @param {HTMLElement} el
+   * @param {string} ruleName
+   * @param {string} val
+   * @memberof Browser
+   */
+  public setStyle(el: HTMLElement, ruleName: string, val: string): void {
+    el.style[ruleName] = val
+  }
+
+  /**
+   * @function: show 显示所有指定的元素
+   * @description:
+   *   显示所有指定的元素
+   *   使用展开运算符(...)和Array.forEach()来清除每个指定元素的display属性
+   *
+   * @param {...HTMLElement[]} el
+   * @memberof Browser
+   */
+  public show(...el: HTMLElement[]): void {
+    ;[...el].forEach(e => (e.style.display = ''))
+  }
+
+  /**
+   * @function: toggleClass 切换一个元素的样式类
+   * @description:
+   *   切换一个元素的样式类
+   *   使用element.classList.toggle()来切换元素中指定样式类
+   *
+   * @param {HTMLElement} el
+   * @param {string} className
+   * @memberof Browser
+   */
+  public toggleClass(el: HTMLElement, className: string): void {
+    el.classList.toggle(className)
+  }
+
+  /**
+   * @function: UUIDGeneratorBrowser 在浏览器生成一个UUID
+   * @description:
+   *   在浏览器中生成一个UUID
+   *   使用crypto API生成一个UUID
+   *
+   * @returns {string}
+   * @memberof Browser
+   */
+  public UUIDGeneratorBrowser(): void {
+    // return ([1e7].toString() + -1e3 + -4e3 + -8e3 + -1e11).replace(
+    //   /[018]/g,
+    //   (c: string) =>
+    //     (
+    //       +c ^
+    //       (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (+c / 4)))
+    //     ).toString(16)
+    // )
+  }
 }
 
-const browserTip = new Browser();
+const browserTip = new Browser()
 
 /**
  * example of createEventHub
  */
-const handler = data => console.log(data);
-const hub = browserTip.createEventHub();
-hub.on('message', handler);
-hub.on('message', () => console.log('Message event fired'));
-hub.emit('message', 'hello world');
-hub.off('message', handler);
-hub.emit('message', '');
+const handlerFn = (data: any) => console.log(data)
+const hub = browserTip.createEventHub()
+hub.on('message', handlerFn)
+hub.on('message', () => console.log('Message event fired'))
+hub.emit('message', 'hello world')
+hub.off('message', handlerFn)
+hub.emit('message', '')
 
 /**
  * example of on
