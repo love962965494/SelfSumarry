@@ -4,6 +4,12 @@
     "no-console": false
   },
   "linterOptions": {
-    "exclude": ["src/**/*.test.tsx", "config/**/*.js", "node_modules/**/*.ts", "interestingJS/polyfill/**/*.ts"]
+    "exclude": [
+      "src/**/*.test.tsx",
+      "config/**/*.js",
+      "build/**/*.js",
+      "node_modules/**/*.ts",
+      "interestingJS/polyfill/**/*.ts"
+    ]
   }
 }

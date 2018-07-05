@@ -1,3 +1,5 @@
+
+
 export default class ArrayTips {
   /**
    * @function: chunk 数组分块
@@ -253,6 +255,62 @@ export default class ArrayTips {
       .reverse()
       .forEach(callback)
   }
+
+  /**
+   * @function: groupBy 数组分组
+   * @description:
+   *   根据给定的函数对数组元素进行分组
+   *   使用Array.map()将数组的值映射到函数或属性名称。
+   *   使用Array.reduce()来创建一个对象，其中的key是从映射结果中产生
+   *
+   * @param {any[]} arr
+   * @param {((string | ((args?: any) => any)))} fn
+   * @returns {object}
+   * @memberof ArrayTips
+   */
+  public groupBy(arr: any[], fn: string | ((args?: any) => any)): object {
+    return arr
+      .map(typeof fn === 'function' ? fn : val => val[fn])
+      .reduce((acc, val, i) => {
+        acc[val] = (acc[val] || []).concat(arr[i])
+        return acc
+      }, {})
+  }
+
+  /**
+   * @function: head 获取数组的第一个元素
+   * @description:
+   *   返回数组的第一个元素
+   *   使用arr[0]返回传递数组的第一个元素
+   *
+   * @param {any[]} arr
+   * @returns {*}
+   * @memberof ArrayTips
+   */
+  public head(arr: any[]): any {
+    return arr[0]
+  }
+
+  /**
+   * @function: indexOfAll 返回指定元素的所有索引
+   * @description:
+   *   返回数组中左右val的索引。如果val从不出现，则返回[]
+   *   使用Array.forEach()循环元素和Array.push()来存储匹配元素的索引。返回索引数组
+   *
+   * @param {any[]} arr
+   * @param {*} val
+   * @returns {any[]}
+   * @memberof ArrayTips
+   */
+  public indexOfAll(arr: any[], val: any): any[] {
+    const indices: any[] = []
+    arr.forEach((el, i) => el === val && indices.push(i))
+    return indices
+  }
+
+  public initial(arr: any[]): any {
+    return arr.slice(0, -1)
+  }
 }
 
 const arrayTips = new ArrayTips()
@@ -357,3 +415,9 @@ console.log(
   'forEachRight: ',
   arrayTips.forEachRight([1, 2, 3, 4], val => console.log(val))
 )
+
+/**
+ * example of groupBy
+ */
+console.log('groupBy: ', arrayTips.groupBy([6.1, 4.2, 6.3], Math.floor))
+console.log('groupBy: ', arrayTips.groupBy(['one', 'two', 'three'], 'length'))
