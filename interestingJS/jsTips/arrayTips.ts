@@ -1,5 +1,3 @@
-
-
 export default class ArrayTips {
   /**
    * @function: chunk 数组分块
@@ -308,8 +306,35 @@ export default class ArrayTips {
     return indices
   }
 
-  public initial(arr: any[]): any {
+  /**
+   * @function: initial 排除数组中最后一个元素
+   * @description:
+   *   返回一个数组中除了最后一个元素意外的所有元素
+   *   使用Array.slice(0, -1)返回排除了最后一个元素的数组
+   *
+   * @template T
+   * @param {T[]} arr
+   * @returns {T[]}
+   * @memberof ArrayTips
+   */
+  public initial<T>(arr: T[]): T[] {
     return arr.slice(0, -1)
+  }
+
+
+  /**
+   * @function: initialize2DArray 初始化一个二维数组
+   * @description:
+   *   初始化一个给定行数和列数，及值得二维数组
+   *   使用Array.map()生成h行，其中每个行都是一个长度为w的新数组。如果未提供值val，则默认为null
+   *
+   * @param {number} w
+   * @param {number} h
+   * @param {*} [val=null]
+   * @memberof ArrayTips
+   */
+  public initialize2DArray(w: number, h: number, val: any = null) {
+    Array.from({ length: h }).map(() => Array.from<any>({ length: w }).fill(val))
   }
 }
 
@@ -421,3 +446,8 @@ console.log(
  */
 console.log('groupBy: ', arrayTips.groupBy([6.1, 4.2, 6.3], Math.floor))
 console.log('groupBy: ', arrayTips.groupBy(['one', 'two', 'three'], 'length'))
+
+/**
+ * example of initialize2DArray
+ */
+console.log('initialize2DArray: ', arrayTips.initialize2DArray(2, 2, 0))
