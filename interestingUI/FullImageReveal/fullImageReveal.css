@@ -11,7 +11,7 @@ body {
   --color-bg: #fff;
   --color-link: #000;
   --color-link-hover: #444;
-  --color-revealer: #7777c7;
+  --color-revealer: rgb(119, 119, 199);
   --color-side-text: #ddd;
   --color-toggle-bg: #333;
   --color-toggle: #fff;
