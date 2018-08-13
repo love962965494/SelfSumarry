@@ -8,6 +8,7 @@ body {
   align-items: center;
 }
 
+/** -------------------- Picture -------------------- */
 .picture {
   position: absolute;
   width: 800px;
@@ -20,6 +21,7 @@ body {
   }
 }
 
+/** -------------------- Forest -------------------- */
 .forest {
   top: 50px;
   left: -10px;
@@ -251,6 +253,7 @@ body {
   }
 }
 
+/** -------------------- House -------------------- */
 .house {
   &__wall {
     top: 24px;
@@ -309,6 +312,7 @@ body {
   }
 }
 
+/** -------------------- Shelf -------------------- */
 .shelf {
   top: 178px;
   left: 532px;
@@ -397,5 +401,1085 @@ body {
       z-index: 1;
       animation: shelfStaff2Dust2 5s linear -2.6s infinite;
     }
+
+    .dust-3 {
+      top: -38px;
+      left: 4px;
+      width: 3px;
+      height: 3px;
+      background: #1c586c;
+      z-index: 1;
+      animation: shelfStaff2Dust3 5s linear infinite;
+    }
+
+    .dust-4 {
+      top: -34px;
+      left: 12px;
+      width: 2px;
+      height: 2px;
+      background: #1c586c;
+      z-index: 1;
+      animation: shelfStaff2Dust4 5s linear infinite;
+    }
+  }
+
+  &__staff-3 {
+    top: -125px;
+    left: 108px;
+    width: 59px;
+    height: 28px;
+    border-radius: 2px 2px 30px 30px;
+    background: #393939;
+
+    &::before {
+      top: 28px;
+      left: 22px;
+      width: 14px;
+      height: 12px;
+      background: #393939;
+    }
+
+    &::after {
+      top: 36px;
+      left: 12px;
+      width: 34px;
+      height: 8px;
+      border-radius: 10px 10px 0 0;
+      background: #393939;
+    }
+  }
+
+  &__staff-4 {
+    top: -130px;
+    left: 174px;
+    width: 31px;
+    height: 39px;
+    background: #21314a;
+
+    &::before {
+      top: 39px;
+      left: -4px;
+      width: 40px;
+      height: 11px;
+      border-radius: 2px 2px 0 0;
+      background: #21314a;
+    }
+
+    &::after {
+      top: -24px;
+      left: 46px;
+      width: 30px;
+      height: 73px;
+      background: #183133;
+    }
+  }
+
+  &__staff-5 {
+    top: -90px;
+    left: 6px;
+    width: 28px;
+    height: 9px;
+    border-radius: 10px;
+    background: #3b4358;
+
+    &::before {
+      top: -8px;
+      left: 6px;
+      width: 16px;
+      height: 8px;
+      border-radius: 2px 2px 10px 10px;
+      background: #405b58;
+    }
+
+    &::after {
+      top: -18px;
+      left: 9px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #3b4358;
+    }
+  }
+
+  &__staff-6 {
+    top: -86px;
+    left: 142px;
+    width: 76px;
+    height: 6px;
+    background: #3b4a3e;
+
+    &::before {
+      top: -12px;
+      left: 43px;
+      width: 6px;
+      height: 17px;
+      background: #3b4a3e;
+      box-shadow: 12px -12px #3b4a3e, 24px -24px #3b4a3e;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      top: 1px;
+      left: 60px;
+      width: 6px;
+      height: 17px;
+      background: #3b4a3e;
+      transform: rotate(-45deg);
+    }
+  }
+
+  &__staff-7 {
+    top: -62px;
+    left: 0px;
+    width: 26px;
+    height: 58px;
+    box-shadow: inset -14px 0 0 0 #263449, inset 0 -50px 0 0 #525242;
+
+    &::before {
+      top: 6px;
+      left: 15px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1c596c;
+    }
+
+    &::after {
+      top: 24px;
+      left: 12px;
+      width: 14px;
+      height: 19px;
+      background: #1c596c;
+    }
+  }
+
+  &__staff-8 {
+    top: -42px;
+    left: 124px;
+    width: 68px;
+    height: 36px;
+    border-radius: 8px 8px 0 0;
+    background: #52383c;
+    box-shadow: inset 0 44px 0 -30px #3a3031;
+
+    &::before {
+      top: 16px;
+      left: 28px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #3a3031;
+    }
+
+    &::after {
+      top: -10px;
+      left: 14px;
+      width: 40px;
+      height: 10px;
+      box-sizing: border-box;
+      border-radius: 10px 10px 0 0;
+      border-top: 4px solid #5d4e42;
+      border-left: 10px solid #5d4e42;
+      border-right: 10px solid #5d4e42;
+    }
+
+    .dust-1 {
+      top: -14px;
+      left: 14px;
+      width: 4px;
+      height: 4px;
+      background: #5d4e42;
+      z-index: 1;
+      animation: shelfStaff2Dust1 5s linear infinite;
+    }
+
+    .dust-2 {
+      top: 2px;
+      left: 20px;
+      width: 4px;
+      height: 4px;
+      background: #5d4e42;
+      z-index: 1;
+      animation: shelfStaff2Dust2 5s linear infinite;
+    }
+
+    .dust-3 {
+      top: 6px;
+      left: 42px;
+      width: 4px;
+      height: 4px;
+      background: #5d4e42;
+      z-index: 1;
+      animation: shelfStaff2Dust3 5s linear infinite;
+    }
+
+    .dust-4 {
+      top: 7px;
+      left: 50px;
+      width: 4px;
+      height: 4px;
+      background: #5d4e42;
+      z-index: 1;
+      animation: shelfStaff2Dust4 5s linear infinite;
+    }
+  }
+
+  &__staff-9 {
+    top: -54px;
+    left: 208px;
+    width: 48px;
+    height: 50px;
+    box-sizing: border-box;
+    border: 7px solid #393939;
+    background: #1a252f;
+
+    &::before {
+      top: 7px;
+      left: 17px;
+      width: 15px;
+      height: 14px;
+      background: #52383c;
+      border-radius: 70% 0;
+      -webkit-box-reflect: left 1px;
+    }
+
+    &::after {
+      top: 23px;
+      left: 17px;
+      width: 9px;
+      height: 9px;
+      background: #52383c;
+      border-radius: 0 60%;
+      -webkit-box-reflect: left 1px;
+    }
+  }
+
+  &__staff-10 {
+    top: -40px;
+    left: 22px;
+    width: 12px;
+    height: 39px;
+    background: #263449;
+    box-shadow: 12px 12px 0 0 #3c313c;
+    transform-origin: right top;
+    transform: rotate(-45deg);
+
+    &::before {
+      top: 57px;
+      left: 30px;
+      width: 78px;
+      height: 10px;
+      background: #30403f;
+      border-radius: 0 100% 100% 0;
+      transform-origin: 0 0;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      top: 54px;
+      left: 44px;
+      width: 7px;
+      height: 28px;
+      background: #30403f;
+    }
+  }
+
+  &__staff-11 {
+    top: -21px;
+    left: 139px;
+    width: 15px;
+    height: 67px;
+    border-radius: 0% 100%;
+    background: #3b4a3e;
+    transform: rotate(-43deg);
+
+    &::before {
+      top: 3px;
+      left: -18px;
+      width: 16px;
+      height: 46px;
+      border-radius: 100% 0;
+      background: #3b4a3e;
+      transform: rotate(17deg);
+    }
+  }
+
+  &__herbs-1 {
+    top: 68px;
+    left: 33px;
+    width: 8px;
+    border-top: 18px solid #3b4a3e;
+    border-right: 9px solid transparent;
+    border-left: 9px solid transparent;
+    transform: rotate(7deg);
+    transform-origin: top center;
+    animation: shelfHerbs1 2s -1.7s ease infinite;
+    will-change: transform;
+
+    &::before {
+      top: 4px;
+      left: -15px;
+      width: 38px;
+      height: 38px;
+      border-radius: 0 0 100% 0;
+      background: #3b4a3e;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      top: 16px;
+      left: 16px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #964554;
+      box-shadow: -19px 10px 0 0 #964554, -38px -1px 0 0 #964554;
+    }
+  }
+  
+  &__herb-rope-1 {
+    top: 50px;
+    left: 40px;
+    width: 4px;
+    height: 12px;
+    border-radius: 4px;
+    background: #524342;
+    box-shadow: 8px 0 0 0 #524342, 4px 10px 0 0 #524342;
+  }
+
+  &__herbs-2 {
+    top: 67px;
+    left: 71px;
+    width: 3px;
+    height: 55px;
+    background: #3c5843;
+    transform-origin: 15px -16px;
+    transform: rotate(-14deg);
+    animation: shelfHerbs2 2s -1.2s ease infinite;
+    will-change: transform;
+
+    &::before {
+      top: 58px;
+      left: -8px;
+      width: 19px;
+      height: 19px;
+      border-radius: 0 0 100% 0;
+      background: #3c5843;
+      transform: rotate(45deg);
+    }
+
+    &::after {
+      top: 42px;
+      left: 7px;
+      width: 12px;
+      height: 12px;
+      border-radius: 0 80%;
+      background: #3c5843;
+      transform: rotate(-3deg);
+      -webkit-box-reflect: left 11px;
+    }
+  }
+  
+  &__herb-rope-2 {
+    top: -20px;
+    left: 11px;
+    width: 4px;
+    height: 38px;
+    border-radius: 4px;
+    background: #524342;
+    transform: rotate(17deg);
+
+    &::before {
+      top: 33px;
+      left: -5px;
+      width: 4px;
+      height: 14px;
+      border-radius: 4px;
+      background: #524342;
+      transform: rotate(50deg);
+    }
+  }
+
+  &__herbs-3 {
+    top: 59px;
+    left: 126px;
+    width: 10px;
+    height: 57px;
+    border-radius: 0 0 10px 10px;
+    background: linear-gradient(to right, transparent 32%, #30403f 33%, #30403f 67%, transparent 68%);
+    box-shadow: inset 0 -45px 0 -40px #5a844f;
+    transform-origin: 1px -8px;
+    animation: shelfHerbs3 2s -0.9s ease infinite;
+    will-change: transform;
+
+    &::before {
+      top: 0px;
+      left: -2px;
+      width: 10px;
+      height: 49px;
+      border-radius: 0 0 10px 10px;
+      background: linear-gradient(to right, transparent 32%, #30403f 33%, #30403f 67%, transparent 68%);
+      box-shadow: inset 0 -45px 0 -40px #5a844f;
+      transform: rotate(23deg);
+    }
+
+    &::after {
+      top: 0px;
+      left: 2px;
+      width: 10px;
+      height: 49px;
+      border-radius: 0 0 10px 10px;
+      background: linear-gradient(to right, transparent 32%, #30403f 33%, #30403f 67%, transparent 68%);
+      box-shadow: inset 0 -45px 0 -40px #5a844f;
+      transform: rotate(-23deg);
+    }
+  }
+
+  &__herb-rope-3 {
+    top: -10px;
+    left: 3px;
+    width: 4px;
+    height: 15px;
+    border-radius: 4px;
+    background: #524342;
+  }
+
+  &__herbs-4 {
+    top: 98px;
+    left: 189px;
+    width: 33px;
+    height: 16px;
+    border-radius: 20px;
+    background: #525242;
+    transform-origin: 22px -48px;
+    animation: shelfHerbs4 2s -0.2s ease infinite;
+    will-change: transform;
+
+    &::before {
+      top: -20px;
+      left: 1px;
+      width: 7px;
+      border-left: 14px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 24px solid #525242;
+    }
+
+    &::after {
+      top: -30px;
+      left: 2px;
+      width: 8px;
+      border-top: 17px solid #525242;
+      border-left: 10px solid transparent;
+      border-right: 3px solid transparent;
+      transform: rotate(-28deg);
+    }
+  }
+
+  &__herb-rope-4 {
+    top: -49px;
+    left: 20px;
+    width: 4px;
+    height: 32px;
+    border-radius: 4px;
+    background: #524342;
+
+    &::before {
+      top: 30px;
+      left: -11px;
+      width: 14px;
+      height: 4px;
+      border-radius: 4px;
+      background: #524342;
+      transform: rotate(-20deg);
+      z-index: 1;
+    }
+  }
+
+  &__thing {
+    top: -136px;
+    left: -22px;
+    width: 5px;
+    height: 107px;
+    background: #233b37;
+
+    &::before {
+      top: 0px;
+      left: -27px;
+      border-left: 28px solid transparent;
+      border-top: 29px solid #233b37;
+    }
+
+    &::after {
+      top: 52px;
+      left: -24px;
+      border-left: 25px solid transparent;
+      border-top: 26px solid #233b37;
+    }
+  }
+
+  &__circles {
+    top: 46px;
+    left: -12px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #3c313c;
+    box-shadow: 16px 37px 0 0 #3c313c, 8px 54px 0 1px #3c313c, 0px 25px 0 3px #3c313c, 0px -26px 0 3px #3c313c;
+    z-index: 1;
+  }
+}
+
+/** -------------------- Ladder -------------------- */
+.ladder {
+  top: 307px;
+  left: 650px;
+  width: 16px;
+  height: 313px;
+  background: #312e36;
+  border-radius: 10px;
+  box-shadow: 94px 0 0 0 #312e36;
+
+  &::before {
+    top: 20px;
+    left: 16px;
+    height: 13px;
+    width: 78px;
+    background: #312e36;
+    box-shadow: inset 0 5px 0 0 #393931;
+  }
+
+  &::after {
+    top: 60px;
+    left: 16px;
+    height: 13px;
+    width: 78px;
+    background: #312e36;
+    box-shadow: inset 0 5px 0 0 #393931;
+  }
+}
+
+/** -------------------- Wreath -------------------- */
+.wreath {
+  top: 28px;
+  left: 396px;
+  width: 62px;
+  height: 62px;
+  border: 15px solid #183133;
+  border-radius: 50%;
+
+  &::before {
+    top: 46px;
+    left: 23px;
+    width: 5px;
+    height: 20px;
+    border-radius: 5px;
+    background: #183133;
+    transform: rotate(34deg);
+    box-shadow: 13px -3px 0 0 #183133;
+  }
+
+  &::after {
+    top: 62px;
+    left: 7px;
+    width: 5px;
+    height: 20px;
+    border-radius: 5px;
+    background: #183133;
+    transform: rotate(-34deg);
+    box-shadow: 10px 18px 0 0 #183133, 22px 18px 0 0 #183133;
+  }
+}
+
+/** -------------------- Hook -------------------- */
+.hook {
+  top: 24px;
+  left: 474px;
+  width: 4px;
+  height: 10px;
+  border-radius: 0 0 0 2px;
+  background: #304252;
+
+  &::before {
+    top: 13px;
+    left: -7px;
+    width: 14px;
+    height: 6px;
+    border: 3px solid #304252;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+  }
+
+  &::after {
+    top: 7px;
+    left: 3px;
+    width: 7px;
+    height: 3px;
+    border-top: 3px solid #304252;
+    border-right: 3px solid #304252;
+    border-radius: 0 7px 0 0; 
+  }
+}
+
+/** -------------------- DriedFlower -------------------- */
+.dried-flower {
+  top: 16px;
+  left: 0;
+  width: 4px;
+  height: 100px;
+  border-radius: 2px;
+  background: #32323c;
+  transform-origin: 2px 2px;
+  transform: rotate(4deg);
+  animation: driedFlower 2s ease infinite;
+
+  &::before {
+    top: 30px;
+    left: 0;
+    width: 4px;
+    height: 20px;
+    border-radius: 4px;
+    background: #32323c;
+    box-shadow: 10px 10px #32323c, 20px 20px #32323c;
+    transform-origin: 0 2px;
+    transform: rotate(44deg);
+  }
+
+  &::after {
+    left: 2px;
+    top: 33px;
+    width: 4px;
+    height: 20px;
+    border-radius: 4px;
+    background: #32323c;
+    box-shadow: -10px 10px #32323c, -21px 20px #32323c;
+    transform-origin: 0 2px;
+    transform: rotate(-44deg);
+  }
+
+  &__petals {
+    top: 88px;
+    left: -16px;
+    width: 33px;
+    height: 17px;
+    border-radius: 30px 30px 0 0;
+    background: #52383c;
+
+    &::before {
+      top: 7px;
+      left: 10px;
+      width: 14px;
+      height: 14px;
+      background: #52383c;
+      transform: rotate(45deg);
+    }
+  }
+}
+
+/** -------------------- HouseWindow -------------------- */
+.greenery {
+  top: -33px;
+  left: -210px;
+  width: 100px;
+  height: 12px;
+  border-radius: 20px;
+  background: #183133;
+  box-shadow: -30px 9px 0 3px #183133;
+
+  &::before {
+    top: 33px;
+    left: 90px;
+    width: 92px;
+    height: 9px;
+    border-radius: 0 0 10px 10px;
+    background: #30403f;
+  }
+
+  &::after {
+    top: 39px;
+    left: 97px;
+    width: 20px;
+    height: 15px;
+    border-radius: 0 0 10px 10px;
+    background: #30403f;
+  }
+}
+
+@mixin leaf($deg) {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 15px solid #30403f;
+  transform: rotate($deg);
+}
+
+@mixin vein() {
+  left: -5px;
+  top: -17px;
+  width: 10px;
+  height: 10px;
+  background: #30403f;
+  transform: rotate(39deg);
+}
+
+.leaf-1 {
+  top: -23px;
+  left: -30px;
+  @include leaf(100deg);
+
+  &::before {
+    @include vein;
+  }
+}
+
+.leaf-2 {
+  top: 14px;
+  left: -7px;
+  @include leaf(-54deg);
+
+  &::before {
+    @include vein;
+  }
+}
+
+.leaf-3 {
+  top: 50px;
+  left: 7px;
+  @include leaf(54deg);
+
+  &::before {
+    @include vein;
+  }
+}
+
+.leaf-4 {
+  top: 94px;
+  left: -3px;
+  @include leaf(-54deg);
+
+  &::before {
+    @include vein;
+  }
+}
+
+.leaf-5 {
+  top: 123px;
+  left: -3px;
+  @include leaf(-66deg);
+
+  &::before {
+    @include vein;
+  }
+}
+
+.leaf-6 {
+  top: 140px;
+  left: 5px;
+  @include leaf(58deg);
+
+  &::before {
+    @include vein;
+  }
+}
+
+.leaf-7 {
+  top: 219px;
+  left: -39px;
+  @include leaf(-2deg);
+  z-index: 1;
+
+  &::before {
+    @include vein;
+  }
+}
+
+.mushroom-1 {
+  top: 180px;
+  left: -39px;
+  width: 11px;
+  height: 12px;
+  border-radius: 100% 100% 2px 2px;
+  background: #1c596c;
+
+  &::before {
+    top: 12px;
+    left: 3px;
+    width: 5px;
+    height: 10px;
+    background: #3b4a3e;
+  }
+}
+
+.mushroom-2 {
+  top: 168px;
+  left: -23px;
+  width: 11px;
+  height: 14px;
+  background: #1c596c;
+  border-radius: 100% 100% 2px 2px;
+
+  &::before {
+    top: 14px;
+    left: 4px;
+    width: 15px;
+    height: 6px;
+    border-left: 4px solid #3b4a3e;
+    border-bottom: 4px solid #3b4a3e;
+    border-radius: 0 0 0 4px;
+  }
+}
+
+.lamp {
+  top: 160px;
+  left: -200px;
+  width: 32px;
+  height: 22px;
+  background: linear-gradient(to right, #203152 20%, #5a5a4a 21%, #5a5a4a 79%, #203152 80%);
+  border-top: 16px solid #203152;
+  box-shadow: 0 0 0 4px #00172a;
+
+  &::before {
+    top: -46px;
+    left: -4px;
+    width: 6px;
+    border-left: 17px solid transparent;
+    border-right: 17px solid transparent;
+    border-bottom: 26px solid #012135;
+  }
+
+  &::after {
+    top: -65px;
+    left: 8px;
+    width: 12px;
+    height: 18px;
+    border-radius: 17px 17px 100% 100%;
+    border: 2px solid #012135;
+  }
+}
+
+.casket {
+  top: 165px;
+  left: -150px;
+  width: 27px;
+  height: 29px;
+  border: 4px solid #012135;
+  background: linear-gradient(to bottom, #182b41 38%, #012135 39%, #012135 53%, #182b41 54%);
+
+  &::before {
+    top: -9px;
+    left: -8px;
+    width: 43px;
+    height: 6px;
+    border-radius: 0 0 4px 4px;
+    background: #012135;
+  }
+
+  &::after {
+    top: 3px;
+    left: 12px;
+    width: 4px;
+    height: 4px;
+    background: #012135;
+    border-radius: 50%;
+    box-shadow: 0 17px 0 0 #012135;
+  }
+}
+
+.pineapple {
+  top: 97px;
+  left: -153px;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  border-top: 8px dashed #233b37;
+  border-left: 8px dashed #233b37;
+  border-radius: 100% 0 0 0;
+  transform: rotate(45deg);
+
+  &::before {
+    top: -1px;
+    left: -1px;
+    width: 33px;
+    height: 33px;
+    background: #233b37;
+    border-radius: 100% 0 0 0;
+  }
+
+  &::after {
+    top: 21px;
+    left: 21px;
+    width: 26px;
+    height: 25px;
+    border-radius: 10px 10px 10px 10px / 23px 23px 23px 23px;
+    background: #222131;
+    transform: rotate(-45deg);
+  }
+}
+
+.berries {
+  top: 186px;
+  left: -166px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #52383c;
+  box-shadow: 5px 8px 0 0 #52383c, -5px 8px 0 0 #52383c, -52px 8px 0 0 #52383c, -42px 8px 0 0 #52383c;
+}
+
+/** -------------------- HouseWall -------------------- */
+@mixin batBody {
+  width: 22px;
+  height: 46px;
+  background: #182129;
+  border-radius: 20px 20px 0 0;
+  transform-origin: top center;
+  z-index: 1;
+  animation: bat 3s linear infinite;
+
+  &::before {
+    top: 0px;
+    left: -5px;
+    width: 21px;
+    height: 31px;
+    border-radius: 0 12px 8px 7px;
+    background: #182129;
+    transform: rotate(27deg);
+  }
+
+  &::after {
+    top: 0px;
+    left: 4px;
+    width: 21px;
+    height: 31px;
+    border-radius: 12px 0 7px 8px;
+    background: #182129;
+    transform: rotate(-27deg);
+  }
+}
+
+@mixin batHead {
+  div {
+    top: 46px;
+    left: 0;
+    border-right: 7px solid transparent;
+    border-top: 7px solid #182129;
+
+    &::before {
+      top: -7px;
+      left: 15px;
+      border-left: 7px solid transparent;
+      border-top: 7px solid #182129;
+    }
+
+    &::after {
+      top: -21px;
+      left: 4px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #726332;
+      box-shadow: 10px 0 0 #726332;
+      animation: batEys 3s linear infinite;
+    }
+  }
+}
+
+.bat-1 {
+  top: -40px;
+  left: 118px;
+ 
+  @include batBody;
+  @include batHead;
+}
+
+.bat-2 {
+  top: -50px;
+  left: 161px;
+  
+  @include batBody;
+  @include batHead;
+  animation-delay: -2s;
+}
+
+/** -------------------- Besom -------------------- */
+.besom {
+  top: 89px;
+  left: 72px;
+  width: 39px;
+  height: 39px;
+  border-radius: 2px 81%;
+  background: #3b4a3e;
+  transform-origin: -13px -55px;
+  transform: rotate(21deg);
+  z-index: 2;
+
+  &::before {
+    top: -21px;
+    left: -16px;
+    width: 7px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 26px solid #30403f;
+    transform: rotate(-40deg);
+  }
+
+  &::after {
+    top: -10px;
+    left: 7px;
+    width: 22px;
+    height: 22px;
+    border-radius: 0 90%;
+    background: #30403f;
+    transform: rotate(-40deg);
+    -webkit-box-reflect: left 3px;
+  }
+
+  .rope {
+    top: -59px;
+    left: -6px;
+    width: 6px;
+    height: 61px;
+    border-radius: 4px;
+    background: #464230;
+    transform: rotate(-21deg);
+    z-index: 1;
+
+    &::before {
+      top: 59px;
+      left: -10px;
+      width: 16px;
+      height: 5px;
+      border-radius: 4px;
+      background: #464230;
+      transform: rotate(-26deg);
+    }
+  }
+}
+
+/** -------------------- MothRope -------------------- */
+.moth-rope {
+  top: 0px;
+  left: 254px;
+  width: 4px;
+  height: 26px;
+  border-radius: 0 0 4px 4px;
+  background: #393931;
+  box-shadow: 14px 0 0 0 #393931, 27px 0 0 0 #393931;
+
+  &::before {
+    top: 24px;
+    left: 1px;
+    width: 151px;
+    height: 30px;
+    border: 4px solid #312e36;
+    border-top: none;
+    border-radius: 0 0 120px 120px;
+  }
+
+  &::after {
+    top: -37px;
+    left: 114px;
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    background: radial-gradient(#32323c 20%, transparent 21%, transparent 50%, #32323c 51%);
   }
 }
