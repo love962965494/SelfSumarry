@@ -1870,7 +1870,613 @@ body {
       width: 163px;
       height: 71px;
       border-radius: 0 0 0 70px;
-      background: linear-gradient(193deg, transparent 38%, #de7352 20%);
+      background: linear-gradient(193deg, transparent 38%, #de7352 38%);
+    }
+
+    &::after {
+      top: 20px;
+      left: 0;
+      width: 80px;
+      height: 25px;
+      border-radius: 0 0 0 30px;
+      box-shadow: inset 57px 0 0 0 #de7352;
     }
   }
+
+  &__hat-3 {
+    top: -84px;
+    left: -110px;
+    width: 74px;
+    height: 70px;
+    border-radius: 32px 0 0 0;
+    background: #de7352;
+
+    &::before {
+      top: 22px;
+      left: 105px;
+      width: 118px;
+      height: 83px;
+      border-radius: 0 0 77px 0;
+      background: #f78c42;
+    }
+
+    &::after {
+      top: 16px;
+      left: 104px;
+      width: 120px;
+      height: 76px;
+      border-radius: 16px 0 90px 0;
+      background: #bd6b42;
+    }
+  }
+
+  &__hat-4 {
+    top: -100px;
+    left: -32px;
+    width: 32px;
+    height: 103px;
+    border-radius: 0 29px 0 0;
+    background: #bd6b42;
+
+    &::before {
+      top: 16px;
+      left: 53px;
+      width: 14px;
+      height: 17px;
+      border-radius: 14px 0 0 0;
+      background: #bd6b42;
+      -webkit-box-reflect: right 11px;
+    }
+
+    &::after {
+      top: 6px;
+      left: 121px;
+      width: 25px;
+      height: 26px;
+      border-radius: 0 24px 0 0;
+      background: #bd6b42;
+    }
+  }
+
+  &__hat-5 {
+    top: -57px;
+    left: -60px;
+    border-right: 54px solid transparent;
+    border-bottom: 44px solid #de7352;
+
+    &::before {
+      top: 0px;
+      left: -15px;
+      border-right: 54px solid transparent;
+      border-bottom: 44px solid #de7352;
+    }
+
+    &::after {
+      top: 25px;
+      left: -67px;
+      width: 30px;
+      height: 16px;
+      border-radius: 0 0 30px 30px;
+      background: #bd6b42;
+    }
+  }
+
+  &__hat-6 {
+    top: -68px;
+    left: -169px;
+    width: 26px;
+    height: 13px;
+    border-radius: 0 0 20px 20px;
+    background: #b04d43;
+
+    &::before {
+      top: -13px;
+      left: 14px;
+      width: 20px;
+      height: 20px;
+      border-radius: 0 70%;
+      background: #f6ac43;
+    }
+
+    &::after {
+      top: 24px;
+      left: -6px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #b04d43;
+      box-shadow: 12px 0 #b04d43, 24px 0 #b04d43, 6px 9px #b04d43, 18px 9px #b04d43, 29px 22px #b04d43, 53px 39px #3b4358, 67px 39px #3b4358;
+    }
+  }
+
+  &__hat-7 {
+    top: -27px;
+    left: 80px;
+    width: 25px;
+    height: 25px;
+    border-radius: 0 80%;
+    background: #f6ac43;
+
+    &::before {
+      top: 2px;
+      left: -41px;
+      width: 24px;
+      height: 24px;
+      border-radius: 80% 0;
+      background: #505c42;
+      box-shadow: -199px 27px #8da422;
+    }
+
+    &::after {
+      top: -29px;
+      left: -51px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f1c260;
+      box-shadow: 13px 0 #f1c260;
+    }
+  }
+
+  &__forelock {
+    top: -32px;
+    left: -59px;
+    width: 29px;
+    height: 35px;
+    border-radius: 0 90% 0 0;
+    background: #7b4a31;
+
+    &::before {
+      top: -30px;
+      left: 21px;
+      width: 36px;
+      height: 65px;
+      border-radius: 0 54px 40px 0;
+      background: #7b4a31;
+    }
+
+    &::after {
+      top: 25px;
+      left: 3px;
+      width: 15px;
+      height: 24px;
+      border-radius: 10px 0 0 20px;
+      background: #7b4a31;
+      transform-origin: right top;
+      transform: rotate(-42deg);
+    }
+  }
+
+  &__cat {
+    top: -114px;
+    left: -74px;
+    width: 56px;
+    height: 90px;
+    border-radius: 30px;
+    background: #3b4358;
+    animation: cat 30s linear infinite;
+
+    &::before {
+      top: 64px;
+      left: -18px;
+      width: 30px;
+      height: 17px;
+      border-radius: 0 0 0 20px;
+      background: #3b4358;
+      animation: catHead 30s linear infinite;
+    }
+
+    &::after {
+      top: 15px;
+      left: 12px;
+      width: 10px;
+      height: 8px;
+      border-radius: 50%;
+      background: #f1c260;
+      box-shadow: 23px 0 #f1c260;
+      animation: catEyes 30s linear infinite;
+    }
+  }
+
+  &__cat-face {
+    top: 27px;
+    left: 23px;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #1a252f;
+
+    &::before {
+      top: -40px;
+      left: -20px;
+      width: 12px;
+      height: 17px;
+      border-radius: 10px 2px 6px 0;
+      background: #3b4358;
+    }
+
+    &::after {
+      top: -40px;
+      left: 9px;
+      width: 12px;
+      height: 17px;
+      border-radius: 2px 10px 0 6px;
+      background: #3b4358;
+      transform-origin: bottom left;
+      transform: rotate(90deg) translate(-6px, -6px);
+    }
+  }
+
+  &__cat-tail {
+    top: -117px;
+    left: -116px;
+    width: 22px;
+    height: 57px;
+    border-radius: 0 20px 0 13px;
+    background: linear-gradient(to bottom, #445a66 36%, #3b4358 36%);
+  }
+
+  &__coat-1 {
+    top: 282px;
+    left: 88px;
+    width: 159px;
+    height: 176px;
+    border-radius: 10px 10px 20px 20px;
+    background: #263449;
+
+    &::before {
+      top: 0px;
+      left: -69px;
+      width: 69px;
+      height: 176px;
+      border-radius: 60px 0 16px 13px;
+      background: #263449;
+      transform-origin: bottom left;
+      transform: skew(-7deg);
+      animation: alchemistLeftCloak 30s linear infinite;
+    }
+
+    &::after {
+      top: 0px;
+      left: 161px;
+      width: 47px;
+      height: 176px;
+      border-radius: 0 60px 17px 27px;
+      background: #263449;
+      transform-origin: bottom left;
+      transform: skew(10deg);
+      animation: alchemistRightCloak 30s linear infinite;
+    }
+  }
+
+  &__coat-2 {
+    top: 215px;
+    left: 71px;
+    width: 70px;
+    height: 60px;
+    border-radius: 0 0 10px 100px;
+    background: #304252;
+    transform-origin: bottom right;
+    transform: rotate(-45deg);
+    animation: alchemistLeftShoulder 30s linear infinite;
+
+    &::before {
+      top: -13px;
+      left: -41px;
+      width: 73px;
+      height: 37px;
+      background: #304252;
+      transform-origin: bottom left;
+      transform: rotate(21deg) skew(-38deg);
+    }
+
+    &::after {
+      top: 0px;
+      right: -70px;
+      width: 70px;
+      height: 100%;
+      background: #304252;
+    }
+  }
+
+  &__coat-3 {
+    top: 203px;
+    left: 164px;
+    width: 70px;
+    height: 60px;
+    border-radius: 0 0 100px 10px;
+    background: #304252;
+    transform-origin: bottom left;
+    transform: rotate(42deg);
+    animation: alchemistRightShoulder 30s linear infinite;
+
+    &::before {
+      top: -15px;
+      left: 31px;
+      width: 93px;
+      height: 50px;
+      background: #304252;
+      transform-origin: bottom right;
+      transform: rotate(-19deg) skew(38deg);
+    }
+
+    &::after {
+      top: 0px;
+      left: -70px;
+      width: 70px;
+      height: 100%;
+      background: #304252;
+    }
+  }
+
+  &__body {
+    top: 230px;
+    left: 87px;
+    width: 138px;
+    height: 189px;
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    background: #424241;
+  }
+}
+
+/** -------------------- Chair -------------------- */
+.chair {
+  top: 586px;
+  left: 326px;
+  width: 156px;
+  height: 20px;
+  background: #564239;
+}
+
+/** -------------------- Pedal -------------------- */
+.pedal {
+  top: 565px;
+  left: 267px;
+  width: 6px;
+  height: 37px;
+  border-radius: 3px;
+  background: #524342;
+  transform-origin: bottom center;
+  transform: rotate(77deg);
+  animation: alchemistPedal 30s linear infinite;
+
+  & > div {
+    top: 0px;
+    left: 0px;
+    width: 6px;
+    height: 45px;
+    border-radius: 3px;
+    background: #524342;
+    transform-origin: 3px 3px;
+    transform: rotate(44deg);  
+    animation: alchemistPedal-1 30s linear infinite;
+
+    & > div {
+      top: 39px;
+      left: 0px;
+      width: 6px;
+      height: 27px;
+      border-radius: 3px;
+      background: #524342;
+      transform-origin: 3px 3px;
+      transform: rotate(134deg);
+      animation: alchemistPedal-2 30s linear infinite;
+
+      &::before {
+        bottom: -6px;
+        left: -17px;
+        width: 48px;
+        height: 13px;
+        border-radius: 10px;
+        background: #433532;
+        transform-origin: center center;
+        transform: rotate(-64deg);
+        animation: alchemistPedal-3 30s linear infinite;
+      }
+    }
+  }
+}
+
+/** -------------------- Table -------------------- */
+.table {
+  top: 496px;
+  left: 0px;
+  width: 800px;
+  height: 22px;
+  background: #564239;
+  box-shadow: 0 25px 0 5px #312e36;
+  z-index: 1;
+
+  &::before {
+    top: 0px;
+    left: 572px;
+    width: 109px;
+    height: 100%;
+    border-radius: 50px;
+    background: #7a5939;
+    box-shadow: -267px 0 0 0 #9c7b31, -187px 0 0 0 #9c7b31, -507px 0 0 0 #7a5939, -450px 0 0 0 #7a5939, -310px 0 0 0 #7a5939, -144px 0 0 0 #7a5939;
+  }
+}
+
+/** -------------------- Cage -------------------- */
+.cage {
+  top: 505px;
+  left: 589px;
+  width: 72px;
+  height: 120px;
+  border: 7px solid #32323c;
+  border-radius: 100px 64px 0 0;
+  -webkit-box-reflect: right -52px;
+  box-sizing: border-box;
+  z-index: 1;
+
+  &::before {
+    top: -7px;
+    left: 35px;
+    width: 7px;
+    height: 100px;
+    background: #383949;
+    box-shadow: 0 -32px 0 -1px #32323c;
+  }
+
+  &::after {
+    top: -14px;
+    left: 33px;
+    width: 13px;
+    height: 7px;
+    background: #3b4358;
+    box-shadow: -4px 55px 0 0 #3b4358, -16px 55px 0 0 #3b4358, -28px 55px 0 0 #3b4358, -40px 55px 0 0 #3b4358, -45px 55px 0 0 #3b4358;
+  }
+}
+
+/** -------------------- Basket -------------------- */
+.basket {
+  top: 531px;
+  left: 647px;
+  width: 131px;
+  height: 100px;
+  z-index: 1;
+  
+  &::before {
+    top: 12px;
+    left: 64px;
+    width: 30px;
+    height: 30px;
+    border-radius: 80% 0;
+    background: #433532;
+  }
+
+  &::after {
+    top: 0px;
+    left: 60px;
+    width: 9px;
+    height: 80px;
+    border-radius: 10px;
+    background: #524342;
+  }
+
+  div {
+    top: 10px;
+    left: 36px;
+    width: 26px;
+    height: 26px;
+    border-radius: 70% 0;
+    background: #30403f;
+    transform: rotate(-80deg);
+
+    &::before {
+      top: 2px;
+      left: -93px;
+      width: 130px;
+      height: 70px;
+      border-top: 10px solid #3a3031;
+      border-radius: 0 0 100px 100px;
+      background: #464230;
+      transform: rotate(80deg);
+      box-sizing: border-box;
+    }
+
+    &::after {
+      top: 51px;
+      left: 18px;
+      width: 15px;
+      height: 15px;
+      border-radius: 14% 80%;
+      background: #3c5843;
+      box-shadow: -14px -53px 0 -2px #3c5843, -25px -97px 0 2px #3c5843;
+      transform: rotate(-10deg);
+    }
+  }
+}
+
+/** -------------------- Bottle -------------------- */
+.bottle-1 {
+  top: -174px;
+  left: 785px;
+  width: 20px;
+  height: 174px;
+  background: #1c596c;
+
+  &::before {
+    top: 27px;
+    left: -23px;
+    width: 23px;
+    height: 147px;
+    border-radius: 23px 0 0 8px / 40px 0 0 8px;
+    background: #1c596c;
+  }
+
+  &::after {
+    top: -10px;
+    left: -5px;
+    width: 21px;
+    height: 12px;
+    border-radius: 4px;
+    background: #519cbc;
+  }
+
+  div:nth-child(1) {
+    top: 47px;
+    left: 5px;
+    width: 30px;
+    height: 66px;
+    border-radius: 100% 0 0 100%;
+    background: #3c5843;
+
+    &::before {
+      top: 29px;
+      left: -12px;
+      width: 13px;
+      height: 41px;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      background: #5a844f;
+      transform: rotate(-19deg);
+    }
+
+    &::after {
+      top: 64px;
+      left: -20px;
+      width: 40px;
+      height: 54px;
+      border-radius: 15px 0 0 4px;
+      background: #564239;
+    }
+  }
+
+  div:nth-child(2) {
+    top: 47px;
+    left: -15px;
+    width: 26px;
+    height: 44px;
+    border-radius: 23px 10px 10px 25px;
+    background: #519cbc6e;
+
+    &::before {
+      top: 7px;
+      left: 7px;
+      width: 16px;
+      height: 15px;
+      border-radius: 8px 10px 12px 12px;
+      background: #519cbc;
+    }
+
+    &::after {
+      top: 82px;
+      left: 7px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: #8f988e;
+      box-shadow: 10px -11px 0 0 #3c313c, 13px -23px 0 -1px #3c313c;
+    }
+  }
+}
+
+.bottle-2 {
+  top: -98px;
+  left: 694px;
+  width: 38px;
+  height: 12px;
+  border-radius: 12px;
+  background: #bc8740;
+  box-shadow: inset -11px -5px 0 0 #965d3f;
 }
