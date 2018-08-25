@@ -1105,91 +1105,51 @@ body {
   }
 }
 
-@mixin leaf($deg) {
+@mixin leaf($top, $left, $deg) {
+  top: $top;
+  left: $left;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 15px solid #30403f;
   transform: rotate($deg);
-}
 
-@mixin vein() {
-  left: -5px;
-  top: -17px;
-  width: 10px;
-  height: 10px;
-  background: #30403f;
-  transform: rotate(39deg);
+  &::before {  
+    left: -5px;
+    top: -17px;
+    width: 10px;
+    height: 10px;
+    background: #30403f;
+    transform: rotate(39deg);
+  }
 }
 
 .leaf-1 {
-  top: -23px;
-  left: -30px;
-  @include leaf(100deg);
-
-  &::before {
-    @include vein;
-  }
+  @include leaf(-23px, -30px, 100deg);
 }
 
 .leaf-2 {
-  top: 14px;
-  left: -7px;
-  @include leaf(-54deg);
-
-  &::before {
-    @include vein;
-  }
+  @include leaf(14px, -7px, -54deg);
 }
 
 .leaf-3 {
-  top: 50px;
-  left: 7px;
-  @include leaf(54deg);
-
-  &::before {
-    @include vein;
-  }
+  @include leaf(50px, 7px, 54deg);
 }
 
 .leaf-4 {
-  top: 94px;
-  left: -3px;
-  @include leaf(-54deg);
-
-  &::before {
-    @include vein;
-  }
+  @include leaf(94px, -3px, -54deg);
 }
 
 .leaf-5 {
-  top: 123px;
-  left: -3px;
-  @include leaf(-66deg);
-
-  &::before {
-    @include vein;
-  }
+  @include leaf(123px, -3px, -66deg);
 }
 
 .leaf-6 {
-  top: 140px;
-  left: 5px;
-  @include leaf(58deg);
-
-  &::before {
-    @include vein;
-  }
+  @include leaf(140px, 5px, 58deg);
 }
 
 .leaf-7 {
-  top: 219px;
-  left: -39px;
-  @include leaf(-2deg);
+  @include leaf(219px, -39px, -2deg);
   z-index: 1;
-
-  &::before {
-    @include vein;
-  }
 }
 
 .mushroom-1 {
@@ -1225,6 +1185,71 @@ body {
     border-left: 4px solid #3b4a3e;
     border-bottom: 4px solid #3b4a3e;
     border-radius: 0 0 0 4px;
+  }
+}
+
+.mushroom-3 {
+  top: -41px;
+  left: 558px;
+  width: 18px;
+  height: 28px;
+  border: 8px solid #d6e7ca;
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+
+  &::before {
+    top: 34px;
+    left: 2px;
+    width: 14px;
+    height: 7px;
+    background: #d6e7ca;
+  }
+
+  &::after {
+    top: -23px;
+    left: -8px;
+    width: 8px;
+    height: 25px;
+    background: #d6e7ca;
+  }
+
+  > div {
+    top: 4px;
+    left: -22px;
+    width: 10px;
+    height: 12px;
+    border-left: 8px solid #d6e7ca;
+    border-bottom: 8px solid #d6e7ca;
+    border-radius: 0 0 0 13px;
+
+    &::before {
+      top: -10px;
+      left: -20px;
+      width: 29px;
+      height: 10px;
+      border-radius: 10px 10px 0 0;
+      background: #964554;
+      box-shadow: 42px 0 0 0 #f78c42, 15px -27px 0 0 #d66363;
+      z-index: 1;
+    }
+  }
+}
+
+.mushroom-4 {
+  top: -20px;
+  left: 520px;
+  width: 34px;
+  height: 16px;
+  border-radius: 19px 19px 2px 2px;
+  background: #699842;
+
+  &::before {
+    top: 16px;
+    left: 5px;
+    width: 24px;
+    height: 4px;
+    border-radius: 0 0 10px 10px;
+    background: #d6e7ca;
   }
 }
 
@@ -2479,4 +2504,1023 @@ body {
   border-radius: 12px;
   background: #bc8740;
   box-shadow: inset -11px -5px 0 0 #965d3f;
+
+  &::before {
+    top: 12px;
+    left: -4px;
+    width: 46px;
+    height: 8px;
+    border-radius: 4px;
+    background: #c7decb;
+    box-shadow: inset -28px 0px 0 0 #8ca59c;
+  }
+
+  &::after {
+    top: 20px;
+    left: 0px;
+    width: 39px;
+    height: 6px;
+    background: #597b8b;
+    box-shadow: 0 4px 0 -2px #9c735a;
+  }
+
+  & > div:nth-child(1) {
+    top: 26px;
+    left: -28px;
+    width: 97px;
+    height: 72px;
+    border-radius: 32px 32px 15px 15px;
+    background: #8cbc9b;
+
+    &::after {
+      top: 8px;
+      left: 46px;
+      width: 32px;
+      height: 40px;
+      border-radius: 16px 13px 12px 12px;
+      background: #ffffff42;
+    }
+  }
+
+  &__dude-1 {
+    top: 10px;
+    left: 35px;
+    width: 23px;
+    height: 18px;
+    border-radius: 10px;
+    background: #1a252f;
+    transform: rotate(8deg);
+    animation: bottle2Dude1 3s ease infinite;
+    animation-delay: -1.2s;
+
+    &::before {
+      top: 4px;
+      left: 4px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #f1c260;
+      box-shadow: 9px 0px 0 0 #f1c260;
+    }
+  }
+
+  &__dude-2 {
+    top: 41px;
+    left: 4px;
+    width: 19px;
+    height: 15px;
+    border-radius: 10px;
+    background: #1a252f;
+    transform: rotate(8deg);
+    animation: bottle2Dude2 3s ease infinite;
+    animation-delay: -2.3s;
+
+    &::before {
+      top: 4px;
+      left: 4px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #f1c260;
+      box-shadow: 6px 0 0 0 #f1c260;
+    }
+  }
+
+  &__dude-3 {
+    top: 39px;
+    left: 52px;
+    width: 17px;
+    height: 14px;
+    border-radius: 10px;
+    background: #1a252f;
+    transform: rotate(-15deg);
+    animation: bottle2Dude3 3s ease infinite;
+    animation-delay: -0.2s;
+
+    &::before {
+      top: 4px;
+      left: 3px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #f1c260;
+      box-shadow: 6px 0 0 0 #f1c260;
+    }
+  }
+}
+
+.bottle-3 {
+  top: -132px;
+  left: 594px;
+  width: 62px;
+  height: 13px;
+  border-radius: 8px;
+  background: #8cbc9b;
+  box-shadow: inset -35px 0 0 0 #2e759e;
+
+  &::before {
+    top: 13px;
+    left: 8px;
+    width: 46px;
+    height: 6px;
+    background: #074770;
+  }
+
+  &::after {
+    top: 32px;
+    left: -5px;
+    width: 17px;
+    height: 18px;
+    border-radius: 14px 9px 12px 12px;
+    background: #ffffff42;
+  }
+
+  & > div:nth-child(1) {
+    top: 19px;
+    left: -16px;
+    width: 94px;
+    height: 113px;
+    border-radius: 20px 20px 10px 10px;
+    background: #1c596c;
+
+    &::before {
+      top: 92px;
+      left: 13px;
+      width: 51px;
+      height: 7px;
+      border-radius: 10px 10px 0 0;
+      background: #599b8b;
+    }
+  }
+
+  @mixin dude($top, $left, $animationName, $animationDelay: 0s) {
+    top: $top;
+    left: $left;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #42adbd90;
+    transform: rotate(20deg);
+    animation: $animationName 5s ease $animationDelay infinite;
+
+    &::before {
+      top: 23px;
+      left: 21px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #68fbe5;
+      box-shadow: 6px 4px 0 -2px #68fbe5;
+    }
+
+    &::after {
+      top: 21px;
+      left: 25px;
+      width: 8px;
+      height: 8px;
+      border-radius: 90% 0;
+      background: #1a252f;
+      transform: rotate(-57deg);
+      -webkit-box-reflect: left 0px;
+    }
+  }
+
+  &__dude-1 {
+    @include dude(6px, 30px, bottle3Dude1, -2s);
+  }
+
+  &__dude-2 {
+    @include dude(10px, -12px, bottle3Dude2, -1s);
+  }
+
+  &__dude-3 {
+    @include dude(41px, 7px, bottle3Dude3);
+  }
+
+  @mixin dust($top, $left, $width, $height, $animationName, $animationDelay) {
+    top: $top;
+    left: $left;
+    width: $width;
+    height: $height;
+    background: #2283c7;
+    animation: $animationName 5s linear $animationDelay infinite;
+  }
+
+  .dust-1 {
+    @include dust(-10px, 45px, 7px, 7px, bottle3Dust1, -1s);
+  }
+
+  .dust-2 {
+    @include dust(-12px, 40px, 5px, 5px, bottle3Dust2, -2s);
+  }
+
+  .dust-3 {
+    @include dust(-12px, 20px, 6px, 6px, bottle3Dust3, -3s);
+  }
+
+  .dust-4 {
+    @include dust(-28px, 20px, 6px, 6px, bottleDust4, -4s);
+  }
+
+  .dust-5 {
+    @include dust(-22px, 54px, 6px, 6px, bottle3Dust5, -1.4s);
+  }
+
+  .dust-6 {
+    @include dust(-42px, 34px, 5px, 5px, bottle3Dust6, -2.1s);
+  }
+
+  .dust-7 {
+    @include dust(-62px, 34px, 5px, 5px, bottle3Dust7, -4.1s);
+  }
+
+  .dust-8 {
+    @include dust(-62px, 2px, 6px, 6px, bottle3Dust8, -3.1s);
+  }
+
+  .dust-9 {
+    @include dust(-58px, 44px, 6px, 6px, bottle3Dust9, -2.6s);
+  }
+
+  .dust-10 {
+    @include dust(-74px, 52px, 6px, 6px, bottle3Dust10, 0s);
+  }
+}
+
+.bottle-4 {
+  top: -54px;
+  left: 188px;
+  width: 38px;
+  height: 54px;
+  border-radius: 5px;
+  background: #8cc673;
+
+  &::before {
+    top: -10px;
+    left: 2px;
+    width: 33px;
+    height: 10px;
+    border-radius: 6px;
+    background: #bc8740;
+  }
+
+  &::after {
+    top: -2px;
+    left: 6px;
+    width: 26px;
+    height: 3px;
+    background: #424241;
+    box-shadow: 0 4px 0 1px #7b5a21;
+  }
+
+  &__dude {
+    top: 31px;
+    left: 10px;
+    width: 18px;
+    height: 15px;
+    border-radius: 3px;
+    background: #41253b;
+
+    &::before {
+      top: 15px;
+      left: 0px;
+      width: 8px;
+      height: 4px;
+      border-radius: 3px 0 0 0;
+      background: #964554;
+      -webkit-box-reflect: right 2px;
+    }
+
+    &--head {
+      top: -12px;
+      left: -2px;
+      width: 22px;
+      height: 21px;
+
+      &::before {
+        top: 6px;
+        left: 4px;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #313139;
+        -webkit-box-reflect: right 3px;
+        z-index: 1;
+      }
+
+      &::after {
+        top: 0px;
+        left: 0px;
+        width: 22px;
+        height: 21px;
+        border-radius: 9px;
+        background: #964554;
+      }
+    }
+
+    @mixin hair($top, $left, $width, $height, $deg) {
+      top: $top;
+      left: $left;
+      width: $width;
+      height: $height;
+      border-radius: 90% 0;
+      background: #457e2d;
+      transform-origin: bottom left;
+      transform: rotate($deg);
+    }
+
+    &--hair1 {
+      @include hair(-5px, 6px, 8px, 8px, -70deg);
+    }
+
+    &--hair2 {
+      @include hair(-7px, 11px, 10px, 10px, -45deg);
+    }
+
+    &--hair3 {
+      @include hair(-5px, 15px, 8px, 8px, -10deg);
+    }
+  }
+}
+
+/** -------------------- Plants -------------------- */
+.plants {
+  top: -16px;
+  left: 29px;
+  width: 87px;
+  height: 16px;
+  background: #464230;
+
+  &::before {
+    top: -106px;
+    left: 4px;
+    width: 8px;
+    height: 78px;
+    background: #464230;
+    transform-origin: bottom left;
+    transform: skew(-17deg);
+  }
+
+  &::after {
+    top: -100px;
+    left: 8px;
+    width: 10px;
+    height: 32px;
+    border-radius: 100% 100% 0 0;
+    background: #464230;
+    transform: rotate(-35deg);
+  }
+
+  > div {
+    top: -62px;
+    left: 15px;
+    width: 40px;
+    height: 62px;
+    border-radius: 21px 20px 0 0;
+    background: #216037;
+
+    &::before {
+      top: -67px;
+      left: 18px;
+      width: 22px;
+      height: 22px;
+      border-radius: 80% 0;
+      background: #216037;
+      transform-origin: bottom left;
+      transform: rotate(0deg);
+      animation: leaf 30s ease infinite;
+    }
+
+    &::after {
+      top: 26px;
+      left: -27px;
+      width: 27px;
+      height: 36px;
+      border-radius: 10px;
+      background: #233b37;
+    }
+  }
+}
+
+.plants-2 {
+  top: -116px;
+  left: 156px;
+  width: 126px;
+  height: 116px;
+
+  & > div:nth-child(1) {
+    top: 73px;
+    left: 8px;
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: #433532;
+
+    &::before {
+      top: 4px;
+      left: 2px;
+      width: 10px;
+      height: 10px;
+      background: #433532;
+    }
+
+    &::after {
+      top: 16px;
+      left: -2px;
+      width: 10px;
+      height: 10px;
+      background: #433532;
+      transform: rotate(40deg);
+    }
+  }
+
+  & > div:nth-child(2) {
+    top: 51px;
+    left: -2px;
+    width: 65px;
+    height: 65px;
+    border-radius: 0 100% 0 100%;
+    background: #14775d;
+    transform-origin: bottom right;
+    transform: rotate(63deg);
+    animation: plants2 30s linear infinite;
+  }
+
+  & > div:nth-child(3) {
+    top: 76px;
+    left: 32px;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 100% 0 100%;
+    background: #38683e;
+    transform-origin: bottom right;
+    transform: rotate(86deg);
+    animation: plants3 30s linear infinite;
+  }
+
+  & > div:nth-child(4) {
+    top: 86px;
+    left: 52px;
+    width: 30px;
+    height: 30px;
+    border-radius: 0 100% 0 100%;
+    background: #3c5843;
+    transform-origin: bottom right;
+    transform: rotate(112deg);
+    animation: plants4 30s linear infinite;
+  }
+
+  & > div:nth-child(5) {
+    top: 62px;
+    left: 14px;
+    width: 55px;
+    height: 55px;
+    border-radius: 0 100% 0 100%;
+    background: #3c5843;
+    transform-origin: bottom right;
+    transform: rotate(26deg);
+    animation: plants5 30s linear infinite;
+  }
+
+  & > div:nth-child(6) {
+    top: 21px;
+    left: 60px;
+    width: 6px;
+    height: 92px;
+    background: #298b43;
+    transform-origin: bottom center;
+    animation: plants6 30s linear infinite;
+
+    &::before {
+      top: -6px;
+      left: -17px;
+      width: 18px;
+      height: 18px;
+      border-radius: 80% 0;
+      background: #3c5843;
+      transform-origin: top right;
+      transform: rotate(-12deg);
+      -webkit-box-reflect: right;
+    }
+
+    &::after {
+      top: -19px;
+      left: -12px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #dfa862;
+      box-shadow: 9px -3px 0 0 #77354f, -2px 12px 0 0 #ad5261, 7px 8px 0 0 #ad5261, 17px 5px 0 0 #77354f;
+    }
+  }
+}
+
+/** -------------------- Nut -------------------- */
+.nut {
+  top: -19px;
+  left: 230px;
+  width: 20px;
+  height: 20px;
+  border-radius: 60% 80% 0;
+  background: linear-gradient(122deg, #3a3129 43%, #b79628 44%);
+  transform: rotate(-12deg);
+}
+
+/** -------------------- Skull -------------------- */
+.skull {
+  top: -52px;
+  left: 26px;
+  width: 39px;
+  height: 42px;
+  border-radius: 17px 15px 17px 19px;
+  background: linear-gradient(69deg, #8c9c7b 71%, #f7e773 72%);
+  transform-origin: 10px bottom;
+  animation: skull 30s linear infinite;
+
+  &::before {
+    top: 6px;
+    left: 35px;
+    height: 16px;
+    border-top: 14px solid transparent;
+    border-left: 22px solid #f7e773;
+  }
+
+  &::after {
+    top: 11px;
+    left: 17px;
+    width: 19px;
+    height: 19px;
+    border-radius: 10px 13px 15px 10px;
+    background: #313131;
+  }
+
+  > div:nth-child(1) {
+    top: 21px;
+    left: 57px;
+    width: 7px;
+    height: 18px;
+    border-radius: 0 10px 0 7px;
+    background: #f7e773;
+
+    &::before {
+      top: 11px;
+      left: -15px;
+      width: 4px;
+      height: 10px;
+      border-radius: 4px;
+      background: #f7e773;
+      box-shadow: 8px 0 0 0 #f7e773, 18px 0 0 0 #f7e773;
+    }
+
+    &::after {
+      top: 3px;
+      left: -4px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #313131;
+    }
+  }
+
+  > div:nth-child(2) {
+    top: -45px;
+    left: -18px;
+    width: 16px;
+    height: 22px;
+    border-left: 7px solid #8c9c7b;
+    border-bottom: 7px solid #8c9c7b;
+    border-radius: 0 0 0 29px;
+
+    &::before {
+      top: 10px;
+      left: 11px;
+      width: 8px;
+      height: 24px;
+      border-radius: 0 0 0 9px;
+      background: #8c9c7b;
+    }
+
+    &::after {
+      top: 26px;
+      left: 15px;
+      width: 8px;
+      height: 22px;
+      background: #8c9c7b;
+      transform: skew(20deg);
+    }
+  }
+}
+
+/** -------------------- Pot -------------------- */
+.pot {
+  &::before {
+    top: -113px;
+    left: 92px;
+    width: 97px;
+    height: 58px;
+    border-radius: 20px 23px 33px 30px;
+    background: linear-gradient(-9deg, #726332 31%, #5a5a4a 32%);
+    box-shadow: inset 7px -28px 0 0 rgba(0, 0, 0, .22);
+    transform: rotate(10deg);
+  }
+
+  &::after {
+    top: -76px;
+    left: 92px;
+    width: 98px;
+    height: 8px;
+    border-radius: 4px;
+    background: #ddad31;
+    box-shadow: inset 60px 0 0 0 #9c7b31;
+  }
+
+  & > div:nth-child(1) {
+    top: -99px;
+    left: 158px;
+    width: 15px;
+    height: 16px;
+    border-radius: 10%;
+    background: #ffffff42;
+
+    &::before {
+      top: 36px;
+      left: -55px;
+      width: 7px;
+      height: 63px;
+      background: #61542a;
+      transform: skew(-10deg);
+    }
+
+    &::after {
+      top: 36px;
+      left: 15px;
+      width: 7px;
+      height: 63px;
+      background: #61542a;
+      transform: skew(10deg);
+    }
+  }
+
+  & > div:nth-child(2) {
+    top: -123px;
+    left: 105px;
+    width: 66px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 12px solid #393939;
+    box-shadow: 0 -6px 0 0 #589471;
+    transform: rotate(10deg);
+
+    &::before {
+      top: 110px;
+      left: -10px;
+      width: 58px;
+      height: 6px;
+      border-radius: 10px 10px 0 0;
+      background: #29c88c;
+      transform: rotate(-10deg);
+    }
+
+    &::after {
+      top: 100px;
+      left: 67px;
+      width: 10px;
+      height: 6px;
+      border-radius: 10px 10px 0 0;
+      background: #29c88c;
+      transform: rotate(-10deg);
+    }
+  }
+
+  & > div:nth-child(3) {
+    &::before {
+      top: -4px;
+      left: 116px;
+      width: 6px;
+      height: 31px;
+      border-radius: 4px;
+      background: #29c88c;
+      transform-origin: top center;
+    }
+
+    &::after {
+      top: -4px;
+      left: 132px;
+      width: 9px;
+      height: 30px;
+      border-radius: 4px;
+      background: #29c88c;
+      transform-origin: top center;
+      animation: potLiquid2 30s linear infinite;
+    }
+  }
+
+  & > div:nth-child(4) {
+    top: -128px;
+    left: 150px;
+    width: 8px;
+    height: 7px;
+    border-radius: 8px;
+    background: #2ac88c;
+
+    &::before {
+      top: -2px;
+      left: 12px;
+      width: 10px;
+      height: 18px;
+      border-radius: 50%;
+      background: #2ac88c;
+      transform-origin: top center;
+      animation: potPotion1 30s ease infinite;
+    }
+
+    &::after {
+      top: -1px;
+      left: 21px;
+      width: 8px;
+      height: 10px;
+      border-radius: 50%;
+      background: #2ac88c;
+      transform-origin: top center;
+      animation: potPotion2 30s ease infinite;
+    }
+  }
+
+  & > div:nth-child(5) {
+    top: -131px;
+    left: 136px;
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background: #2ac88c;
+
+    &::before {
+      top: -7px;
+      left: -16px;
+      width: 6px;
+      height: 19px;
+      border-radius: 50%;
+      background: #2ac88c;
+      transform-origin: top center;
+      animation: potPotion3 30s ease infinite;
+    }
+  }
+
+  &__drop {
+    top: 0px;
+    left: 132px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #29c88c;
+    animation: potDrop 30s linear infinite;
+  }
+
+  &__bubble-1 {
+    top: -82px;
+    left: 104px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #29c88c;
+    animation: potBubble1 30s linear infinite;
+  }
+
+  &__bubble-2 {
+    top: -82px;
+    left: 118px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #29c88c;
+    animation: potBubble2 30s linear infinite;
+  }
+
+  &__bubble-3 {
+    top: -80px;
+    left: 166px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #29c88c;
+    animation: potBubble3 30s linear infinite;
+  }
+}
+
+/** -------------------- Fire -------------------- */
+.fire {
+  left: 122px;
+
+  @mixin item($color, $animationName, $animationDelay) {
+    top: -24px;
+    left: 8px;
+    width: 13px;
+    height: 13px;
+    background: $color;
+    transform: rotate(-45deg);
+    animation: $animationName 4s ease $animationDelay infinite;
+  }
+
+  &__item1 {
+    @include item(#f78c42, fireItem1, -1s);
+  }
+
+  &__item2 {
+    @include item(#f7e873, fireItem2, -3.2s);
+  }
+
+  &__item3 {
+    @include item(#f78c42, fireItem3, -1.2S);
+  }
+
+  &__item4 {
+    @include item(#f7e873, fireItem4, -4.6s);
+  }
+
+  &__item5 {
+    @include item(#f78c42, fireItem5, -3.1s);
+  }
+
+  &__item6 {
+    @include item(#f7e873, fireItem4, -1.7s);
+  }
+
+  &__item7 {
+    @include item(#f78c42, fireItem5, -2.9s);
+  }
+
+  &__item8 {
+    @include item(#f7e873, fireItem4, -3.1s);
+  }
+
+  &__item9 {
+    @include item(#f78c42, fireItem5, -2.5s);
+  }
+
+  &__item10 {
+    @include item(#f78c42, fireItem6, 0s);
+    left: 17px;
+    top: -21px;
+    border-color: #f78c42;
+    border-style: solid;
+    border-width: 4px 4px 2px 2px;
+    transform-origin: left bottom;
+  }
+}
+
+/** -------------------- Staff -------------------- */
+.staff {
+  top: 578px;
+  left: 0px;
+  width: 206px;
+  height: 22px;
+  border-radius: 0 0 16px 0;
+  background: #433532;
+  z-index: 1;
+
+  &::before {
+    top: -43px;
+    left: 54px;
+    width: 42px;
+    height: 43px;
+    border-radius: 18px 18px 0 0;
+    background: #564239;
+  }
+
+  div:nth-child(1) {
+    top: -46px;
+    left: 10px;
+    width: 60px;
+    height: 46px;
+    border-radius: 29px 31px 0 0;
+    background: #1a252f;
+
+    &::before {
+      top: -23px;
+      left: 2px;
+      width: 14px;
+      height: 36px;
+      border-top: 7px solid #1a252f;
+      border-left: 7px solid #1a252f;
+      border-radius: 18px 0 0 0;
+    }
+
+    &::after {
+      top: -25px;
+      left: 22px;
+      width: 18px;
+      height: 28px;
+      background: #1a252f;
+    }
+  }
+
+  div:nth-child(2) {
+    top: -78px;
+    left: 29px;
+    width: 25px;
+    height: 8px;
+    border-radius: 4px;
+    background: #212939;
+    box-shadow: 0 28px 0 -2px #464230;
+
+    &::before {
+      top: 38px;
+      left: 9px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid #464230;
+      box-shadow: 0 8px 0 0 #464230, 0 16px 0 0 #464230;
+    }
+
+    &::after {
+      top: 29px;
+      left: 38px;
+      width: 16px;
+      height: 7px;
+      background: #564239;
+    }
+  }
+
+  div:nth-child(3) {
+    top: -53px;
+    left: 64px;
+    width: 22px;
+    height: 5px;
+    border-radius: 4px;
+    background: #564239;
+
+    &::before {
+      top: 38px;
+      left: 38px;
+      width: 34px;
+      height: 15px;
+      border-radius: 22px 22px 0 0;
+      background: #263449;
+    }
+
+    &::after {
+      top: 33px;
+      left: 50px;
+      width: 9px;
+      height: 10px;
+      background: #263449;
+    }
+  }
+
+  div:nth-child(4) {
+    top: -24px;
+    left: 112px;
+    width: 14px;
+    height: 4px;
+    border-radius: 2px;
+    background: #304252;
+
+    &::before {
+      top: -3px;
+      left: 36px;
+      width: 6px;
+      height: 24px;
+      background: #393939;
+      transform-origin: 0 0;
+      transform: rotate(-47deg);
+    }
+
+    &::after {
+      top: -12px;
+      left: 32px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #393939;
+    }
+  }
+
+  div:nth-child(5) {
+    top: 12px;
+    left: 130px;
+    width: 77px;
+    height: 10px;
+    border-radius: 0 0 6px 6px;
+    background: #312e36;
+
+    &::before {
+      top: -25px;
+      left: 15px;
+      width: 51px;
+      height: 20px;
+      border-radius: 3px 3px 13px 13px;
+      background: #3b4a3e;
+      transform-origin: 0 0;
+      transform: rotate(-14deg);
+    }
+
+    &::after {
+      top: -16px;
+      left: 12px;
+      width: 54px;
+      height: 16px;
+      border-radius: 2px 2px 6px 6px;
+      background: #5a5a4a;
+    }
+  }
 }
