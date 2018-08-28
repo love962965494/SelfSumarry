@@ -2495,3 +2495,319 @@
   83.7% { transform: rotate(-1deg); }
   84.0% { transform: rotate(0deg); }
 }
+
+/** -------------------- Snail -------------------- */
+@keyframes snail {
+  13.5% { transform: translate(0px, 0px); }
+  14.4% { transform: translate(-24px, 0px); }
+  15.6% { transform: translate(-19px, 0px); }
+  16.5% { transform: translate(-42px, 0px); }
+  17.7% { transform: translate(-39px, 0px); }
+  18.6% { transform: translate(-63px, 0px); }
+  19.8% { transform: translate(-59px, 0px); }
+  20.1% { transform: translate(-61px, 0px); }
+  20.4% { transform: translate(-61px, 0px); }
+  20.7% { transform: translate(-68px, 0px); }
+  21.0% { transform: translate(-74px, 0px); }
+  21.3% { transform: translate(-79px, 0px); }
+  21.6% { transform: translate(-82px, 0px); }
+  21.9% { transform: translate(-84px, 0px); }
+  24.3% { transform: translate(-84px, 0px); }
+  24.6% { transform: translate(-84px, 15px); }
+  24.9% { transform: translate(-84px, 46px); }
+  25.2% { transform: translate(-84px, 61px); }
+  25.5% { transform: translate(-84px, 86px); }
+  25.8% { transform: translate(-84px, 116px); }
+  26.1% { transform: translate(-84px, 196px); }
+  26.4% { transform: translate(-84px, 286px); opacity: 1; }
+  26.5% { opacity: 0; }
+
+  84.5% { opacity: 0; }
+  84.6% { transform: rotate(-40deg) translate(199px, 135px); opacity: 1; }
+  85.8% { transform: rotate(-5deg) translate(30px, 1px); }
+  86.4% { transform: rotate(0deg) translate(0px, 0px); }
+  100%  { transform: rotate(0deg) translate(0px, 0px); }
+}
+
+@keyframes snailBody {
+  7.5%  { transform: rotate(0deg) scaleY(1); }
+  7.8%  { transform: rotate(8deg) scaleY(1.15); }
+  9.0%  { transform: rotate(-3deg) scaleY(1); }
+  9.6%  { transform: rotate(-2deg) scaleY(1.02); }
+  10.5% { transform: rotate(2deg) scaleY(1); }
+  11.4% { transform: rotate(2deg) scaleY(1); }
+  12.6% { transform: rotate(0deg) scaleY(1); }
+  13.5% { transform: rotate(0deg) scaleY(1.03) scaleX(0.95); }
+  14.4% { transform: rotate(0deg) scaleY(1.03) scaleX(0.95); }
+  15.6% { transform: rotate(0deg) scaleY(1.04) scaleX(0.95); }
+  16.5% { transform: rotate(0deg) scaleY(0.97) scaleX(1); }
+  17.7% { transform: rotate(0deg) scaleY(1.03) scaleX(0.96); }
+  18.6% { transform: rotate(0deg) scaleY(0.98) scaleX(1.04); }
+  19.8% { transform: rotate(0deg) scaleY(1.03) scaleX(0.96); }
+  20.1% { transform: rotate(0deg) scaleY(1) scaleX(0.96); }
+  20.4% { transform: rotate(0deg) scaleY(1) scaleX(0.96); }
+  20.7% { transform: rotate(0deg) scaleY(1) scaleX(1) translate(0px, 11px); }
+  21.0% { transform: rotate(0deg) scaleY(1) scaleX(1) translate(0px, 19px); }
+  21.3% { transform: rotate(0deg) scaleY(1) scaleX(1) translate(0px, 26px); }
+  21.6% { transform: rotate(0deg) scaleY(1) scaleX(1) translate(0px, 30px); }
+  21.9% { transform: rotate(0deg) scaleY(1) scaleX(1) translate(0px, 33px); }
+  26.4% { transform: rotate(0deg) scaleY(1) scaleX(1) translate(0px, 33px); }
+
+  84.6% { transform: rotate(-90deg) translate(29px, 29px); }
+  87.6% { transform: rotate(-90deg) translate(29px, 29px); }
+  88.8% { transform: rotate(0deg) translate(0px, 0px); }
+  100%  { transform: rotate(0deg) translate(0px, 0px); }
+}
+
+@keyframes snailEye {
+  7.2%  { transform: translate(0px, 0px); background: #012135; }
+  7.5%  { transform: translate(0px, 0px); background: #29a58c; }
+  7.8%  { transform: translate(0px, 0px); background: #29a58c; }
+  9.0%  { transform: translate(-2px, 3px) scaleY(1); background: #29a58c; }
+  9.6%  { transform: translate(-2px, 3px) scaleY(0); background: #29a58c; }
+  10.2% { transform: translate(-2px, 3px) scaleY(0); background: #29a58c; }
+  10.5% { transform: translate(-2px, 3px) scaleY(1); background: #29a58c; }
+  11.4% { transform: translate(0px, 0px) scaleY(1); background: #29a58c; }
+  11.7% { transform: translate(0px, 0px) scaleY(1); background: #29a58c; }
+  12.0% { transform: translate(0px, 0px) scaleY(0); background: #29a58c; }
+  12.3% { transform: translate(0px, 0px) scaleY(0); background: #29a58c; }
+  12.6% { transform: translate(0px, 0px) scaleY(1); background: #29a58c; }
+  15.9% { transform: translate(0px, 0px) scaleY(1); background: #012135; }
+  16.2% { transform: translate(0px, 0px) scaleY(0); background: #012135; }
+  16.5% { transform: translate(0px, 0px) scaleY(0); background: #012135; }
+  16.8% { transform: translate(0px, 0px) scaleY(1); background: #012135; }
+  20.4% { transform: translate(0px, 0px) scaleY(1); background: #012135; }
+  20.7% { transform: translate(0px, 2px) scaleY(1); background: #012135; }
+  21.3% { transform: translate(0px, 2px) scaleY(1); background: #012135; }
+  21.6% { transform: translate(0px, 4px) scaleY(1); background: #012135; }
+  21.9% { transform: translate(0px, 7px) scaleY(1); background: #012135; }
+  22.2% { transform: translate(0px, 20px) scaleY(1); background: #012135; }
+  22.5% { transform: translate(0px, 34px) scaleY(1); background: #012135; }
+  22.8% { transform: translate(0px, 52px) scaleY(0); background: #012135; }
+  23.1% { transform: translate(0px, 71px) scaleY(0); background: #012135; }
+  23.4% { transform: translate(-6px, 76px) scaleY(1); background: #012135; }
+  23.7% { transform: translate(-6px, 90px) scaleY(1); background: #012135; }
+  24.0% { transform: translate(-6px, 104px) scaleY(1); background: #012135; }
+  24.3% { transform: translate(-6px, 117px) scaleY(1); background: #012135; }
+  26.4% { transform: translate(-6px, 117px) scaleY(1); background: #012135; opacity: 1; }
+  26.5% { opacity: 0; }
+
+  94.4% { transform: translate(-162px, 40px); opacity: 0; }
+  94.5% { transform: translate(-162px, 40px); opacity: 1; }
+  95.1% { transform: translate(-87px, 38px); opacity: 1; }
+  95.7% { transform: translate(0px, 0px); opacity: 1; }
+}
+
+@keyframes snailRightEye {
+  7.5%  { transform: rotate(36deg) translate(0px, 0px); }
+  7.8%  { transform: rotate(22deg) translate(-8px, -1px); }
+  9.0%  { transform: rotate(36deg) translate(1px, 2px); }
+  9.6%  { transform: rotate(41deg) translate(2px, 2px); }
+  10.5% { transform: rotate(36deg) translate(-1px, -2px); }
+  11.4% { transform: rotate(34deg) translate(-5px, -2px); }
+  12.6% { transform: rotate(45deg) translate(1px, -2px); }
+  13.5% { transform: rotate(45deg) translate(1px, -2px); }
+  14.4% { transform: rotate(36deg) translate(1px, -3px); }
+  20.4% { transform: rotate(36deg) translate(1px, -3px); }
+  20.7% { transform: rotate(36deg) translate(2px, 0px); }
+  21.0% { transform: rotate(41deg) translate(1px, 0px); }
+  21.3% { transform: rotate(41deg) translate(1px, 0px); }
+  21.6% { transform: rotate(41deg) translate(3px, 1px); }
+  21.9% { transform: rotate(41deg) translate(5px, 4px); }
+  22.2% { transform: rotate(41deg) translate(12px, 15px); }
+  22.5% { transform: rotate(41deg) translate(20px, 28px); }
+  22.8% { transform: rotate(41deg) translate(27px, 40px); }
+  23.1% { transform: rotate(41deg) translate(36px, 52px); }
+  23.4% { transform: rotate(41deg) translate(44px, 62px); }
+  23.7% { transform: rotate(41deg) translate(52px, 73px); }
+  24.0% { transform: rotate(41deg) translate(61px, 85px); }
+  24.3% { transform: rotate(41deg) translate(69px, 96px); }
+  24.6% { transform: rotate(41deg) translate(67px, 95px); }
+  26.4% { transform: rotate(41deg) translate(67px, 95px); opacity: 1; }
+  26.5% { opacity: 0; }
+
+  91.8% { transform: rotate(36deg) translate(0px, 27px); opacity: 0; }
+  93.0% { transform: rotate(36deg) translate(0px, 0px); opacity: 1; }
+}
+
+@keyframes snailLeftEye {
+  7.5%  { transform: rotate(-36deg) translate(0px, 0px); }
+  7.8%  { transform: rotate(-60deg) translate(-8px, 1px); }
+  9.0%  { transform: rotate(-40deg) translate(-4px, 2px); }
+  9.6%  { transform: rotate(-34deg) translate(0px, 1px); }
+  10.5% { transform: rotate(-48deg) translate(-1px, 1px); }
+  11.4% { transform: rotate(-50deg) translate(-3px, 0px); }
+  12.6% { transform: rotate(-36deg) translate(2px, 0px); }
+  13.5% { transform: rotate(-36deg) translate(2px, 0px); }
+  14.4% { transform: rotate(-40deg) translate(1px, 0px); }
+  15.6% { transform: rotate(-40deg) translate(0px, 0px); }
+  20.4% { transform: rotate(-40deg) translate(0px, 0px); }
+  20.7% { transform: rotate(-40deg) translate(-1px, 3px); }
+  21.0% { transform: rotate(-38deg) translate(0px, 3px); }
+  21.3% { transform: rotate(-38deg) translate(0px, 3px); }
+  21.6% { transform: rotate(-38deg) translate(-2px, 3px); }
+  21.9% { transform: rotate(-38deg) translate(-4px, 6px); }
+  22.2% { transform: rotate(-38deg) translate(-13px, 17px); }
+  22.5% { transform: rotate(-38deg) translate(-22px, 28px); }
+  22.8% { transform: rotate(-38deg) translate(-32px, 38px); }
+  23.1% { transform: rotate(-38deg) translate(-42px, 48px); }
+  23.4% { transform: rotate(-38deg) translate(-50px, 59px); }
+  23.7% { transform: rotate(-38deg) translate(-59px, 69px); }
+  24.0% { transform: rotate(-38deg) translate(-68px, 79px); }
+  24.3% { transform: rotate(-38deg) translate(-78px, 90px); }
+  24.6% { transform: rotate(-38deg) translate(-78px, 89px); }
+  26.4% { transform: rotate(-38deg) translate(-78px, 89px); opacity: 1; }
+  26.5% { opacity: 0; }
+
+  91.8% { transform: rotate(-36deg) translate(0px, 24px); opacity: 0; }
+  93.0% { transform: rotate(-36deg) translate(0px, 0px); opacity: 1; }
+}
+
+@keyframes snailTail {
+  12.6% { transform: scaleX(1); }
+  13.5% { transform: scaleX(0.77) scaleY(1.2); }
+  14.4% { transform: scaleX(1.05) scaleY(1); }
+  15.6% { transform: scaleX(0.75) scaleY(1.2); }
+  16.5% { transform: scaleX(1.03) scaleY(1); }
+  17.7% { transform: scaleX(0.76) scaleY(1.15); }
+  18.6% { transform: scaleX(1.05) scaleY(1); }
+  19.8% { transform: scaleX(0.75) scaleY(1.15); }
+  20.1% { transform: scaleX(0.78) scaleY(1.15); }
+  20.4% { transform: scaleX(0.78) scaleY(1.15); }
+  20.7% { transform: scaleX(0.86) scaleY(1.1); }
+  21.0% { transform: scaleX(0.93) scaleY(1.1); }
+  21.3% { transform: scaleX(0.99) scaleY(1); }
+  21.6% { transform: scaleX(1.03) scaleY(1); }
+  21.9% { transform: scaleX(1.05) scaleY(1); }
+  22.2% { transform: scaleX(0.98) scaleY(1); }
+  22.5% { transform: scaleX(0.85) scaleY(1); }
+  22.8% { transform: scaleX(0.73) scaleY(1.3); }
+  23.1% { transform: scaleX(0.60) scaleY(1.3); }
+  23.4% { transform: scaleX(0.53) scaleY(1.3); }
+  23.7% { transform: scaleX(0.48) scaleY(1.3); }
+  24.0% { transform: scaleX(0.4) scaleY(1); }
+  24.3% { transform: scaleX(0.4) scaleY(1); opacity: 1; }
+  24.6% { transform: scaleX(0.4) scaleY(1); opacity: 0; }
+
+  84.5% { opacity: 0; }
+  84.6% { transform: scaleX(1) scaleY(1); opacity: 1; }
+}
+
+@keyframes snailSpots {
+  20.4% { transform: translate(0px, 0px); }
+  20.7% { transform: translate(0px, -6px); }
+  21.0% { transform: translate(0px, -12px); }
+  21.3% { transform: translate(0px, -17px); }
+  21.6% { transform: translate(0px, -21px); }
+  21.9% { transform: translate(0px, -23px); }
+  22.2% { transform: translate(0px, -15px); }
+  22.5% { transform: translate(0px, -1px); }
+  22.8% { transform: translate(0px, 15px); }
+  23.1% { transform: translate(0px, 29px); }
+  23.4% { transform: translate(0px, 35px); }
+  23.7% { transform: translate(0px, 35px); }
+  24.0% { transform: translate(0px, 37px); }
+  24.3% { transform: translate(0px, 52px); }
+  24.6% { transform: translate(0px, 32px); }
+  84.6% { transform: translate(0px, 0px); }
+}
+
+@keyframes snailTummyTop {
+  20.4% { transform: translate(0px, 0px); }
+  20.7% { transform: translate(0px, -10px); }
+  21.9% { transform: translate(0px, -10px); }
+  22.2% { transform: translate(0px, -5px); }
+  22.5% { transform: translate(0px, 0px); }
+  22.8% { transform: translate(0px, 12px) scaleY(1); }
+  23.1% { transform: translate(0px, 16px) scaleY(1.8); }
+  23.4% { transform: translate(0px, 20px) scaleY(1.9); }
+  24.0% { transform: translate(0px, 20px) scaleY(1.9); }
+  24.3% { transform: translate(0px, 7px) scaleY(1.5); }
+  24.6% { transform: translate(0px, 7px) scaleY(1.5); }
+  24.9% { transform: translate(0px, 7px) scaleY(2.5); }
+  25.2% { transform: translate(0px, 7px) scaleY(2.8); }
+  25.5% { transform: translate(0px, 7px) scaleY(3); }
+  25.8% { transform: translate(0px, 7px) scaleY(3.7); }
+  26.1% { transform: translate(0px, 7px) scaleY(5); }
+  26.4% { transform: translate(0px, 7px) scaleY(5); }
+  84.6% { transform: translate(0px, 0px); }
+}
+
+@keyframes snailTummyBottom {
+  20.4% { transform: translate(0px, 0px); }
+  20.7% { transform: translate(0px, -6px); }
+  21.0% { transform: translate(0px, -12px); }
+  21.3% { transform: translate(0px, -17px); }
+  21.6% { transform: translate(0px, -21px); }
+  21.9% { transform: translate(0px, -23px); }
+  22.2% { transform: translate(0px, -15px); }
+  22.5% { transform: translate(0px, -1px); }
+  22.8% { transform: translate(0px, 15px); }
+  23.1% { transform: translate(0px, 29px); }
+  23.4% { transform: translate(0px, 35px) scaleY(1); }
+  23.7% { transform: translate(0px, 35px) scaleY(1.45); }
+  24.0% { transform: translate(0px, 37px) scaleY(1.8); }
+  24.3% { transform: translate(0px, 52px) scaleY(2); }
+  24.6% { transform: translate(0px, 32px) scaleY(2.7); }
+  26.4% { transform: translate(0px, 32px) scaleY(2.7); }
+
+  84.6% { transform: translate(0px, 0px) scaleY(1); }
+}
+
+@keyframes snailHead {
+  21.9% { transform: translateY(0px); }
+  22.2% { transform: translateY(4px); }
+  22.5% { transform: translateY(26px); }
+  22.8% { transform: translateY(54px); }
+  23.1% { transform: translateY(68px); }
+  23.4% { transform: translateY(79px); }
+  23.7% { transform: translateY(93px); }
+  24.0% { transform: translateY(105px); }
+  24.3% { transform: translateY(119px); }
+  24.6% { transform: translateY(116px); }
+  24.9% { transform: translateY(100px); }
+  26.4% { transform: translateY(100px); opacity: 1; }
+  26.5% { opacity: 0; }
+
+  87.6% { transform: translateY(10px); opacity: 0; }
+  88.2% { transform: translateY(0px); opacity: 1; }
+  100%  { opacity: 1; }
+}
+
+@keyframes snailSpike1 {
+  21.9% { transform: rotate(79deg) translateY(0px); opacity: 1; }
+  22.2% { transform: rotate(79deg) translateY(0px); opacity: 0; }
+  22.5% { transform: rotate(5deg) translate(-34px, -51px); opacity: 1; }
+  22.8% { transform: rotate(0deg) translate(-32px, -58px); opacity: 1; }
+  23.1% { transform: rotate(0deg) translate(-34px, -54px); opacity: 1; }
+  23.4% { transform: rotate(0deg) translate(-34px, -52px); opacity: 1; }
+  24.6% { transform: rotate(0deg) translate(-34px, -52px); opacity: 1; }
+  24.9% { transform: rotate(41deg) translate(55px, 82px); opacity: 1; }
+  26.4% { transform: rotate(41deg) translate(55px, 82px); opacity: 1; }
+
+  84.6% { transform: rotate(79deg) translate(0px, 0px); opacity: 1; }
+}
+
+@keyframes snailSpike2 {
+  21.9% { transform: rotate(90deg) translateY(0px); opacity: 1; }
+  22.2% { transform: rotate(90deg) translateY(0px); opacity: 0; }
+  22.5% { transform: rotate(90deg) translateY(0px); opacity: 0; }
+  22.8% { transform: rotate(19deg) translate(-53px, -84px); opacity: 1; }
+  23.1% { transform: rotate(5deg) translate(-42px, -104px); opacity: 1; }
+  23.4% { transform: rotate(0deg) translate(-35px, -101px); opacity: 1; }
+  24.3% { transform: rotate(0deg) translate(-35px, -101px); opacity: 1; }
+  24.6% { transform: rotate(0deg) translate(-35px, -96px); opacity: 1; }
+  24.9% { transform: rotate(-38deg) translate(-68px, 74px); opacity: 1; }
+  26.4% { transform: rotate(-38deg) translate(-68px, 74px); opacity: 1; }
+
+  84.6% { transform: rotate(90deg) translate(0px, 0px); opacity: 1; }
+}
+
+@keyframes snailTailSpike {
+  0.0%  { opacity: 1; }
+  84.5% { opacity: 1; }
+  84.6% { opacity: 0; }
+  87.6% { opacity: 0; }
+  88.2% { opacity: 1; }
+  100%  { opacity: 1; }
+}

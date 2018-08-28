@@ -3524,3 +3524,65 @@ body {
     }
   }
 }
+
+/** -------------------- Snail -------------------- */
+.snail {
+  left: 370px;
+  animation: snail 30s linear infinite;
+
+  &__tail {
+    top: -13px;
+    left: 5px;
+    width: 89px;
+    height: 13px;
+    border-radius: 7px;
+    background: #d66362;
+    transform-origin: bottom left;
+    animation: snailTail 30s linear infinite;
+
+    &::before {
+      top: -20px;
+      left: 0px;
+      width: 34px;
+      border-right: 50px solid transparent;
+      border-bottom: 20px solid #d66362;
+    }
+
+    &::after {
+      top: -5px;
+      left: 35px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #964554;
+    }
+
+    & > div {
+      top: -30px;
+      left: 38px;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 15px solid #59844f;
+      transform: rotate(21deg);
+      animation: snailTailSpike 30s linear infinite;
+
+      &::before {
+        top: 4px;
+        left: 9px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 11px solid #59844f;
+        transform: rotate(1deg);
+      }
+
+      &::after {
+        top: 6px;
+        left: 27px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 9px solid #59844f;
+        transform: rotate(0deg);
+      }
+    }
+  }
+}
