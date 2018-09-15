@@ -8,3 +8,6 @@ dist/
 .idea
 .vscode
 .history/
+*.d.ts
+*.js.map
+*.css.map
