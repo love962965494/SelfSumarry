@@ -14,6 +14,9 @@ class ReactDOMComponent {
 
     domElement.appendChild(textNode)
     container.appendChild(domElement)
+
+    this._hostNode = domElement
+    return domElement
   }
 }
 
@@ -28,16 +31,32 @@ class ReactCompositeComponentWrapper {
   }
 
   public mountComponent(container) {
-    const compositeComponentInstance = new this._currentElement.type(this._currentElement.props)
-    let renderedElement = compositeComponentInstance.render()
+    const Component = this._currentElement.type
+    const componentInstance = new Component(this._currentElement.props)
 
-    while (typeof renderedElement.type === 'function') {
-      renderedElement = new renderedElement.type(renderedElement.props).render()
+    this._instance = componentInstance
+
+    if (componentInstance.componentWillMount) {
+      componentInstance.componentWillMount()
     }
 
-    const domComponentInstance = new ReactDOMComponent(renderedElement)
+    const markup = this.performInitialMount(container)
 
-    domComponentInstance.mountComponent(container)
+    if (componentInstance.componentDidMount) {
+      componentInstance.componentDidMount()
+    }
+
+    return markup
+  }
+
+  public performInitialMount(container) {
+    const renderedElement = this._instance.render()
+
+    const child = instantiateReactComponent(renderedElement)
+
+    this._renderedComponent = child
+
+    return ReactReconciler.mountComponent(child, container)
   }
 }
 
@@ -55,6 +74,20 @@ class TopLevelWrapper {
 
   public render() {
     return this.props
+  }
+}
+
+function instantiateReactComponent(element) {
+  if (typeof element.type === 'string') {
+    return new ReactDOMComponent(element)
+  } else if (typeof element.type === 'function') {
+    return new ReactCompositeComponentWrapper(element)
+  }
+}
+
+const ReactReconciler = {
+  mountComponent(internalInstance, container) {
+    return internalInstance.mountComponent(container)
   }
 }
 
@@ -77,7 +110,7 @@ class React {
       this.props = props
     }
 
-    Constructor.prototype.render = spec.render
+    Constructor.prototype = Object.assign(Constructor.prototype, spec)
 
     return Constructor
   }
@@ -86,6 +119,31 @@ class React {
     const wrapperElement = this.createElement(TopLevelWrapper, element)
     const componentInstance = new ReactCompositeComponentWrapper(wrapperElement)
 
-    return componentInstance.mountComponent(container)
+    return ReactReconciler.mountComponent(componentInstance, container)
   } 
 }
+
+
+
+// 例子
+
+const MyH1 = React.createClass({
+  render() {
+    return React.createElement('h1', null, this.props.message)
+  }
+})
+
+const MyMessage = React.createClass({
+  render() {
+    if (this.props.asTitle) {
+      return React.createElement(MyH1, { message: this.props.message })
+    } else {
+      return React.createElement('p', null, this.props.message)
+    }
+  }
+})
+
+React.render(
+  React.createElement(MyMessage, { asTitle: false, message: 'this is an h1 message' }),
+  document.getElementById('root')
+)
