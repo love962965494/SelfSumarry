@@ -12,7 +12,7 @@
   const ANIMATION__DURATION__MS = 200
 
   // tslint:disable-next-line:no-empty
-  scope.InfiniteScrollerSource = class implements InfiniteScrollerSource {}
+  // scope.InfiniteScrollerSource = class {}
   // {
   //   /**
   //    * Fetch more items from the data source. This should try to fetch at least

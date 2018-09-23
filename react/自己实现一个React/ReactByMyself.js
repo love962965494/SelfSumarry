@@ -18,6 +18,47 @@ class ReactDOMComponent {
     this._hostNode = domElement
     return domElement
   }
+
+  public receiveComponent(nextElement) {
+    const prevElement = this._currentElement
+    this.updateComponent(prevElement, nextElement)
+  }
+
+  public updateComponent(prevElement, nextElement) {
+    const lastProps = prevElement.props
+    const nextProps = nextElement.props
+
+    this._updateDOMProperties(lastProps, nextProps)
+    this._updateDOMChildren(lastProps, nextProps)
+  }
+
+  private _updateDOMProperties(lastProps, nextProps) {
+    // mainly to update css
+  }
+
+  private _updateDOMChildren(lastProps, nextProps) {
+    const lastContent = lastProps.children
+    const nextContent = nextProps.children
+
+    if (!nextContent) {
+      this.updateTextContent('')
+    } else if (lastContent !== nextContent) {
+      this.updateTextContent('' + nextContent)
+    }
+  }
+
+  private updateTextContent(content) {
+    const node = this._hostNode
+
+    const firstChild = node.firstChild
+
+    if (firstChild && firstChild === node.lastChild && firstChild.nodeType === 3) {
+      firstChild.nodeValue = content
+      return
+    }
+
+    node.textContent = content
+  }
 }
 
 /**
@@ -58,6 +99,51 @@ class ReactCompositeComponentWrapper {
 
     return ReactReconciler.mountComponent(child, container)
   }
+
+  public receiveComponent(nextComponent) {
+    const prevElement = this._currentElement
+
+    this.updateComponent(prevElement, nextElement)
+  }
+
+  public updateComponent(prevElement, nextElement) {
+    const nextProps = nextElement.props
+    const inst = this._instance
+
+    if (inst.componentWillReceiveProps) {
+      inst.componentWillReceiveProps(nextProps)
+    }
+
+    let shouldUpdate = true
+
+    if (inst.shouldComponentUpdate) {
+      shouldUpdate = inst.shouldComponentUpdate(nextProps)
+    } 
+
+    if (shouldUpdate) {
+      this._performComponentUpdate(nextElement, nextProps)
+    } else {
+      inst.props = nextProps
+    }
+  }
+
+  private _performComponentUpdate(nextElement, nextProps) {
+    this._currentElement = nextElement
+
+    const inst = this._instance
+
+    inst.props = nextProps
+
+    this._updateRenderedComponent()
+  }
+
+  private _updateRenderedComponent() {
+    const prevComponentInstance = this._renderedComponent
+    const inst = this._instance
+    const nextRenderedElement = inst.render()
+
+    ReactReconciler.receiveComponent(prevComponentInstance, nextRenderedElement)
+  }
 }
 
 
@@ -88,6 +174,10 @@ function instantiateReactComponent(element) {
 const ReactReconciler = {
   mountComponent(internalInstance, container) {
     return internalInstance.mountComponent(container)
+  },
+
+  receiveComponent(internalInstance, nextElement) {
+    internalInstance.receiveComponent(nextElement)
   }
 }
 
@@ -116,16 +206,54 @@ class React {
   }
 
   render(element, container) {
-    const wrapperElement = this.createElement(TopLevelWrapper, element)
-    const componentInstance = new ReactCompositeComponentWrapper(wrapperElement)
+    const prevComponent = getTopLevelComponentInContainer(container)
 
-    return ReactReconciler.mountComponent(componentInstance, container)
+    if (prevComponent) {
+      return updateRootComponent(prevComponent, element)
+    } else {
+      return renderNewRootComponent(element, container)
+    }
   } 
+}
+
+/**
+ * 获取真正的组件实例
+ * 
+ * @param {*} container 
+ */
+function getTopLevelComponentInContainer(container) {
+  return container.__reactComponentInstance
+}
+
+/**
+ * 生成新的根组件
+ * 
+ * @param {*} element 
+ * @param {*} container 
+ */
+function renderNewRootComponent(element, container) {
+  const wrapperElement = React.createElement(TopLevelWrapper, element)
+  const componentInstance = new ReactCompositeComponentWrapper(wrapperElement)
+  const markUp = ReactReconciler.mountComponent(componentInstance, container)
+
+  container.__reactComponentInstance = componentInstance._renderedComponent
+
+  return markUp
+}
+
+/**
+ * 更新根组件
+ * 
+ * @param {*} prevComponent 
+ * @param {*} nextComponent 
+ */
+function updateRootComponent(prevComponent, nextComponent) {
+  ReactReconciler.receiveComponent(prevComponent, nextElement)
 }
 
 
 
-// 例子
+// -------------------- 例子 --------------------
 
 const MyH1 = React.createClass({
   render() {
