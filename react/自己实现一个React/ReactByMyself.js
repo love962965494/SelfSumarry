@@ -103,7 +103,7 @@ class ReactCompositeComponentWrapper {
   public receiveComponent(nextComponent) {
     const prevElement = this._currentElement
 
-    this.updateComponent(prevElement, nextElement)
+    this.updateComponent(prevElement, nextComponent)
   }
 
   public updateComponent(prevElement, nextElement) {
@@ -182,7 +182,7 @@ const ReactReconciler = {
 }
 
 class React {
-  public createElement(type, props, children) {
+  public static createElement(type, props, children) {
     const element = {
       type,
       props = props || {}
