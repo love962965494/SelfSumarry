@@ -7,7 +7,7 @@ export default class Sort {
 
     callbacks.compareCallback = callbacks.compareCallback || undefined
     callbacks.visitingCallback = callbacks.visitingCallback || stubCallback
-
+ 
     return callbacks
   }
 
