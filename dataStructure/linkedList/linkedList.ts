@@ -115,7 +115,7 @@ export default class LinkedList {
    * @returns {(LinkedListNode | null)}
    * @memberof LinkedList
    */
-  public find({ value, callback }: { value: any; callback: (value: any) => LinkedListNode }): LinkedListNode | null {
+  public find({ value, callback }: { value?: any; callback: (value: any) => boolean }): LinkedListNode | null {
     if (!this.head) {
       return null
     }
