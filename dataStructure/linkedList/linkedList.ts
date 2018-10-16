@@ -1,10 +1,8 @@
 /**
- * In computer science, a linked list is a linear collection of data elements, in which linear order is not given by their  * physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a group of
- * nodes which together represent a sequence. Under the simplest form, each code is composed of data and a reference(in      * other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of       * elements from any position in the sequence during iteration. More complex variants add additional links, allowing         * efficient insertion or removal from arbitrary element references. A drawback of linked lists is that access time is      * linear (and difficult to pipeline). Faster access, such as random access, is not feasible. Arrays have better cache      * locality as compared to linked lists.
+ * In computer science, a linked list is a linear collection of data elements, in which linear order is not given by their physical placement in memory. Instead, each element points to the next. It is a data structure consisting of a group of nodes which together represent a sequence. Under the simplest form, each code is composed of data and a reference(in other words, a link) to the next node in the sequence. This structure allows for efficient insertion or removal of elements from any position in the sequence during iteration. More complex variants add additional links, allowing efficient insertion or removal from arbitrary element references. A drawback of linked lists is that access time is linear (and difficult to pipeline). Faster access, such as random access, is not feasible. Arrays have better cache locality as compared to linked lists.
  */
-import Comparator from '../../utils/comparator'
+import Comparator, { ICompareFunctionTemplate } from '../../utils/comparator'
 import LinkedListNode from './linkedListNode'
-
 
 /**
  *
@@ -13,36 +11,43 @@ import LinkedListNode from './linkedListNode'
  * @class LinkedList
  */
 export default class LinkedList {
-  head: LinkedListNode
-  tail: LinkedListNode
-  compare: Comparator
-  constructor(comparatorFunction?: Function) {
+  public head: LinkedListNode | null
+  public tail: LinkedListNode | null
+  public compare: Comparator
+
+  /**
+   * Creates an instance of LinkedList.
+   *
+   * @param {ICompareFunctionTemplate} [comparatorFunction]
+   * @memberof LinkedList
+   */
+  constructor(comparatorFunction?: ICompareFunctionTemplate) {
     this.head = null
     this.tail = null
     this.compare = new Comparator(comparatorFunction)
   }
 
   /**
-   *
+   * Prepend node
    *
    * @param {*} value
    * @returns {LinkedList}
    * @memberof LinkedList
    */
-  prepend(value: any): LinkedList {
+  public prepend(value: any): LinkedList {
     // Make new node to be a head
     this.head = new LinkedListNode(value, this.head)
     return this
   }
 
   /**
-   *
+   * Append node
    *
    * @param {*} value
    * @returns {LinkedList}
    * @memberof LinkedList
    */
-  append(value: any): LinkedList {
+  public append(value: any): LinkedList {
     const newNode = new LinkedListNode(value)
 
     // If there is no head yet let's make new node a head
@@ -54,19 +59,19 @@ export default class LinkedList {
     }
 
     // Attach new node to the end of linked list
-    this.tail.next = newNode
+    this.tail!.next = newNode
     this.tail = newNode
     return this
   }
 
   /**
-   *
+   * Delete node
    *
    * @param {*} value
-   * @returns {LinkedListNode}
+   * @returns {(LinkedListNode | null)}
    * @memberof LinkedList
    */
-  delete(value: any): LinkedListNode {
+  public delete(value: any): LinkedListNode | null {
     if (!this.head) {
       return null
     }
@@ -93,8 +98,10 @@ export default class LinkedList {
       }
     }
 
-    // Check if tail must be deleted
-    if (this.compare.equal(this.tail.value, value)) {
+    // when currentNode.next === null, then currentNode === tail
+    // but we haven't compare currentNode with value,
+    // so we still check if tail must be deleted
+    if (this.compare.equal(this.tail!.value, value)) {
       this.tail = currentNode
     }
 
@@ -102,19 +109,18 @@ export default class LinkedList {
   }
 
   /**
+   * Find node
    *
-   *
-   * @param {*} [value]
-   * @param {Function} [callback]
+   * @param {{ value: any; callback: (value: any) => LinkedListNode }} { value, callback }
    * @returns {(LinkedListNode | null)}
    * @memberof LinkedList
    */
-  find({ value = undefined, callback }): LinkedListNode | null {
+  public find({ value, callback }: { value?: any; callback: (value: any) => boolean }): LinkedListNode | null {
     if (!this.head) {
       return null
     }
 
-    let currentNode = this.head
+    let currentNode: LinkedListNode | null = this.head
 
     while (currentNode) {
       // If callback is specified then try to find node by callback
@@ -134,23 +140,24 @@ export default class LinkedList {
   }
 
   /**
+   * Delete tail
    *
-   *
-   * @returns {LinkedListNode}
+   * @returns {(LinkedListNode | null)}
    * @memberof LinkedList
    */
-  deleteTail(): LinkedListNode {
+  public deleteTail(): LinkedListNode | null {
+    let deletedTail
     if (this.head === this.tail) {
-      const deletedTail = this.tail
+      deletedTail = this.tail
       this.head = null
       this.tail = null
       return deletedTail
     }
 
-    const deletedTail = this.tail
+    deletedTail = this.tail
 
     // Rewind to the last node and delete "next" link for the node before the last one
-    let currentNode = this.head
+    let currentNode = this.head as LinkedListNode
     while (currentNode.next) {
       if (!currentNode.next.next) {
         currentNode.next = null
@@ -164,12 +171,12 @@ export default class LinkedList {
   }
 
   /**
-   *
+   * Delete head
    *
    * @returns {(LinkedListNode | null)}
    * @memberof LinkedList
    */
-  deleteHead(): LinkedListNode | null {
+  public deleteHead(): LinkedListNode | null {
     if (!this.head) {
       return null
     }
@@ -187,12 +194,12 @@ export default class LinkedList {
   }
 
   /**
-   *
+   * Let linked list to array
    *
    * @returns {Array<LinkedListNode>}
    * @memberof LinkedList
    */
-  toArray(): Array<LinkedListNode> {
+  public toArray(): LinkedListNode[] {
     const nodes = []
     let currentNode = this.head
 
@@ -205,19 +212,24 @@ export default class LinkedList {
   }
 
   /**
+   * Let linked list to string
    *
-   *
-   * @param {Function} callback
-   * @returns {String}
+   * @param {(value: any) => string} [callback]
+   * @returns {string}
    * @memberof LinkedList
    */
-  toString(callback: Function): String {
+  public toString(callback?: (value: any) => string): string {
     return this.toArray()
       .map(node => node.toString(callback))
       .toString()
   }
 }
 
-let linkedList = new LinkedList()
+const linkedList = new LinkedList()
 linkedList.append(1)
-linkedList.prepend(2).append(3)
+console.log(
+  linkedList
+    .prepend(2)
+    .append(3)
+    .toString()
+)

@@ -9,6 +9,6 @@ export class SortTester {
   public static testSort(SortingClass: any) {
     const sorter = new SortingClass()
 
-    expect(sorter.sort[])
+    // expect(sorter.sort[])
   }
 }

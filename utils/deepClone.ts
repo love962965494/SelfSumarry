@@ -2,20 +2,21 @@
  * 如果不考虑原型链丢失问题，拷贝的到的object其constructor都指向Object
  * 也无法实现对函数、RegExp等特殊对象的拷贝
  * 循环引用会报错
- * @param obj 
+ * @param obj
  */
 export const cloneByJSON = (obj: object): object => JSON.parse(JSON.stringify(obj))
 
 /**
  * 完整的深拷贝例子
- * @param obj 
+ * @param obj
  */
-const deepClone = (obj: any): any => {
+function deepClone<T>(obj: T): T
+function deepClone(obj: any): any {
   if (obj === null || typeof obj !== 'object') {
     return obj
   }
 
-  switch(Object.prototype.toString.call(obj)) {
+  switch (Object.prototype.toString.call(obj)) {
     case '[object Array]': {
       const result = new Array(obj.length)
       for (let i = 0; i < obj.length; i++) {
@@ -54,9 +55,8 @@ const deepClone = (obj: any): any => {
     case '[object Object]': {
       const keys = Object.keys(obj)
       const result = {}
-      
-      for (let i =0; i < keys.length; i++) {
-        let key = keys[i]
+
+      for (const key of keys) {
         result[key] = deepClone(obj[key])
       }
       return result

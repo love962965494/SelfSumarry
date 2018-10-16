@@ -1,100 +1,107 @@
+export type ICompareFunctionTemplate = (a: any, b: any) => number
+
 /**
  * 一些关于比较的方法
- * 
+ *
  * @export
  * @class Comparator
  */
 export default class Comparator {
-  compare: Function;
   /**
-   * @param {function(a: any, b: any)} [compareFunction]
-   */
-
-  constructor (compareFunction?: Function) {
-    this.compare = compareFunction || Comparator.defaultCompareFunction
-  }
-
-  /**
-   * 
-   * 
+   * Default compare function
+   *
+   * @private
    * @static
-   * @param {*} a 
-   * @param {*} b 
-   * @returns {Number} 
+   * @param {*} a
+   * @param {*} b
+   * @returns {number}
    * @memberof Comparator
    */
-  static defaultCompareFunction (a: any, b: any): Number {
-    if (a === b) return 0
+  private static defaultCompareFunction(a: any, b: any): number {
+    if (a === b) {
+      return 0
+    }
 
     return a < b ? -1 : 1
   }
 
+  public compare: (a: any, b: any) => number
+
   /**
-   * 
-   * 
-   * @param {*} a 
-   * @param {*} b 
-   * @returns {Boolean} 
+   * Creates an instance of Comparator.
+   * @param {(a: any, b: any) => number} [compareFunction]
    * @memberof Comparator
    */
-  equal(a: any, b: any): Boolean {
+  constructor(compareFunction?: ICompareFunctionTemplate) {
+    this.compare = compareFunction || Comparator.defaultCompareFunction
+  }
+
+  /**
+   *
+   *
+   * @param {*} a
+   * @param {*} b
+   * @returns {Boolean}
+   * @memberof Comparator
+   */
+  public equal(a: any, b: any): boolean {
     return this.compare(a, b) === 0
   }
 
   /**
-   * 
-   * 
-   * @param {*} a 
-   * @param {*} b 
-   * @returns {Boolean} 
+   * Less than compare function
+   *
+   * @param {*} a
+   * @param {*} b
+   * @returns {boolean}
    * @memberof Comparator
    */
-  lessThan(a: any, b: any): Boolean {
+  public lessThan(a: any, b: any): boolean {
     return this.compare(a, b) < 0
   }
 
   /**
-   * 
-   * 
-   * @param {*} a 
-   * @param {*} b 
-   * @returns {Boolean} 
+   * Greater than compare function
+   *
+   * @param {*} a
+   * @param {*} b
+   * @returns {boolean}
    * @memberof Comparator
    */
-  greaterThan(a: any, b: any): Boolean {
+  public greaterThan(a: any, b: any): boolean {
     return this.compare(a, b) > 0
   }
 
   /**
-   * 
-   * 
-   * @param {*} a 
-   * @param {*} b 
-   * @returns {Boolean} 
+   * Less Or Equal compare function
+   *
+   * @param {*} a
+   * @param {*} b
+   * @returns {boolean}
    * @memberof Comparator
    */
-  lessThanOrEqual(a: any, b: any): Boolean {
+  public lessThanOrEqual(a: any, b: any): boolean {
     return this.lessThan(a, b) || this.equal(a, b)
   }
 
   /**
-   * 
-   * 
-   * @param {*} a 
-   * @param {*} b 
-   * @returns {Boolean} 
+   * Greater Or Equal compare function
+   *
+   * @param {*} a
+   * @param {*} b
+   * @returns {boolean}
    * @memberof Comparator
    */
-  greaterThanOrEqual(a: any, b: any): Boolean {
+  public greaterThanOrEqual(a: any, b: any): boolean {
     return this.greaterThan(a, b) || this.equal(a, b)
   }
 
   /**
-   * 反转
-   * 
+   * Reverse compare params
+   *
    * @memberof Comparator
    */
-  reverse () {
+  public reverse(): void {
     const compareOriginal = this.compare
     this.compare = (a, b) => compareOriginal(b, a)
   }
