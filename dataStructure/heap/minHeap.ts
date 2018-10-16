@@ -1,6 +1,8 @@
 import Comparator, { ICompareFunctionTemplate } from '../../utils/comparator'
 /**
- * In computer science, a heap is a specialized tree-based data structure that satisfies the heap property: if p is a parent * node of c, then the key (the value) of p is either greater than or equal to (in a max heap) or less than or equal to (in * a min heap) the key of c. The node at the "top" of the heap (with no parents) is called the root node.
+ * In computer science, a heap is a specialized tree-based data structure that satisfies the heap property: if p is a parent 
+ * node of c, then the key (the value) of p is either greater than or equal to (in a max heap) or less than or equal to (in 
+ * a min heap) the key of c. The node at the "top" of the heap (with no parents) is called the root node.
  */
 export default class MinHeap {
   public heapContainer: any[]
