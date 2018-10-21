@@ -1,17 +1,17 @@
 import Heap from './Heap'
 
-export default class MinHeap extends Heap {
+export default class MaxHeap extends Heap {
   /**
    *
    * Checks if pair of heap elements is in correct order
-   * For MinHeap the first element must be always smaller or equal.
+   * For MaxHeap the first element must be always bigger or equal.
    *
    * @param {*} firstElement
    * @param {*} secondElement
    * @returns {boolean}
-   * @memberof MinHeap
+   * @memberof MaxHeap
    */
   public pairIsInCorrectOrder(firstElement: any, secondElement: any): boolean {
-    return this.compare.lessThanOrEqual(firstElement, secondElement)
+    return this.compare.greaterThanOrEqual(firstElement, secondElement)
   }
 }
