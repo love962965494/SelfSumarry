@@ -3,7 +3,7 @@ import Comparator, { ICompareFunctionTemplate } from '../../utils/comparator'
 export default class Heap {
   public heapContainer: any[]
   public compare: Comparator
-  constructor(comparatorFunction: ICompareFunctionTemplate) {
+  constructor(comparatorFunction?: ICompareFunctionTemplate) {
     if (new.target === Heap) {
       throw new TypeError('Cannot construct Heap instance directly')
     }
