@@ -16,7 +16,7 @@ const defaultHashTableSize = 32
  * the same index for more than one key. Such collisions must be accommodated in some way.
  */
 export default class HashTable {
-  public buckets: Array<LinkedList>
+  public buckets: LinkedList[]
   public keys: object
 
   /**
@@ -42,13 +42,13 @@ export default class HashTable {
    * @returns {number}
    * @memberof HashTable
    */
-  hash(key: string): number {
+  public hash(key: string): number {
     const hash = Array.from(key)
       .reduce((hashAccumulator: number, keySymbol: string) => hashAccumulator + keySymbol.charCodeAt(0), 0)
       .toString()
 
     // reduce hash number so it would fit hash table size
-    return parseInt(hash) % this.buckets.length
+    return parseInt(hash, 10) % this.buckets.length
   }
 
   /**
@@ -59,7 +59,7 @@ export default class HashTable {
    * @param {*} value
    * @memberof HashTable
    */
-  set(key: string, value: any) {
+  public set(key: string, value: any) {
     const keyHash = this.hash(key)
     this.keys[key] = keyHash
 
@@ -82,7 +82,7 @@ export default class HashTable {
    * @returns {(LinkedListNode | null)}
    * @memberof HashTable
    */
-  delete(key: string): LinkedListNode | null {
+  public delete(key: string): LinkedListNode | null {
     const keyHash = this.hash(key)
     delete this.keys[key]
 
@@ -102,7 +102,7 @@ export default class HashTable {
    * @returns
    * @memberof HashTable
    */
-  get(key: string) {
+  public get(key: string) {
     const bucketLinkedList = this.buckets[this.hash(key)]
     const node = bucketLinkedList.find({ callback: (nodeValue) => nodeValue.key === key })
 
@@ -116,7 +116,7 @@ export default class HashTable {
    * @returns {boolean}
    * @memberof HashTable
    */
-  has(key: string): boolean {
+  public has(key: string): boolean {
     return Object.hasOwnProperty.call(this.keys, key)
   }
 
@@ -126,7 +126,7 @@ export default class HashTable {
    * @returns {Array<string>}
    * @memberof HashTable
    */
-  getKeys(): string[] {
+  public getKeys(): string[] {
     return Object.keys(this.keys)
   }
 }
