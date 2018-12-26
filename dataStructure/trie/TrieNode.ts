@@ -1,7 +1,7 @@
 import HashTable from '../hashTable/hashTable'
 
 export default class TrieNode {
-  private children: HashTable
+  public children: HashTable
   constructor(public character: string, public isCompletedWord: boolean = false) {
     this.character = character
     this.isCompletedWord = isCompletedWord

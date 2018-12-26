@@ -37,7 +37,101 @@ export default class Trie {
     return this
   }
 
-  // public deleteWord(word: string) {
-  //   const depthFirstDelete = ()
-  // }
+  /**
+   *
+   *
+   * @param {string} word
+   * @returns {Trie}
+   * @memberof Trie
+   */
+  public deleteWord(word: string): Trie {
+    const depthFirstDelete = (currentNode: TrieNode, charIndex: number = 0) => {
+      if (charIndex >= word.length) {
+        // Return if we're trying to delete the character that is out of word's scope
+        return
+      }
+
+      const character = word[charIndex]
+      const nextNode = currentNode.getChild(character)
+
+      if (nextNode === null) {
+        // Return if we're trying to delete a word that has not been added to the Trie
+        return
+      }
+
+      // Go deeper
+      depthFirstDelete(nextNode, charIndex + 1)
+
+      // Since we're going to delete a word let's un-mark its last character isCompleteWord flag
+      if (charIndex === (word.length - 1)) {
+        nextNode.isCompletedWord = false
+      }
+
+      // childNod is deleted only if:
+      // - childNode has NO children
+      // - childNode.isCompleteWord === false
+      currentNode.removeChild(character)
+    }
+
+    depthFirstDelete(this.head)
+
+    return this
+  }
+
+  /**
+   *
+   *
+   * @param {string} word
+   * @returns {(string[] | null)}
+   * @memberof Trie
+   */
+  public suggestNextCharacters(word: string): string[] | null {
+    const lastCharacter = this.getLastCharacterNode(word)
+
+    if (!lastCharacter) {
+      return null
+    }
+
+    return lastCharacter.suggestChildren()
+  }
+
+  /**
+   *
+   *
+   * @param {string} word
+   * @returns {boolean}
+   * @memberof Trie
+   */
+  public doesWordExist(word: string): boolean {
+    const lastCharacter = this.getLastCharacterNode(word)
+
+    return !!lastCharacter && lastCharacter.isCompletedWord
+  }
+
+  /**
+   *
+   *
+   * @param {string} word
+   * @returns {(TrieNode | null)}
+   * @memberof Trie
+   */
+  public getLastCharacterNode(word: string): TrieNode | null {
+    const characters = Array.from(word)
+    let currentNode = this.head
+
+    for (const character of characters) {
+      if (!currentNode.hasChild(characters[character])) {
+        return null
+      }
+
+      currentNode = currentNode.getChild(characters[character])
+    }
+
+    return currentNode
+  }
 }
+
+const trie = new Trie()
+trie.addWord('english')
+
+console.log(trie)
