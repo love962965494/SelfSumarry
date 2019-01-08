@@ -170,3 +170,7 @@ requestIdleCallback((deadline) => {
     }
   }
 ```
+
+
+注：
+本文引用自<a href="https://medium.com/react-in-depth/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-67f1014d0eb7">https://medium.com/react-in-depth/the-how-and-why-on-reacts-usage-of-linked-list-in-fiber-67f1014d0eb7</a>
