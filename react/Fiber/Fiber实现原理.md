@@ -193,3 +193,94 @@ hostRoot.stateNode === fiberRoot
   nextEffect: null
 }
 ```
+
+属性解释：
+### stateNode  
+保存着对组件的类实例，DOM节点或者其它于fiber节点相关的React元素的引用。总之，我们可以认为这个属性是用来保存于fiber相关的本地状态。
+
+### type  
+定义了与fiber相关的函数或者类。对于类组件，它指向的是构造函数，对于DOM元素，它指的是HTML标签。这个属性可以帮助我们了解fiber节点的关联类型。
+
+### tag  
+定义了fiber节点的类型。在协调算法中决定了那种类型的work将会被执行。正如之前提到的，work的类型取决于React的元素类型。函数createFiberFromTypeAndProps关联了React元素和fiber节点之间的类型。在我们的例子中，ClickCounter的tag是1，意味着它是一个ClassComponent，span元素的tag是5，意味着它是一个HostComponent。
+
+### updateQueue  
+一个关于更新、回调和DOM更新的队列。
+
+### memoizedState  
+Fiber生成结果时用到的state。当进行更新时，它反映当前在屏幕上呈现的状态。
+
+### memoizedProps  
+在上次渲染期间Fiber创建输出时用到的props。
+
+### pendingProps  
+位于React元素内的已经通过新数据更新后的props，并且将会用于子组件或DOM元素。
+
+### key  
+带有一组子节点的唯一标识符，用于帮助React判断那些项已被更改、被添加到列表或者被从列表删除。这和React中的"lists and keys"的原理是一样的。
+
+## 算法分析
+React执行work有两个阶段：render和commit。
+
+在第一个render阶段，React通过setState或者React.render来安排组件执行的更新，同时计算出需要更新的UI。如果是初次render，React会为每一个通过render方法返回的元素创建一个新的fiber node。在后续的更新过程中，fibers会一直存在以便于React重用和更新。这个阶段的结果就是生成一颗标记了副作用的fiber nodes树。副作用描述了在接下来的commit阶段需要执行的work。在这个阶段，React将这颗标记了副作用的fiber nodes树用于实例，通过遍历副作用列表来执行DOM更新和其它一些用户可见的改变。
+
+值得注意的是，在第一个render阶段的work是可以被异步执行的。React根据可用时间来决定执行一或多个fiber nodes，然后保存工作，停下来回到之前的事件中。然后下次再从上次停下的位置继续开始。当然，有时候也可能会抛弃现在正在执行的工作，然后从顶部重新开始工作。这个暂停的功能可行的原因是在这个阶段执行的work并不被用户可见。与render阶段相反的是，commit阶段的工作只能是同步的。这是因为commit阶段的改变是用户可见的，所以React需要确保这些工作在一个时间段内完成。
+
+调用生命周期方法也是React的一种work类型。有些方法是在render阶段执行的，而有些方法是在commit阶段执行的。下边列出了render阶段调用的方法：  
+* [UNSAFE_]componentWillMount(deprecated)
+* [UNSAFE_]componentWillReceiveProps(deprecated)
+* getDerivedStateFromProps
+* shouldComponentUpdate
+* [UNSAFE_]componentWillUpdate(deprecated)
+* render
+
+下边这些方法是commit阶段会被调用的方法：
+* getSnapShotBeforeUpdate
+* componentDidMount
+* componentDidUpdate
+* componentWillUnmount
+
+因为这些方法执行在同步的commit阶段，它们可能会产生副作用和创建dom。
+
+## Render phase
+协调算法总是从最顶层的HostRoot节点开始，调用renderRoot方法。然而，React会跳过那些已经执行过的fiber nodes直到找到那些还有非完成work的节点。例如，你调用setState在一颗很深的组件树中，React会从最顶层开始执行，但是它会非常快速的跳过父节点，直到调用setState的那个组件。
+
+### main step of the work loop
+所有的fiber nodes都会在work loop中执行。这是loop的异步部分的实现：
+```js
+function workLoop(isYieldly) {
+  if (!isYieldy) {
+    while(nextUnitOfWork !== null) {
+      nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
+    }
+  } else { ... }
+}
+```
+
+在上边的代码中，nextUnitOfWork保存着workInProgress树中有work需要执行的fiber node。当React遍历树时，使用这个变量来确定是否还有未完成的工作。当当前fiber node执行完后，nextUnitOfWork会指向下一个fiber node，如果没有下一个fiber node，则为null。此时，React已经执行完了work loop，准备进入commit阶段。
+
+这里有4个主要的方法会在这个阶段被调用：
+* performUnitOfWork
+* beginWork
+* completeUnitOfWork
+* completeWork
+
+为了演示它们是怎么被使用的，看一下下边这个遍历fiber树的动画。为了便于演示，我简化了这些方法的实现。每个方法接受一个fiber node处理，随着React向下遍历树是，你可以看见当前活动的fiber node随着改变。你可以清楚的看见算法是怎么从一个分支到另一个分支的。它先完成子节点的work，然后到父节点。
+<img class="progressiveMedia-image js-progressiveMedia-image" data-src="https://cdn-images-1.medium.com/max/800/1*A3-yF-3Xf47nPamFpRm64w.gif" src="https://cdn-images-1.medium.com/max/800/1*A3-yF-3Xf47nPamFpRm64w.gif">
+
+我们先讲解performUnitOfWork和beginWork这两个方法。
+```js
+function performUnitOfWrok(workInProgress) {
+  let next = beginWork(workInProgress)
+  if (next === null) {
+    next = completeUnitOfWork(workInProgress)
+  }
+
+  return next
+}
+
+function beginWork(workInProgress) {
+  console.log('work performed for ' + workInProgress.name)
+  return workInProgress.child
+}
+```
